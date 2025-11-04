@@ -4,34 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تفاصيل كورس Math EST</title>
+    
     <!-- تحميل Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- تحميل خط Cairo من Google Fonts لتحسين عرض اللغة العربية -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- إعداد الخطوط والألوان الجديدة المستخلصة -->
     <style>
-        /* تطبيق الخط الافتراضي على الصفحة */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+Arabic:wght@100..900&display=swap');
+        :root {
+            --primary-color: #0F9E99; /* Tropical Teal */
+            --background-color: #EFE9E0; /* Soft Ivory */
+        }
         body {
-            font-family: 'Cairo', sans-serif;
+            /* تطبيق الخطوط الجديدة */
+            font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: #333; /* لون نص أساسي داكن */
         }
-        /* لإضافة ظل داخلي خفيف للـ cards */
-        .card-shadow {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.08);
-        }
+        /* فئات مساعدة لـ Tailwind */
+        .text-primary { color: var(--primary-color); }
+        .bg-primary { background-color: var(--primary-color); }
+        .border-primary { border-color: var(--primary-color); }
+        /* إزالة الظل المخصص القديم */
+        .card-shadow { box-shadow: none; } 
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<!-- تطبيق هوامش/مساحات متجاوبة على الجسم -->
+<body class="p-4 sm:p-6 lg:p-8">
 
-    <!-- الحاوية الرئيسية للصفحة -->
-    <div class="container mx-auto max-w-4xl p-4 md:p-8">
+    <!-- الحاوية الرئيسية للصفحة - تم زيادة العرض قليلاً -->
+    <div class="mx-auto max-w-5xl">
 
         <!-- 1. العنوان الرئيسي والـ Hook -->
-        <header class="bg-white rounded-xl card-shadow p-6 md:p-8 mb-6 text-center overflow-hidden">
-            <h1 class="text-3xl md:text-4xl font-extrabold text-indigo-700 mb-5">
-                أقوى كورس (Math EST) أدفانس 📈
-            </h1>
-            <div class="bg-red-100 border-r-4 border-red-500 p-4 rounded-lg">
+        <header class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8 border-r-4 border-primary overflow-hidden">
+            
+            <!-- Logo and Main Title Container - Use Flex for horizontal alignment (RTL) -->
+            <div class="flex items-center mb-4 space-x-4 space-x-reverse">
+                
+                <!-- Logo Placement: Using the provided URL -->
+                <div class="flex-shrink-0 pt-1">
+                    <!-- تم إدراج الشعار باستخدام الرابط الخارجي -->
+                    <img src="https://ermathexpert.online/wp-content/uploads/2023/11/logo-red2-1.png" 
+                         alt="شعار ER Math Expert" 
+                         class="w-20 h-20 sm:w-24 sm:h-24 object-contain">
+                </div>
+                
+                <!-- Title Text Block -->
+                <div>
+                    <!-- Subtitle/Context -->
+                    <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">كورس مكثف لامتحان EST</p>
+                    <!-- Main Title -->
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+                        أقوى كورس (Math EST) <span class="text-primary">أدفانس</span> 📈
+                    </h1>
+                </div>
+            </div>
+
+            <!-- The Alert Box -->
+            <div class="bg-white border-r-4 border-red-500 p-4 rounded-lg shadow-md mt-6">
                 <p class="text-lg md:text-xl font-bold text-red-700">
                     📢 لكل طلاب الـ EST: لو دي أول محاولة ليك، أو مجموعك أقل من 600، الكورس ده عشانك!
                 </p>
@@ -39,9 +69,9 @@
         </header>
 
         <!-- 2. لماذا هذا الكورس؟ -->
-        <section class="bg-white rounded-xl card-shadow p-6 md:p-8 mb-6">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">
-                🚀 ليه الكورس ده هو اختيارك الصح؟
+        <section class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
+            <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-primary">
+                🚀 لماذا هذا الكورس هو اختيارك الأصح؟
             </h2>
             <p class="text-base md:text-lg leading-relaxed text-gray-700">
                 الكورس بيبدأ معاك من شرح الـ Topics الأدفانس (8 دروس) 📚 وحل worksheets المستر بيكون عاملها ومجمع فيها أسئلة من كتب مختلفة، عشان نضمن إنك اتدربت على كل أفكار الأسئلة قبل الامتحان ✅، مع نظام متابعة دقيق لولي الأمر.
@@ -49,120 +79,120 @@
         </section>
 
         <!-- 3. تفاصيل النظام (حصص لايف ومتابعة) -->
-        <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
             <!-- كارت الحصص اللايف -->
-            <div class="bg-white rounded-xl card-shadow p-6">
-                <h3 class="text-xl font-bold text-indigo-700 mb-4 border-b pb-2">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-primary mb-4 border-b pb-2">
                     🗓️ نظام الحصص اللايف (26 حصة)
                 </h3>
                 <ul class="space-y-3 text-gray-700">
-                    <li><strong>تاريخ البداية:</strong> 12/10</li>
-                    <li><strong>المواعيد:</strong> الأحد والأربعاء (٤ عصرًا) والجمعة (٢ عصرًا).</li>
-                    <!-- === الإضافة الجديدة: عداد الحصص === -->
+                    <li class="font-semibold text-gray-800">تاريخ البداية: <span class="font-normal">12/10</span></li>
+                    <li class="font-semibold text-gray-800">المواعيد: <span class="font-normal">الأحد والأربعاء (٤ عصرًا) والجمعة (٢ عصرًا).</span></li>
                     <li class="pt-2">
-                        <strong class="text-indigo-600">📊 عدد الحصص الي اتخدت حتى الآن:</strong>
-                        <!-- هذا العنصر سيتم تحديثه بواسطة السكريبت -->
-                        <span id="session-counter" class="font-bold text-xl text-indigo-700 bg-indigo-100 px-3 py-1 rounded-lg">...</span>
+                        <strong class="text-primary">📊 عدد الحصص الي اتخدت حتى الآن:</strong>
+                        <span id="session-counter" class="font-bold text-xl text-primary bg-primary/10 px-3 py-1 rounded-lg">...</span>
                     </li>
-                    <!-- ================================== -->
                     <li class="pt-2">
-                        🎥 <strong>فاتك حصة؟</strong>
+                        <h4 class="font-semibold text-gray-800">🎥 فاتك حصة؟</h4>
                         <p class="text-sm text-gray-600">مفيش مشكلة! كل حصة لايف بتتسجل وتنزل على السايت، وتقدر تشوفها في أي وقت.</p>
                     </li>
                     <li class="pt-2">
-                        ⏳ <strong>بدأت متأخر؟</strong>
+                        <h4 class="font-semibold text-gray-800">⏳ بدأت متأخر؟</h4>
                         <p class="text-sm text-gray-600">هتاخد كل الحصص اللي فاتتك ريكورد وتكمل معانا اللايف.</p>
                     </li>
                 </ul>
             </div>
 
             <!-- كارت متابعة أولياء الأمور -->
-            <div class="bg-white rounded-xl card-shadow p-6">
-                <h3 class="text-xl font-bold text-indigo-700 mb-4 border-b pb-2">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-primary mb-4 border-b pb-2">
                     👨‍👩‍👧 متابعة خاصة لأولياء الأمور
                 </h3>
-                <p class="text-gray-700 mb-3">عشان نضمن التزام الطالب:</p>
-                <ul class="space-y-3 text-gray-700 list-disc list-inside pr-4">
-                    <li>🔔 بيوصلك إشعار فوري لو الطالب غاب عن حصة (بدون عذر).</li>
-                    <li>📊 بيوصلك تقرير أسبوعي مفصل بدرجات الطالب في كل الواجبات.</li>
+                <p class="text-gray-700 mb-4">لضمان التزام الطالب بأقصى قدر:</p>
+                <ul class="space-y-3 text-gray-700 list-none">
+                    <li class="flex items-start space-x-2 space-x-reverse">
+                        <span class="text-xl text-red-500 font-bold mr-1">🔔</span>
+                        <span>
+                            <span class="font-semibold text-gray-800">إشعار فوري:</span> بيوصلك إشعار لو الطالب غاب عن حصة (بدون عذر).
+                        </span>
+                    </li>
+                    <li class="flex items-start space-x-2 space-x-reverse">
+                        <span class="text-xl text-blue-500 font-bold mr-1">📊</span>
+                        <span>
+                            <span class="font-semibold text-gray-800">تقرير أسبوعي مفصل:</span> بيوصلك تقرير أسبوعي مفصل بدرجات الطالب في كل الواجبات.
+                        </span>
+                    </li>
                 </ul>
             </div>
         </div>
 
         <!-- 4. محتويات الباكدج الكاملة -->
-        <section class="bg-white rounded-xl card-shadow p-6 md:p-8 mb-6">
-            <h2 class="text-2xl font-bold text-gray-900 mb-5 text-center">
-                🌐 اشتراكك على السايت بيشمل باكدج كاملة
+        <section class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-5 text-center border-b pb-2">
+                🌐 باقة الاشتراك الكاملة تشمل
             </h2>
-            <ul class="space-y-4 text-lg text-gray-700">
+            <ul class="space-y-4 text-lg text-gray-700 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <!-- آيقونة علامة صح -->
                 <li class="flex items-start">
-                    <svg class="w-6 h-6 text-green-500 flex-shrink-0 ml-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span><strong>تسجيلات الحصص اللايف:</strong> الـ 26 حصة بتنزل ريكورد وتفضل معاك.</span>
+                    <span class="text-xl text-teal-600 font-bold ml-3 mt-1">🎯</span>
+                    <span><strong class="text-gray-800">25 امتحان Real EST:</strong> تحلهم على السايت ومع كل واحد فيديو شرح كامل.</span>
                 </li>
                 <li class="flex items-start">
-                    <svg class="w-6 h-6 text-green-500 flex-shrink-0 ml-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span><strong>45 حصة Basics:</strong> شرح تفصيلي لكل دروس المنهج من الصفر.</span>
+                    <span class="text-xl text-teal-600 font-bold ml-3 mt-1">📚</span>
+                    <span><strong class="text-gray-800">45 حصة Basics:</strong> شرح تفصيلي لكل دروس المنهج من الصفر.</span>
                 </li>
                 <li class="flex items-start">
-                    <svg class="w-6 h-6 text-green-500 flex-shrink-0 ml-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span><strong>Short Videos:</strong> فيديوهات قصيرة للمراجعة السريعة على أي جزء.</span>
+                    <span class="text-xl text-teal-600 font-bold ml-3 mt-1">📹</span>
+                    <span><strong class="text-gray-800">تسجيلات الحصص اللايف:</strong> الـ 26 حصة بتنزل ريكورد وتفضل معاك.</span>
                 </li>
                 <li class="flex items-start">
-                    <svg class="w-6 h-6 text-green-500 flex-shrink-0 ml-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span><strong>5 حصص مراجعة Basics:</strong> بنلم فيهم منهج الـ Basics كله.</span>
+                    <span class="text-xl text-teal-600 font-bold ml-3 mt-1">⏱️</span>
+                    <span><strong class="text-gray-800">Short Videos:</strong> فيديوهات قصيرة للمراجعة السريعة على أي جزء.</span>
                 </li>
-                <li class="flex items-start">
-                    <svg class="w-6 h-6 text-green-500 flex-shrink-0 ml-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span><strong>25 امتحان Real EST:</strong> تحلهم على السايت ومع كل واحد فيديو شرح كامل 🎯.</span>
+                <li class="flex items-start sm:col-span-2">
+                    <span class="text-xl text-teal-600 font-bold ml-3 mt-1">📝</span>
+                    <span><strong class="text-gray-800">واجبات أسبوعية:</strong> واجبات وكويزات مجمعة من كتب مختلفة للتأكد من إتقان كل الأفكار.</span>
                 </li>
             </ul>
             
-            <!-- قسم الواجبات -->
-            <div class="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
-                <p class="text-base md:text-lg text-gray-800">
-                    📝 <strong>وده غير الواجبات الأسبوعية</strong> اللي هتنزلك، وهتكون مكونة من امتحانات من كتب مختلفة وكويزات لدروس إحنا مجمعينها ليكم مخصوص، عشان نتأكد إنك حليت على كل الأفكار معانا. 💪
-                </p>
-            </div>
-
-            <!-- مدة الكورس -->
-            <div class="text-center font-bold text-indigo-700 mt-6 p-3 bg-indigo-50 rounded-md">
+            <!-- مدة الكورس - تم استخدام primary color semi-transparent background -->
+            <div class="text-center font-bold text-primary mt-8 p-4 bg-primary/10 rounded-lg border border-primary/20">
                 🔒 كل المحتوى ده هيفضل متاح معاك لحد محاولة شهر 12.
             </div>
         </section>
 
         <!-- 5. السعر -->
-        <section class="bg-gradient-to-l from-indigo-600 to-purple-700 text-white rounded-xl card-shadow p-8 my-6 text-center">
+        <section class="bg-primary text-white rounded-xl shadow-lg p-8 my-8 text-center">
             <h2 class="text-2xl font-bold mb-2 opacity-90">💸 السعر</h2>
-            <p class="text-5xl font-extrabold mb-3">5000 جنيه</p>
-            <p class="text-xl font-medium opacity-90">💯 (شامل كل ما سبق)</p>
+            <p class="text-6xl font-extrabold mb-3">5000 <span class="text-xl font-medium">جنيه مصري</span></p>
+            <p class="text-lg font-medium opacity-90">💯 (شامل كل ما سبق)</p>
         </section>
 
-        <!-- === 5.5 قسم خيارات الدفع (معدل) === -->
-        <section class="bg-white rounded-xl card-shadow p-6 md:p-8 mb-6">
-            <h2 class="text-2xl font-bold text-gray-900 mb-5 text-center">💳 خيارات الدفع المتاحة</h2>
+        <!-- === 5.5 قسم خيارات الدفع === -->
+        <section class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
+            <h2 class="text-2xl font-bold text-primary mb-5 text-center border-b pb-2">💳 خيارات الدفع المتاحة</h2>
             
             <!-- تنبيه عدم استرداد الأموال -->
-            <div class="bg-yellow-100 border-r-4 border-yellow-500 p-4 rounded-lg mb-8 text-center">
-                <p class="font-bold text-yellow-800 text-lg">🚫 Money isn't refundable</p>
-                <p class="font-bold text-yellow-800 text-lg">🛑 الفلوس غير مستردة</p>
+            <div class="bg-red-100 border-r-4 border-red-500 p-4 rounded-lg mb-8 text-center">
+                <p class="font-bold text-red-700 text-lg">🚫 Money isn't refundable</p>
+                <p class="font-bold text-red-700 text-lg">🛑 الفلوس غير مستردة</p>
             </div>
 
             <!-- شبكة أرقام الدفع -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6"> <!-- تقليل المسافة العمودية -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
                 
                 <!-- Instapay -->
                 <div class="space-y-2">
-                    <h3 class="text-lg font-bold text-indigo-700">Instapay</h3> <!-- تصغير الخط -->
-                    <div class="flex flex-wrap gap-2"> <!-- استخدام flexbox للعرض الأفقي -->
+                    <h3 class="text-lg font-bold text-gray-800">Instapay <span class="text-primary">(مُفضل)</span></h3>
+                    <div class="flex flex-wrap gap-2 text-left" dir="ltr"> 
                         <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01029453108</span>
                     </div>
                 </div>
                 
                 <!-- Vodafone Cash -->
                 <div class="space-y-2">
-                    <h3 class="text-lg font-bold text-red-600">Vodafone cash</h3> <!-- تصغير الخط -->
-                    <div class="flex flex-wrap gap-2"> <!-- استخدام flexbox للعرض الأفقي -->
+                    <h3 class="text-lg font-bold text-gray-800">Vodafone cash</h3> 
+                    <div class="flex flex-wrap gap-2 text-left" dir="ltr"> 
                         <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01029453108</span>
                         <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01012178525</span>
                         <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01012750567</span>
@@ -173,8 +203,8 @@
                 
                 <!-- Etisalat Cash -->
                 <div class="space-y-2">
-                    <h3 class="text-lg font-bold text-green-600">Estisalat cash</h3> <!-- تصغير الخط -->
-                    <div class="flex flex-wrap gap-2"> <!-- استخدام flexbox للعرض الأفقي -->
+                    <h3 class="text-lg font-bold text-gray-800">Etisalat cash</h3> 
+                    <div class="flex flex-wrap gap-2 text-left" dir="ltr"> 
                         <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01154111644</span>
                         <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01148505699</span>
                         <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01147408483</span>
@@ -183,8 +213,8 @@
                 
                 <!-- Orange Cash -->
                 <div class="space-y-2">
-                    <h3 class="text-lg font-bold text-orange-500">Orange cash</h3> <!-- تصغير الخط -->
-                    <div class="flex flex-wrap gap-2"> <!-- استخدام flexbox للعرض الأفقي -->
+                    <h3 class="text-lg font-bold text-gray-800">Orange cash</h3>
+                    <div class="flex flex-wrap gap-2 text-left" dir="ltr">
                         <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01276190154</span>
                         <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01274863906</span>
                     </div>
@@ -196,31 +226,29 @@
 
 
         <!-- 6. الحجز والتجربة -->
-        <section class="bg-white rounded-xl card-shadow p-6 md:p-8">
-            <h2 class="text-2xl font-bold text-center mb-4">🎁 عايز تجرب؟</h2>
+        <section class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
+            <h2 class="text-2xl font-bold text-center mb-4 text-primary border-b pb-2">🎁 هل تود أن تجرب؟</h2>
             <p class="text-lg text-center text-gray-700 mb-6">
-                شوف حصة ريكورد كاملة مجانًا عشان تعرف نظام الكورس وتشوف شرح المستر بنفسك:
+                شاهد حصة ريكورد كاملة مجانًا لتعرف نظام الكورس وتطلع على شرح المستر بنفسك قبل التسجيل:
             </p>
             
-            <!-- === تعديل: تضمين الفيديو بدلاً من الزر === -->
             <!-- حاوية للحفاظ على النسبة 16:9 للفيديو -->
-            <div class="relative w-full max-w-2xl mx-auto mb-8 shadow-lg rounded-lg overflow-hidden" style="padding-bottom: 56.25%;"> <!-- 16:9 Aspect Ratio -->
+            <div class="relative w-full max-w-2xl mx-auto mb-8 shadow-xl rounded-lg overflow-hidden" style="padding-bottom: 56.25%;">
                 <iframe 
                     class="absolute top-0 left-0 w-full h-full border-0"
                     src="https://drive.google.com/file/d/1iYhE6JyOVXInrYoOVBynn_HrI3peU97k/preview" 
                     allowfullscreen>
                 </iframe>
             </div>
-            <!-- === نهاية تعديل الفيديو === -->
             
-            <hr class="my-6 border-gray-200">
+            <hr class="my-8 border-primary/30">
 
-            <!-- === 7. قسم الحجز (جديد) === -->
-            <h2 class="text-2xl font-bold text-center mb-5">📝 للحجز</h2>
-            <p class="text-center text-gray-600 mb-6">برجاء ملء الاستمارة التالية لإتمام الحجز وسنتواصل معك.</p>
+            <!-- === 7. قسم الحجز === -->
+            <h2 class="text-2xl font-bold text-center mb-5 text-primary">📝 املأ استمارة الحجز الآن</h2>
+            <p class="text-center text-gray-600 mb-6">برجاء ملء الاستمارة التالية لإتمام الحجز وسنتواصل معك فوراً.</p>
             
             <!-- حاوية الفورم المضمن -->
-            <div class="relative w-full h-[700px] md:h-[800px] overflow-hidden rounded-lg shadow-lg border border-gray-200">
+            <div class="relative w-full h-[700px] md:h-[800px] overflow-hidden rounded-lg shadow-xl border-4 border-primary/50">
                 <iframe 
                     class="absolute top-0 left-0 w-full h-full"
                     src="https://n8n.srv1021598.hstgr.cloud/form/2b98596b-4058-42d1-9647-6187dd3a79dc" 
@@ -230,13 +258,13 @@
             </div>
             <!-- === نهاية قسم الحجز === -->
 
-            <hr class="my-8 border-gray-200"> <!-- فاصل إضافي -->
+            <hr class="my-8 border-primary/30">
 
-            <!-- === 8. قسم الاستعلام (معدل) === -->
-            <h2 class="text-2xl font-bold text-center mb-5">📞 للاستعلام</h2>
-            <!-- زر التواصل -->
+            <!-- === 8. قسم الاستعلام === -->
+            <h2 class="text-2xl font-bold text-center mb-5 text-primary">📞 للاستعلام والتواصل عبر واتساب</h2>
+            <!-- زر التواصل - تم تطبيق النمط الجديد -->
             <a href="https://api.whatsapp.com/send/?phone=201064208147&text=hi" 
-               class="block w-full max-w-md mx-auto text-center bg-indigo-700 text-white font-bold text-xl py-4 px-6 rounded-lg shadow-lg hover:bg-indigo-800 transition duration-300 transform hover:scale-105">
+               class="block w-full max-w-md mx-auto text-center bg-primary text-white font-bold text-xl py-3 px-6 rounded-lg transition duration-200 shadow-xl transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-4 focus:ring-teal-300">
                 تواصل معنا على 01064208147
             </a>
             <!-- === نهاية قسم الاستعلام === -->
@@ -245,12 +273,12 @@
 
     </div> <!-- نهاية الحاوية الرئيسية -->
 
-    <!-- === الإضافة الجديدة: سكريبت عداد الحصص === -->
+    <!-- === سكريبت عداد الحصص (بدون تغيير) === -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // --- إعدادات الكورس ---
             // ملاحظة: شهور جافاسكريبت تبدأ من 0 (يناير = 0، أكتوبر = 9)
-            // افترضت أن السنة هي 2025 بناءً على التاريخ الحالي
+            // تم افتراض سنة 2025 لغرض المثال
             const startDate = new Date(2025, 9, 12); // تاريخ البدء: 12 أكتوبر 2025
             const sessionDays = [0, 3, 5]; // 0 = الأحد, 3 = الأربعاء, 5 = الجمعة
             const maxTotalSessions = 26; // إجمالي عدد الحصص في الكورس
@@ -280,7 +308,6 @@
             // عرض النتيجة في الصفحة
             const counterElement = document.getElementById('session-counter');
             if (counterElement) {
-                // سيعرض النتيجة بالشكل "10 / 26" مثلاً
                 counterElement.textContent = `${sessionCount} / ${maxTotalSessions}`;
             }
         });
@@ -289,8 +316,3 @@
 
 </body>
 </html>
-
-
-
-
-
