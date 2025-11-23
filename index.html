@@ -8,7 +8,7 @@
     <!-- تحميل Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- إعداد الخطوط والألوان الجديدة المستخلصة -->
+    <!-- إعداد الخطوط والألوان -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+Arabic:wght@100..900&display=swap');
         :root {
@@ -16,51 +16,47 @@
             --background-color: #EFE9E0; /* Soft Ivory */
         }
         body {
-            /* تطبيق الخطوط الجديدة */
             font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
             background-color: var(--background-color);
-            color: #333; /* لون نص أساسي داكن */
+            color: #333;
         }
-        /* فئات مساعدة لـ Tailwind */
         .text-primary { color: var(--primary-color); }
         .bg-primary { background-color: var(--primary-color); }
         .border-primary { border-color: var(--primary-color); }
-        /* إزالة الظل المخصص القديم */
-        .card-shadow { box-shadow: none; } 
+        
+        /* تحسين مظهر التمرير */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0F9E99;
+            border-radius: 4px;
+        }
     </style>
 </head>
-<!-- تطبيق هوامش/مساحات متجاوبة على الجسم -->
 <body class="p-4 sm:p-6 lg:p-8">
 
-    <!-- الحاوية الرئيسية للصفحة - تم زيادة العرض قليلاً -->
     <div class="mx-auto max-w-5xl">
 
-        <!-- 1. العنوان الرئيسي والـ Hook -->
+        <!-- 1. العنوان الرئيسي -->
         <header class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8 border-r-4 border-primary overflow-hidden">
-            
-            <!-- Logo and Main Title Container - Use Flex for horizontal alignment (RTL) -->
             <div class="flex items-center mb-4 space-x-4 space-x-reverse">
-                
-                <!-- Logo Placement: Using the provided URL -->
                 <div class="flex-shrink-0 pt-1">
-                    <!-- تم إدراج الشعار باستخدام الرابط الخارجي -->
                     <img src="https://ermathexpert.online/wp-content/uploads/2023/11/logo-red2-1.png" 
                          alt="شعار ER Math Expert" 
                          class="w-20 h-20 sm:w-24 sm:h-24 object-contain">
                 </div>
-                
-                <!-- Title Text Block -->
                 <div>
-                    <!-- Subtitle/Context -->
                     <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">كورس مكثف لامتحان EST</p>
-                    <!-- Main Title -->
                     <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
                         أقوى كورس (Math EST) <span class="text-primary">أدفانس</span> 📈
                     </h1>
                 </div>
             </div>
 
-            <!-- The Alert Box -->
             <div class="bg-white border-r-4 border-red-500 p-4 rounded-lg shadow-md mt-6">
                 <p class="text-lg md:text-xl font-bold text-red-700">
                     📢 لكل طلاب الـ EST: اقوي كورس ماث عشان توصل لل800 بنظام كامل!
@@ -78,7 +74,7 @@
             </p>
         </section>
 
-        <!-- 3. تفاصيل النظام (حصص لايف ومتابعة) -->
+        <!-- 3. تفاصيل النظام -->
         <div class="grid md:grid-cols-2 gap-8 mb-8">
             <!-- كارت الحصص اللايف -->
             <div class="bg-white rounded-xl shadow-lg p-6">
@@ -126,13 +122,12 @@
             </div>
         </div>
 
-        <!-- 4. محتويات الباكدج الكاملة -->
+        <!-- 4. محتويات الباكدج -->
         <section class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
             <h2 class="text-2xl font-bold text-gray-900 mb-5 text-center border-b pb-2">
                 🌐 باقة الاشتراك الكاملة تشمل
             </h2>
             <ul class="space-y-4 text-lg text-gray-700 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <!-- آيقونة علامة صح -->
                 <li class="flex items-start">
                     <span class="text-xl text-teal-600 font-bold ml-3 mt-1">🎯</span>
                     <span><strong class="text-gray-800">25 امتحان Real EST:</strong> تحلهم على السايت ومع كل واحد فيديو شرح كامل.</span>
@@ -155,37 +150,33 @@
                 </li>
             </ul>
             
-            <!-- مدة الكورس - تم استخدام primary color semi-transparent background -->
             <div class="text-center font-bold text-primary mt-8 p-4 bg-primary/10 rounded-lg border border-primary/20">
                 🔒 كل المحتوى ده هيفضل متاح معاك لحد محاولة شهر 1.
             </div>
         </section>
 
         <!-- 5. السعر -->
-        <section class="bg-primary text-white rounded-xl shadow-lg p-8 my-8 text-center">
+        <section class="bg-primary text-white rounded-xl shadow-lg p-8 my-8 text-center transform hover:scale-[1.01] transition-transform duration-300">
             <h2 class="text-2xl font-bold mb-2 opacity-90">💸 السعر</h2>
             <p class="text-6xl font-extrabold mb-3">4500 <span class="text-xl font-medium">جنيه مصري</span></p>
             <p class="text-lg font-medium opacity-90">💯 (شامل كل ما سبق)</p>
         </section>
 
-        <!-- === 5.5 قسم خيارات الدفع === -->
+        <!-- 6. خيارات الدفع -->
         <section class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
             <h2 class="text-2xl font-bold text-primary mb-5 text-center border-b pb-2">💳 خيارات الدفع المتاحة</h2>
             
-            <!-- تنبيه عدم استرداد الأموال -->
-            <div class="bg-red-100 border-r-4 border-red-500 p-4 rounded-lg mb-8 text-center">
+            <div class="bg-red-50 border-r-4 border-red-500 p-4 rounded-lg mb-8 text-center">
                 <p class="font-bold text-red-700 text-lg">🚫 Money isn't refundable</p>
                 <p class="font-bold text-red-700 text-lg">🛑 الفلوس غير مستردة</p>
             </div>
 
-            <!-- شبكة أرقام الدفع -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                
                 <!-- Instapay -->
                 <div class="space-y-2">
                     <h3 class="text-lg font-bold text-gray-800">Instapay <span class="text-primary">(مُفضل)</span></h3>
                     <div class="flex flex-wrap gap-2 text-left" dir="ltr"> 
-                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01029453108</span>
+                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all cursor-pointer hover:bg-gray-200 transition">01029453108</span>
                     </div>
                 </div>
                 
@@ -193,11 +184,11 @@
                 <div class="space-y-2">
                     <h3 class="text-lg font-bold text-gray-800">Vodafone cash</h3> 
                     <div class="flex flex-wrap gap-2 text-left" dir="ltr"> 
-                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01029453108</span>
-                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01012178525</span>
-                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01012750567</span>
-                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01012754172</span>
-                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01012758968</span>
+                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition">01029453108</span>
+                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition">01012178525</span>
+                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition">01012750567</span>
+                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition">01012754172</span>
+                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition">01012758968</span>
                     </div>
                 </div>
                 
@@ -205,9 +196,9 @@
                 <div class="space-y-2">
                     <h3 class="text-lg font-bold text-gray-800">Etisalat cash</h3> 
                     <div class="flex flex-wrap gap-2 text-left" dir="ltr"> 
-                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01154111644</span>
-                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01148505699</span>
-                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01147408483</span>
+                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition">01154111644</span>
+                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition">01148505699</span>
+                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition">01147408483</span>
                     </div>
                 </div>
                 
@@ -215,25 +206,22 @@
                 <div class="space-y-2">
                     <h3 class="text-lg font-bold text-gray-800">Orange cash</h3>
                     <div class="flex flex-wrap gap-2 text-left" dir="ltr">
-                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01276190154</span>
-                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm">01274863906</span>
+                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition">01276190154</span>
+                        <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition">01274863906</span>
                     </div>
                 </div>
-
             </div>
         </section>
-        <!-- === نهاية قسم خيارات الدفع === -->
 
 
-        <!-- 6. الحجز والتجربة -->
+        <!-- 7. التجربة والحجز -->
         <section class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
             <h2 class="text-2xl font-bold text-center mb-4 text-primary border-b pb-2">🎁 هل تود أن تجرب؟</h2>
             <p class="text-lg text-center text-gray-700 mb-6">
                 شاهد حصة ريكورد كاملة مجانًا لتعرف نظام الكورس وتطلع على شرح المستر بنفسك قبل التسجيل:
             </p>
             
-            <!-- حاوية للحفاظ على النسبة 16:9 للفيديو -->
-            <div class="relative w-full max-w-2xl mx-auto mb-8 shadow-xl rounded-lg overflow-hidden" style="padding-bottom: 56.25%;">
+            <div class="relative w-full max-w-2xl mx-auto mb-8 shadow-xl rounded-lg overflow-hidden bg-gray-100" style="padding-bottom: 56.25%;">
                 <iframe 
                     class="absolute top-0 left-0 w-full h-full border-0"
                     src="https://drive.google.com/file/d/1iYhE6JyOVXInrYoOVBynn_HrI3peU97k/preview" 
@@ -243,80 +231,66 @@
             
             <hr class="my-8 border-primary/30">
 
-            <!-- === 7. قسم الحجز === -->
             <h2 class="text-2xl font-bold text-center mb-5 text-primary">📝 املأ استمارة الحجز الآن</h2>
             <p class="text-center text-gray-600 mb-6">برجاء ملء الاستمارة التالية لإتمام الحجز وسنتواصل معك فوراً.</p>
             
-            <!-- حاوية الفورم المضمن -->
-            <div class="relative w-full h-[700px] md:h-[800px] overflow-hidden rounded-lg shadow-xl border-4 border-primary/50">
+            <div class="relative w-full h-[700px] md:h-[800px] overflow-hidden rounded-lg shadow-xl border-4 border-primary/50 bg-white">
                 <iframe 
                     class="absolute top-0 left-0 w-full h-full"
-                    src="https://api.mark-attendance.com/form-test/2b98596b-4058-42d1-9647-6187dd3a79dc" 
+                    src="https://api.mark-attendance.com/form/2b98596b-4058-42d1-9647-6187dd3a79dc" 
                     frameborder="0" 
                     allowfullscreen>
                 </iframe>
             </div>
-            <!-- === نهاية قسم الحجز === -->
 
             <hr class="my-8 border-primary/30">
 
-            <!-- === 8. قسم الاستعلام === -->
             <h2 class="text-2xl font-bold text-center mb-5 text-primary">💬 للاستعلام والتواصل عبر واتساب</h2>
-            <!-- زر التواصل - تم تطبيق النمط الجديد -->
-            <a href="https://api.whatsapp.com/send/?phone=201151921542&text=adv-jan" 
-               class="block w-full max-w-md mx-auto text-center bg-primary text-white font-bold text-xl py-3 px-6 rounded-lg transition duration-200 shadow-xl transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-4 focus:ring-teal-300">
-              تواصل معنا على 01151921542  
-            </a>
-                        <a href="https://api.whatsapp.com/send/?phone=201064208147&text=adv-jan" 
-               class="block w-full max-w-md mx-auto text-center bg-primary text-white font-bold text-xl py-3 px-6 rounded-lg transition duration-200 shadow-xl transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-4 focus:ring-teal-300">
-              تواصل معنا على 01064208147
-            </a>
-            <!-- === نهاية قسم الاستعلام === -->
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="https://api.whatsapp.com/send/?phone=201151921542&text=adv-jan" 
+                   class="block w-full max-w-xs mx-auto text-center bg-primary text-white font-bold text-lg py-3 px-6 rounded-lg transition duration-200 shadow-xl transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-4 focus:ring-teal-300">
+                  تواصل مع مستر يوسف: 01151921542  
+                </a>
+                <a href="https://api.whatsapp.com/send/?phone=201064208147&text=adv-jan" 
+                   class="block w-full max-w-xs mx-auto text-center bg-primary text-white font-bold text-lg py-3 px-6 rounded-lg transition duration-200 shadow-xl transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-4 focus:ring-teal-300">
+                  تواصل مع مستر محمد: 01064208147
+                </a>
+            </div>
 
         </section>
 
-    </div> <!-- نهاية الحاوية الرئيسية -->
+    </div>
 
-    <!-- === سكريبت عداد الحصص (بدون تغيير) === -->
+    <!-- سكريبت عداد الحصص -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- إعدادات الكورس ---
-            // ملاحظة: شهور جافاسكريبت تبدأ من 0 (يناير = 0، أكتوبر = 9)
-            // تم افتراض سنة 2025 لغرض المثال
-            const startDate = new Date(2025, 9, 12); // تاريخ البدء: 12 أكتوبر 2025
-            const sessionDays = [0, 3, 5]; // 0 = الأحد, 3 = الأربعاء, 5 = الجمعة
-            const maxTotalSessions = 26; // إجمالي عدد الحصص في الكورس
-            // ---------------------
+            // ملاحظة هامة: في البرمجة شهر 11 يعني ديسمبر (لأن العد يبدأ من 0)
+            // التاريخ هنا: 21 / 12 / 2024
+            const startDate = new Date(2025, 11, 21); 
+            const sessionDays = [0, 2, 5]; // 0=أحد، 2=ثلاثاء، 5=جمعة
+            const maxTotalSessions = 20; 
 
             const today = new Date();
-            today.setHours(0, 0, 0, 0); // توحيد الوقت لضمان المقارنة الصحيحة
+            today.setHours(0, 0, 0, 0); 
             startDate.setHours(0, 0, 0, 0);
 
             let sessionCount = 0;
             
-            // التأكد أن تاريخ اليوم بعد تاريخ البداية
             if (today >= startDate) {
                 let currentDate = new Date(startDate.getTime());
-
-                // المرور على الأيام من تاريخ البداية حتى اليوم
                 while (currentDate <= today && sessionCount < maxTotalSessions) {
-                    // التحقق إذا كان اليوم الحالي هو يوم حصة
                     if (sessionDays.includes(currentDate.getDay())) {
                         sessionCount++;
                     }
-                    // الانتقال لليوم التالي
                     currentDate.setDate(currentDate.getDate() + 1);
                 }
             }
             
-            // عرض النتيجة في الصفحة
             const counterElement = document.getElementById('session-counter');
             if (counterElement) {
                 counterElement.textContent = `${sessionCount} / ${maxTotalSessions}`;
             }
         });
     </script>
-    <!-- ======================================= -->
-
 </body>
 </html>
