@@ -53,15 +53,28 @@
         details > summary::-webkit-details-marker {
             display: none;
         }
+        
+        /* تأثير ظهور بسيط */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="bg-[#EFE9E0] text-gray-800 relative">
 
-    <!-- 0. شريط التنقل (Navbar) - ميزة جديدة -->
+    <!-- 0. شريط التنقل (Navbar) -->
     <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-md border-b border-primary/20 transition-all duration-300">
         <div class="max-w-5xl mx-auto px-4">
             <div class="flex items-center justify-between h-16">
-                <span class="font-bold text-xl text-primary">Math EST</span>
+                <span class="font-bold text-xl text-primary flex items-center gap-2">
+                    <span>Exams Trial 1</span>
+                    <!-- تم تعديل ألوان الـ Badge هنا لتطابق قسم "المبلغ غير مسترد" (bg-red-50, text-red-700) -->
+                    <span class="text-xs bg-red-50 text-red-700 border border-red-200 px-2 py-0.5 rounded-full">جروب للي اول مره ياخد معانا ادفانس</span>
+                </span>
                 <div class="hidden md:flex space-x-6 space-x-reverse text-sm font-medium">
                     <a href="#home" class="hover:text-primary transition">الرئيسية</a>
                     <a href="#features" class="hover:text-primary transition">المميزات</a>
@@ -71,7 +84,7 @@
                     <a href="#contact" class="hover:text-primary transition">تواصل معنا</a>
                 </div>
                 <!-- Mobile Menu Button (Simple) -->
-                <a href="#price" class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold shadow hover:bg-teal-700 transition">اشترك الآن</a>
+                <a href="#price" class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold shadow hover:bg-teal-700 transition transform hover:scale-105">اشترك الآن</a>
             </div>
         </div>
     </nav>
@@ -80,13 +93,13 @@
         <div class="mx-auto max-w-5xl">
 
             <!-- 1. العنوان الرئيسي -->
-            <header id="home" class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8 border-r-4 border-primary overflow-hidden relative">
+            <header id="home" class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8 border-r-4 border-primary overflow-hidden relative fade-in">
                 <div class="flex items-center mb-4 space-x-4 space-x-reverse">
                     <div class="flex-shrink-0 pt-1">
                         <img src="https://ermathexpert.online/wp-content/uploads/2023/11/logo-red2-1.png" 
                              alt="شعار ER Math Expert" 
                              class="w-20 h-20 sm:w-24 sm:h-24 object-contain"
-                             onerror="this.src='https://via.placeholder.com/100?text=Logo'">
+                             onerror="this.src='https://placehold.co/100x100?text=Math+EST'">
                     </div>
                     <div>
                         <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">كورس مكثف لامتحان EST</p>
@@ -97,15 +110,15 @@
                 </div>
 
                 <div class="bg-white border-r-4 border-red-500 p-4 rounded-lg shadow-md mt-6">
-                    <p class="text-lg md:text-xl font-bold text-red-700">
-                        📢 للطلاب الي اول مره تدخل محاوله او جايبه اقل من 600 EST: اقوي كورس ماث عشان توصل لل800 بنظام كامل!
+                    <p class="text-lg md:text-xl font-bold text-red-700 leading-relaxed">
+                        📢 للطلاب الي أول مرة تدخل محاولة أو جايبة أقل من 600 EST: أقوى كورس ماث عشان توصل للـ 800 بنظام كامل!
                     </p>
                 </div>
 
-                <!-- عداد تنازلي - ميزة جديدة -->
-                <div class="mt-8 p-6 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border border-gray-200 text-center">
-                    <p class="text-sm font-bold text-gray-500 mb-3">⏳ باقي على بداية الكورس (14/12)</p>
-                    <div class="flex justify-center gap-4 text-center" dir="ltr">
+                <!-- عداد تنازلي (تم إصلاح الهيكل المفقود هنا) -->
+                <div id="countdown-wrapper" class="mt-8 p-6 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border border-gray-200 text-center transition-all duration-500">
+                    <p id="timer-label" class="text-sm font-bold text-gray-500 mb-3">⏳ العد التنازلي لبداية الكورس (14/12)</p>
+                    <div id="timer-container" class="flex justify-center gap-4 text-center" dir="ltr">
                         <div class="bg-white p-3 rounded-lg shadow w-20">
                             <span id="days" class="block text-2xl font-bold text-primary">00</span>
                             <span class="text-xs text-gray-500">يوم</span>
@@ -123,59 +136,100 @@
                             <span class="text-xs text-gray-500">ثانية</span>
                         </div>
                     </div>
+                    
+                    <!-- رسالة تظهر عند انتهاء العداد -->
+                    <div id="started-message" class="hidden">
+                        <p class="text-2xl font-bold text-primary animate-bounce">🚀 الكورس بدأ بالفعل!</p>
+                        <p class="text-gray-600 mt-2">الحق اشترك بسرعه قبل ما الحجز يقفل🔒</p>
+                    </div>
                 </div>
             </header>
 
             <!-- 2. لماذا هذا الكورس؟ -->
-            <section id="features" class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
+            <section id="features" class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in" style="animation-delay: 0.1s;">
                 <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-primary">
                     🚀 ليه الكورس هو اختيارك الأصح؟
                 </h2>
-                <p class="text-base md:text-lg leading-relaxed text-gray-700">
+                <p class="text-base md:text-lg leading-relaxed text-gray-700 mb-6">
                     الكورس بيبدأ معاك من شرح الـ Topics الأدفانس (8 دروس) 📚 وحل worksheets المستر بيكون عاملها ومجمع فيها أسئلة من كتب مختلفة، عشان نضمن إنك اتدربت على كل أفكار الأسئلة قبل الامتحان ✅، مع نظام متابعة دقيق لولي الأمر.
                 </p>
+                
+                <!-- فيديو شرح النظام -->
+                <div class="relative w-full max-w-2xl mx-auto shadow-lg rounded-lg overflow-hidden bg-black" style="padding-bottom: 56.25%;">
+                    <iframe 
+                        class="absolute top-0 left-0 w-full h-full border-0"
+                        src="https://drive.google.com/file/d/1tmjT_e15HGWWrwzB24PlAfUCb0Mql-qL/preview" 
+                        allow="autoplay; encrypted-media"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p class="text-center text-sm text-gray-500 mt-2">فيديو توضيحي لنظام الكورس</p>
             </section>
 
             <!-- 3. تفاصيل النظام -->
-            <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <div class="grid md:grid-cols-2 gap-8 mb-8 fade-in" style="animation-delay: 0.2s;">
                 <!-- كارت الحصص اللايف -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition duration-300">
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition duration-300 border-t-4 border-primary">
                     <h3 class="text-xl font-bold text-primary mb-4 border-b pb-2">
                         🗓️ نظام الحصص اللايف (20 حصة)
                     </h3>
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="font-semibold text-gray-800">تاريخ البداية: <span class="font-normal">14/12</span></li>
-                        <li class="font-semibold text-gray-800">المواعيد: <span class="font-normal">الجمعه 2م و الاحد 8م و الثلاثاء 10م.</span></li>
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="font-semibold text-gray-800">
+                            <span>تاريخ البداية:</span> <span class="font-normal">14/12/2025</span>
+                        </li>
+                        
+                        <!-- جدول المواعيد المحدث (تعديل اللون ليصبح مثل الباقي) -->
+                        <li class="bg-gray-50 p-4 rounded-lg border border-gray-100 hover:bg-teal-50 transition duration-300">
+                            <strong class="text-primary block mb-2 text-lg">⏰ مواعيد الحصص:</strong>
+                            <ul class="space-y-2 mr-2">
+                                <li class="flex items-center gap-2">
+                                    <span class="w-2 h-2 bg-primary rounded-full"></span>
+                                    <span class="font-bold text-gray-700">الجمعة:</span> <span class="text-gray-600">2:00 مساءً</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="w-2 h-2 bg-primary rounded-full"></span>
+                                    <span class="font-bold text-gray-700">الأحد:</span> <span class="text-gray-600">8:00 مساءً</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="w-2 h-2 bg-primary rounded-full"></span>
+                                    <span class="font-bold text-gray-700">الثلاثاء:</span> <span class="text-gray-600">10:00 مساءً</span>
+                                </li>
+                            </ul>
+                        </li>
+
                         <li class="pt-2">
-                            <strong class="text-primary">📊 عدد الحصص الي اتخدت حتى الآن:</strong>
-                            <span id="session-counter" class="font-bold text-xl text-primary bg-primary/10 px-3 py-1 rounded-lg">...</span>
+                            <strong class="text-primary block mb-2">📊 عدد الحصص التي تم شرحها:</strong>
+                            <div class="flex items-center gap-2">
+                                <span id="session-counter" class="font-bold text-xl text-white bg-primary px-4 py-1 rounded-full shadow-sm">...</span>
+                                <span class="text-xs text-gray-500">(يتم التحديث تلقائياً)</span>
+                            </div>
                         </li>
                         <li class="pt-2">
-                            <h4 class="font-semibold text-gray-800">🎥 فاتك حصة؟</h4>
-                            <p class="text-sm text-gray-600">مفيش مشكلة! كل حصة لايف بتتسجل وتنزل على السايت، وتقدر تشوفها في أي وقت.</p>
-                        </li>
-                        <li class="pt-2">
-                            <h4 class="font-semibold text-gray-800">⏳ بدأت متأخر؟</h4>
-                            <p class="text-sm text-gray-600">هتاخد كل الحصص اللي فاتتك ريكورد وتكمل معانا اللايف.</p>
+                            <h4 class="font-semibold text-gray-800 flex items-center gap-2">
+                                🎥 فاتك حصة؟
+                            </h4>
+                            <p class="text-sm text-gray-600 mt-1">مفيش مشكلة! كل حصة لايف بتتسجل وتنزل على السايت، وتقدر تشوفها في أي وقت.</p>
                         </li>
                     </ul>
                 </div>
 
                 <!-- كارت متابعة أولياء الأمور -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition duration-300">
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition duration-300 border-t-4 border-primary">
                     <h3 class="text-xl font-bold text-primary mb-4 border-b pb-2">
                         👨‍👩‍👧 متابعة خاصة لأولياء الأمور
                     </h3>
                     <p class="text-gray-700 mb-4">لضمان التزام الطالب بأقصى قدر:</p>
                     <ul class="space-y-3 text-gray-700 list-none">
-                        <li class="flex items-start space-x-2 space-x-reverse bg-red-50 p-3 rounded-lg">
+                        <!-- تم تعديل الستايل هنا ليطابق مواعيد الحصص -->
+                        <li class="flex items-start space-x-2 space-x-reverse bg-gray-50 p-3 rounded-lg border border-gray-100 hover:bg-teal-50 transition duration-300">
                             <span class="text-xl text-red-500 font-bold mr-1">🔔</span>
                             <span>
                                 <span class="font-semibold text-gray-800">إشعار فوري:</span> بيوصلك إشعار لو الطالب غاب عن حصة (بدون عذر).
                             </span>
                         </li>
-                        <li class="flex items-start space-x-2 space-x-reverse bg-blue-50 p-3 rounded-lg">
-                            <span class="text-xl text-blue-500 font-bold mr-1">📊</span>
+                        <!-- تم تعديل الستايل هنا ليطابق مواعيد الحصص -->
+                        <li class="flex items-start space-x-2 space-x-reverse bg-gray-50 p-3 rounded-lg border border-gray-100 hover:bg-teal-50 transition duration-300">
+                            <span class="text-xl text-primary font-bold mr-1">📊</span>
                             <span>
                                 <span class="font-semibold text-gray-800">تقرير أسبوعي مفصل:</span> بيوصلك تقرير أسبوعي مفصل بدرجات الطالب في كل الواجبات.
                             </span>
@@ -185,28 +239,29 @@
             </div>
 
             <!-- 4. محتويات الباكدج -->
-            <section id="package" class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
+            <section id="package" class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in" style="animation-delay: 0.3s;">
                 <h2 class="text-2xl font-bold text-gray-900 mb-5 text-center border-b pb-2">
                     🌐 باقة الاشتراك الكاملة تشمل
                 </h2>
                 <ul class="space-y-4 text-lg text-gray-700 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <li class="flex items-start bg-gray-50 p-3 rounded-lg">
+                    <!-- تم إضافة الحدود (border) لتتطابق تماماً مع الستايل المطلوب -->
+                    <li class="flex items-start bg-gray-50 p-3 rounded-lg border border-gray-100 hover:bg-teal-50 transition duration-300">
                         <span class="text-xl text-teal-600 font-bold ml-3 mt-1">🎯</span>
                         <span><strong class="text-gray-800">25 امتحان Real EST:</strong> تحلهم على السايت ومع كل واحد فيديو شرح كامل.</span>
                     </li>
-                    <li class="flex items-start bg-gray-50 p-3 rounded-lg">
+                    <li class="flex items-start bg-gray-50 p-3 rounded-lg border border-gray-100 hover:bg-teal-50 transition duration-300">
                         <span class="text-xl text-teal-600 font-bold ml-3 mt-1">📚</span>
                         <span><strong class="text-gray-800">45 حصة Basics:</strong> شرح تفصيلي لكل دروس المنهج من الصفر.</span>
                     </li>
-                    <li class="flex items-start bg-gray-50 p-3 rounded-lg">
+                    <li class="flex items-start bg-gray-50 p-3 rounded-lg border border-gray-100 hover:bg-teal-50 transition duration-300">
                         <span class="text-xl text-teal-600 font-bold ml-3 mt-1">📹</span>
                         <span><strong class="text-gray-800">تسجيلات الحصص اللايف:</strong> الـ 20 حصة بتنزل ريكورد وتفضل معاك.</span>
                     </li>
-                    <li class="flex items-start bg-gray-50 p-3 rounded-lg">
+                    <li class="flex items-start bg-gray-50 p-3 rounded-lg border border-gray-100 hover:bg-teal-50 transition duration-300">
                         <span class="text-xl text-teal-600 font-bold ml-3 mt-1">⏱️</span>
                         <span><strong class="text-gray-800">Short Videos:</strong> فيديوهات قصيرة للمراجعة السريعة على أي جزء.</span>
                     </li>
-                    <li class="flex items-start sm:col-span-2 bg-gray-50 p-3 rounded-lg">
+                    <li class="flex items-start sm:col-span-2 bg-gray-50 p-3 rounded-lg border border-gray-100 hover:bg-teal-50 transition duration-300">
                         <span class="text-xl text-teal-600 font-bold ml-3 mt-1">📝</span>
                         <span><strong class="text-gray-800">واجبات أسبوعية:</strong> واجبات وكويزات مجمعة من كتب مختلفة للتأكد من إتقان كل الأفكار.</span>
                     </li>
@@ -218,70 +273,73 @@
             </section>
 
             <!-- 5. السعر -->
-            <section id="price" class="bg-primary text-white rounded-xl shadow-lg p-8 my-8 text-center transform hover:scale-[1.01] transition-transform duration-300 relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-white/10 w-32 h-32 rounded-full -mr-16 -mt-16"></div>
-                <div class="absolute bottom-0 left-0 bg-white/10 w-24 h-24 rounded-full -ml-12 -mb-12"></div>
+            <section id="price" class="bg-primary text-white rounded-xl shadow-lg p-8 my-8 text-center transform hover:scale-[1.01] transition-transform duration-300 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 bg-white/10 w-32 h-32 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+                <div class="absolute bottom-0 left-0 bg-white/10 w-24 h-24 rounded-full -ml-12 -mb-12 group-hover:scale-150 transition-transform duration-500"></div>
                 
-                <h2 class="text-2xl font-bold mb-2 opacity-90 relative z-10">💸 السعر</h2>
-                <p class="text-6xl font-extrabold mb-3 relative z-10">4500 <span class="text-xl font-medium">جنيه مصري</span></p>
-                <p class="text-lg font-medium opacity-90 relative z-10">💯 (شامل كل ما سبق)</p>
+                <h2 class="text-2xl font-bold mb-2 opacity-90 relative z-10">💸 السعر النهائي</h2>
+                <p class="text-6xl font-extrabold mb-3 relative z-10 drop-shadow-md">4500 <span class="text-xl font-medium">ج.م</span></p>
+                <p class="text-lg font-medium opacity-90 relative z-10">💯 (شامل كل المميزات السابقة)</p>
             </section>
 
             <!-- 6. خيارات الدفع -->
-            <section id="payment" class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
+            <section id="payment" class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in" style="animation-delay: 0.4s;">
                 <h2 class="text-2xl font-bold text-primary mb-5 text-center border-b pb-2">💳 خيارات الدفع المتاحة</h2>
                 
                 <div class="bg-red-50 border-r-4 border-red-500 p-4 rounded-lg mb-8 text-center">
                     <p class="font-bold text-red-700 text-lg">🚫 Money isn't refundable</p>
-                    <p class="font-bold text-red-700 text-lg">🛑 الفلوس غير مستردة ويمكن تجربه حصه قبل الدفع</p>
+                    <p class="font-bold text-red-700 text-lg">🛑 المبلغ غير مسترد (يمكنك تجربة حصة قبل الدفع)</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
                     <!-- Instapay -->
                     <div class="space-y-2">
-                        <h3 class="text-lg font-bold text-gray-800">Instapay <span class="text-primary">(مُفضل)</span></h3>
+                        <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/InstaPay_Egypt_Logo.png" class="h-6 w-auto" alt="Instapay" onerror="this.style.display='none'">
+                            Instapay <span class="text-xs text-white bg-primary px-2 py-0.5 rounded ml-2">مُفضل</span>
+                        </h3>
                         <div class="flex flex-wrap gap-2 text-left" dir="ltr"> 
-                            <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all cursor-pointer hover:bg-gray-200 transition">01029453108</span>
+                            <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all cursor-pointer hover:bg-gray-200 transition border border-gray-200">01029453108</span>
                         </div>
                     </div>
                     
                     <!-- Vodafone Cash -->
                     <div class="space-y-2">
-                        <h3 class="text-lg font-bold text-gray-800">Vodafone cash</h3> 
+                        <h3 class="text-lg font-bold text-gray-800 text-red-600">Vodafone Cash</h3> 
                         <div class="flex flex-wrap gap-2 text-left" dir="ltr"> 
-                            <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition">01029453108</span>
-                            <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition">01012178525</span>
+                            <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition border border-gray-200">01029453108</span>
+                            <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition border border-gray-200">01012178525</span>
                         </div>
                     </div>
                     
                     <!-- Etisalat Cash -->
                     <div class="space-y-2">
-                        <h3 class="text-lg font-bold text-gray-800">Etisalat cash</h3> 
+                        <h3 class="text-lg font-bold text-gray-800 text-green-600">Etisalat Cash</h3> 
                         <div class="flex flex-wrap gap-2 text-left" dir="ltr"> 
-                            <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition">01154111644</span>
-                            <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition">01148505699</span>
-                            <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition">01147408483</span>
+                            <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition border border-gray-200">01154111644</span>
+                            <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition border border-gray-200">01148505699</span>
+                            <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition border border-gray-200">01147408483</span>
                         </div>
                     </div>
                     
                     <!-- Orange Cash -->
                     <div class="space-y-2">
-                        <h3 class="text-lg font-bold text-gray-800">Orange cash</h3>
+                        <h3 class="text-lg font-bold text-gray-800 text-orange-600">Orange Cash</h3>
                         <div class="flex flex-wrap gap-2 text-left" dir="ltr">
-                            <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition">01276190154</span>
-                            <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition">01274863906</span>
+                            <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition border border-gray-200">01276190154</span>
+                            <span class="text-base font-mono text-gray-800 bg-gray-100 px-3 py-2 rounded-md tracking-wider shadow-sm select-all hover:bg-gray-200 transition border border-gray-200">01274863906</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- الأسئلة الشائعة (FAQ) - ميزة جديدة -->
-            <section id="faq" class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
+            <!-- الأسئلة الشائعة (FAQ) -->
+            <section id="faq" class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in" style="animation-delay: 0.5s;">
                 <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">🤔 الأسئلة الشائعة</h2>
                 <div class="space-y-4">
-                    <details class="group bg-gray-50 p-4 rounded-lg cursor-pointer">
+                    <details class="group bg-gray-50 p-4 rounded-lg cursor-pointer border border-transparent hover:border-primary/20 transition">
                         <summary class="flex justify-between items-center font-medium cursor-pointer list-none">
-                            <span class="font-bold text-lg text-gray-800">لو معاد حصه مش مناسبني هقدر اخده ريكورد؟</span>
+                            <span class="font-bold text-lg text-gray-800">لو ميعاد حصة مش مناسبني هقدر اخده ريكورد؟</span>
                             <span class="transition group-open:rotate-180">
                                 <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
                             </span>
@@ -290,22 +348,22 @@
                             نعم، كل الحصص اللايف يتم تسجيلها ورفعها على الموقع عشان تقدر تتفرج عليها في أي وقت يناسبك طوال فترة الاشتراك.
                         </p>
                     </details>
-                    <details class="group bg-gray-50 p-4 rounded-lg cursor-pointer">
+                    <details class="group bg-gray-50 p-4 rounded-lg cursor-pointer border border-transparent hover:border-primary/20 transition">
                         <summary class="flex justify-between items-center font-medium cursor-pointer list-none">
-                            <span class="font-bold text-lg text-gray-800">هل الكورس فيه حصص للBasics ؟</span>
+                            <span class="font-bold text-lg text-gray-800">هل الكورس فيه حصص للـ Basics؟</span>
                             <span class="transition group-open:rotate-180">
                                 <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
                             </span>
                         </summary>
                         <p class="text-gray-600 mt-3 group-open:animate-fadeIn">
-                            نعم، الكورس يشمل 45 حصة بتنزلك ريكورد من اول ما تشترك وبيكون فيهم شرح كامل للBasics.
+                            نعم، الكورس يشمل 45 حصة بتنزلك ريكورد من أول ما تشترك وبيكون فيهم شرح كامل للـ Basics.
                         </p>
                     </details>
                 </div>
             </section>
 
             <!-- 7. التجربة والحجز -->
-            <section id="contact" class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
+            <section id="contact" class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in" style="animation-delay: 0.6s;">
                 <h2 class="text-2xl font-bold text-center mb-4 text-primary border-b pb-2">🎁 هل تود أن تجرب؟</h2>
                 <p class="text-lg text-center text-gray-700 mb-6">
                     شاهد حصة ريكورد كاملة مجانًا لتعرف نظام الكورس وتطلع على شرح المستر بنفسك قبل التسجيل:
@@ -314,17 +372,19 @@
                 <div class="relative w-full max-w-2xl mx-auto mb-8 shadow-xl rounded-lg overflow-hidden bg-gray-100" style="padding-bottom: 56.25%;">
                     <iframe 
                         class="absolute top-0 left-0 w-full h-full border-0"
-                        src="https://drive.google.com/file/d/1iYhE6JyOVXInrYoOVBynn_HrI3peU97k/preview" 
+                        src="https://drive.google.com/file/d/1RnuNAeDguiIbFC-oYvTuO7CofarqlfB3/view?usp=drive_link" 
                         allowfullscreen>
                     </iframe>
                 </div>
                 
                 <hr class="my-8 border-primary/30">
 
-                <h2 class="text-2xl font-bold text-center mb-5 text-primary"> فورم لاتمام الاشتراك في الكورس بعد الدفع </h2>
-                <p class="text-center text-gray-600 mb-6">الفورم ده نملئ بعد الدفع والرجاء التاكد من وضوح الرقم المرجعي وتاريخ التحويل.</p>
+                <h2 class="text-2xl font-bold text-center mb-5 text-primary"> فورم إتمام الاشتراك بعد الدفع </h2>
+                <!-- تم تعديل الألوان هنا للأحمر (bg-red-50, text-red-700, border-red-200) -->
+                <p class="text-center text-red-700 mb-6 bg-red-50 p-2 rounded-md border border-red-200">⚠️ الفورم ده يتملي بعد الدفع والرجاء التأكد من وضوح الرقم المرجعي وتاريخ التحويل.</p>
                 
-                <div class="relative w-full h-[700px] md:h-[800px] overflow-hidden rounded-lg shadow-xl border-4 border-primary/50 bg-white">
+                <!-- تم زيادة الارتفاع هنا (h-[900px] للموبايل و md:h-[1100px] للشاشات الأكبر) -->
+                <div class="relative w-full h-[900px] md:h-[1100px] overflow-hidden rounded-lg shadow-xl border-4 border-primary/50 bg-white">
                     <iframe 
                         class="absolute top-0 left-0 w-full h-full"
                         src="https://api.mark-attendance.com/form/2b98596b-4058-42d1-9647-6187dd3a79dc" 
@@ -338,6 +398,7 @@
                 <h2 class="text-2xl font-bold text-center mb-5 text-primary">💬 للاستعلام والتواصل عبر واتساب</h2>
                 <div class="flex flex-col md:flex-row gap-4 justify-center">
                     <a href="https://api.whatsapp.com/send/?phone=201064208147&text=adv-jan" 
+                       target="_blank"
                        class="block w-full max-w-xs mx-auto text-center bg-primary text-white font-bold text-lg py-3 px-6 rounded-lg transition duration-200 shadow-xl transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-4 focus:ring-teal-300">
                       تواصل مع مستر محمد: 01064208147
                     </a>
@@ -353,8 +414,8 @@
             <p>Designed for Mr. Ramez Students ❤️</p>
         </footer>
 
-        <!-- زر الصعود للأعلى (Scroll to Top) - ميزة جديدة -->
-        <button id="scrollToTopBtn" class="fixed right-6 bottom-20 z-40 bg-gray-800 text-white p-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-gray-700">
+        <!-- زر الصعود للأعلى (Scroll to Top) -->
+        <button id="scrollToTopBtn" class="fixed right-6 bottom-20 z-40 bg-gray-800 text-white p-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-gray-700 hover:-translate-y-1">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
             </svg>
@@ -381,7 +442,7 @@
            target="_blank" 
            class="fixed right-4 bottom-4 z-50 flex items-center gap-3 bg-[#0F9E99] text-white py-2 px-4 rounded-full shadow-lg transition-transform hover:scale-105 hover:bg-[#128C7E] group whatsapp-pulse">
             <div class="flex flex-col items-end">
-                <span class="font-bold text-sm">للشكاوى او التاخير عن<br> 4س في الرد</span>
+                <span class="font-bold text-sm">للشكاوى أو التأخير<br>عن 4س في الرد</span>
                 <span class="text-[10px] text-white/90">تواصل واتساب</span>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 448 512">
@@ -393,9 +454,9 @@
     <!-- سكريبتات التفاعل (عداد + زر الصعود) -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. منطق عداد الحصص (موجود مسبقاً)
+            // 1. منطق عداد الحصص
             const startDate = new Date(2025, 11, 14); // 14 Dec 2025
-            const sessionDays = [0, 2, 5]; 
+            const sessionDays = [0, 2, 5]; // 0=Sunday, 2=Tuesday, 5=Friday
             const maxTotalSessions = 20; 
             const today = new Date();
             today.setHours(0, 0, 0, 0); 
@@ -411,34 +472,55 @@
                     currentDate.setDate(currentDate.getDate() + 1);
                 }
             }
+            
             const counterElement = document.getElementById('session-counter');
             if (counterElement) {
                 counterElement.textContent = `${sessionCount} / ${maxTotalSessions}`;
             }
 
             // 2. منطق العداد التنازلي (Countdown)
-            const targetDate = new Date("December 14, 2025 00:00:00").getTime();
+            // تاريخ الهدف: 14 ديسمبر 2025
+            const targetDate = new Date("December 14, 2025 14:00:00").getTime();
             
             const countdownInterval = setInterval(() => {
                 const now = new Date().getTime();
                 const distance = targetDate - now;
 
                 if (distance < 0) {
+                    // إذا انتهى الوقت (الكورس بدأ)
                     clearInterval(countdownInterval);
-                    document.getElementById("days").innerHTML = "00";
-                    document.getElementById("hours").innerHTML = "00";
-                    document.getElementById("minutes").innerHTML = "00";
-                    document.getElementById("seconds").innerHTML = "00";
+                    
+                    // Safety check: Ensure elements exist before modifying them
+                    const timerContainer = document.getElementById("timer-container");
+                    const startedMessage = document.getElementById("started-message");
+                    const wrapper = document.getElementById("countdown-wrapper");
+                    const timerLabel = document.getElementById("timer-label");
+
+                    if (timerContainer) timerContainer.classList.add("hidden");
+                    if (timerLabel) timerLabel.classList.add("hidden");
+                    if (startedMessage) startedMessage.classList.remove("hidden");
+                    
+                    if (wrapper) {
+                        wrapper.classList.remove("from-gray-50", "to-gray-100");
+                        wrapper.classList.add("from-green-50", "to-teal-50", "border-primary");
+                    }
+                    
                 } else {
                     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                    document.getElementById("days").innerHTML = days;
-                    document.getElementById("hours").innerHTML = hours;
-                    document.getElementById("minutes").innerHTML = minutes;
-                    document.getElementById("seconds").innerHTML = seconds;
+                    // Safety check for timer elements
+                    const elDays = document.getElementById("days");
+                    const elHours = document.getElementById("hours");
+                    const elMinutes = document.getElementById("minutes");
+                    const elSeconds = document.getElementById("seconds");
+
+                    if (elDays) elDays.innerHTML = days < 10 ? "0" + days : days;
+                    if (elHours) elHours.innerHTML = hours < 10 ? "0" + hours : hours;
+                    if (elMinutes) elMinutes.innerHTML = minutes < 10 ? "0" + minutes : minutes;
+                    if (elSeconds) elSeconds.innerHTML = seconds < 10 ? "0" + seconds : seconds;
                 }
             }, 1000);
 
