@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شرح الموقع - Math Expert</title>
+    <!-- Importing a nice Arabic font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0F9E99;
+            --primary-hover: #0b7a76;
+            --bg-color: #EFE9E0;
+            --card-bg: #FFFFFF;
+            --text-color: #333333;
+            --accent-green: #25D366;
+            --error-red: #d32f2f;
+            --warning-bg: #fff3cd;
+            --warning-text: #856404;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Cairo', 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Tabs Navigation */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            outline: none;
+            flex: 1 1 auto; /* Make buttons responsive/flexible */
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .tab-btn:hover {
+            background-color: rgba(15, 158, 153, 0.1);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(15, 158, 153, 0.3);
+        }
+
+        /* Tab Content Area */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        /* Video Container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Warning Box */
+        .alert-box {
+            background-color: var(--warning-bg);
+            color: var(--warning-text);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border: 1px solid #ffeeba;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: right;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(15, 158, 153, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(15, 158, 153, 0.3);
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>شرح تفصيلي للموقع</h1>
+
+        <!-- Tab Navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'registration')">إنشاء حساب</button>
+            <button class="tab-btn" onclick="openTab(event, 'tour')">الدخول وتفاصيل الحصص</button>
+            <button class="tab-btn" onclick="openTab(event, 'troubleshoot')">استعادة كلمة السر</button>
+        </div>
+
+        <!-- Tab 1: Registration -->
+        <div id="registration" class="tab-content active">
+            <div class="card">
+                <h2>طريقة إنشاء حساب جديد</h2>
+                
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/4X9kabavINw" allowfullscreen></iframe>
+                </div>
+
+                <div class="alert-box">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    <span>مهم جداً: متنساش تاخد الباسورد والإيميل سكرين شوت قبل ما تسجل!</span>
+                </div>
+
+                <a href="https://ermathexpert.online/user-registration-form/" target="_blank" class="btn">
+                    صفحة التسجيل (Registration Form)
+                </a>
+            </div>
+        </div>
+
+        <!-- Tab 2: Site Tour (Login & Class Details) -->
+        <div id="tour" class="tab-content">
+            <div class="card">
+                <h2>تسجيل الدخول وتفاصيل الحصص</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/4DVUrsX8Yy8" allowfullscreen></iframe>
+                </div>
+                <a href="https://ermathexpert.online/my-account/" target="_blank" class="btn">
+                    الدخول للموقع (Login)
+                </a>
+            </div>
+        </div>
+
+        <!-- Tab 3: Troubleshooting (Password Reset) -->
+        <div id="troubleshoot" class="tab-content">
+            <div class="card">
+                <h2>مشاكل الدخول واستعادة كلمة السر</h2>
+                <p>لو عندك مشكلة في الأكونت أو نسيت الباسورد اتفرج علي الفيديو ده:</p>
+                <div class="video-container" style="margin-bottom: 0;">
+                    <iframe src="https://www.youtube.com/embed/s7AtfIZbtOo" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            // Get all elements with class="tab-content" and hide them
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+
+            // Get all elements with class="tab-btn" and remove the class "active"
+            var tablinks = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            var selectedTab = document.getElementById(tabName);
+            selectedTab.style.display = "block";
+            // Small timeout to allow display:block to apply before adding class for animation
+            setTimeout(() => {
+                selectedTab.classList.add("active");
+            }, 10);
+            
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+</body>
+</html>
