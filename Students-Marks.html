@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --primary-color: #0F9E99;
+            --primary-hover: #0b7a76;
+            --bg-color: #EFE9E0;
+            --card-bg: #FFFFFF;
+            --text-color: #333333;
+            --accent-green: #25D366;
+            --error-red: #d32f2f;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #bgCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(15, 158, 153, 0.15);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            max-height: 90vh; /* Prevent overflow on small screens */
+            display: flex;
+            flex-direction: column;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            outline: none;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(15, 158, 153, 0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        #message {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            min-height: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            white-space: pre-wrap; /* Crucial for displaying list format */
+            text-align: left;      /* Align text to left for readability */
+            line-height: 1.5;
+            max-height: 300px;     /* Scroll if the report is very long */
+            overflow-y: auto;
+            border-radius: 8px;
+            padding: 5px;
+        }
+        
+        .success { 
+            color: #1a4d1a; 
+            background-color: #e8f5e9;
+            padding: 15px !important;
+            border: 1px solid var(--accent-green);
+        }
+        .error { 
+            color: var(--error-red); 
+        }
+
+        /* Scrollbar styling for the message area */
+        #message::-webkit-scrollbar {
+            width: 6px;
+        }
+        #message::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 3px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <canvas id="bgCanvas"></canvas>
+
+    <div class="container">
+        <h2>Welcome</h2>
+        <p>Enter your student details to continue.</p>
+        
+        <form id="studentForm">
+            <div class="input-group">
+                <label for="studentId">Student Number</label>
+                <input type="number" id="studentId" placeholder="e.g. 20241005" required>
+            </div>
+            <button type="submit" id="submitBtn">Check In</button>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        /* --- Form Handling --- */
+        document.getElementById('studentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const input = document.getElementById('studentId');
+            const btn = document.getElementById('submitBtn');
+            const msg = document.getElementById('message');
+            
+            if(input.value.length < 3) {
+                msg.textContent = "Please enter a valid student number.";
+                msg.className = "error";
+                msg.style.opacity = "1";
+                return;
+            }
+
+            // Loading state
+            btn.innerHTML = "Processing...";
+            btn.disabled = true;
+            btn.style.opacity = "0.8";
+            msg.style.opacity = "0";
+            msg.className = ""; // Reset class
+
+            const webhookUrl = "https://api.mark-attendance.com/webhook/Grades";
+
+            // Send data to Webhook
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    student_number: input.value,
+                    timestamp: new Date().toISOString()
+                })
+            })
+            .then(async response => {
+                // Get the text body regardless of JSON or Plain Text
+                const text = await response.text();
+                
+                // Reset button
+                btn.innerHTML = "Check In";
+                btn.disabled = false;
+                btn.style.opacity = "1";
+
+                if (response.ok) {
+                    // Try to parse JSON if the API returns a structured object
+                    let displayText = text;
+                    try {
+                        const json = JSON.parse(text);
+                        // If it's a JSON object with a specific message field, use that
+                        if (json.message) displayText = json.message;
+                        else if (json.output) displayText = json.output;
+                        // Otherwise (if it is an array or raw string), assume the parser handled it or stick to text
+                        else if (typeof json === 'string') displayText = json;
+                    } catch (e) {
+                        // Not JSON, just use the raw text
+                        displayText = text;
+                    }
+
+                    // Remove wrapping quotes if they exist in the raw text response
+                    if (displayText.startsWith('"') && displayText.endsWith('"')) {
+                        displayText = displayText.slice(1, -1);
+                    }
+                    
+                    // Replace escaped newlines if they appear as literals (e.g. "\\n")
+                    displayText = displayText.replace(/\\n/g, '\n');
+
+                    msg.innerText = displayText;
+                    msg.className = "success";
+                    msg.style.opacity = "1";
+                    input.value = ""; // Clear input
+                } else {
+                    msg.textContent = "Server Error: " + response.status;
+                    msg.className = "error";
+                    msg.style.opacity = "1";
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                btn.innerHTML = "Check In";
+                btn.disabled = false;
+                btn.style.opacity = "1";
+                
+                msg.textContent = "Connection error. Please check internet.";
+                msg.className = "error";
+                msg.style.opacity = "1";
+            });
+        });
+
+        /* --- Canvas Background Animation --- */
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width, height;
+        let particles = [];
+        
+        const colors = ['#0F9E99', '#0b7a76', '#25D366'];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 1;
+                this.vy = (Math.random() - 0.5) * 1;
+                this.size = Math.random() * 3 + 1;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.alpha = Math.random() * 0.5 + 0.1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.min(window.innerWidth / 10, 100);
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.strokeStyle = '#0F9E99';
+            ctx.lineWidth = 0.5;
+
+            for (let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+                p.update();
+                p.draw();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let dx = p.x - p2.x;
+                    let dy = p.y - p2.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 100) {
+                        ctx.globalAlpha = 0.1 * (1 - distance / 100);
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', () => {
+            resize();
+            initParticles();
+        });
+
+        resize();
+        initParticles();
+        animate();
+    </script>
+
+</body>
+</html>
