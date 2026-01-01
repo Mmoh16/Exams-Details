@@ -51,7 +51,7 @@
             text-align: center;
             position: relative;
             z-index: 1;
-            max-height: 90vh; /* Prevent overflow on small screens */
+            max-height: 90vh;
             display: flex;
             flex-direction: column;
         }
@@ -100,7 +100,7 @@
             box-shadow: 0 0 0 3px rgba(15, 158, 153, 0.1);
         }
 
-        button {
+        .primary-btn {
             width: 100%;
             padding: 14px;
             background-color: var(--primary-color);
@@ -113,13 +113,48 @@
             transition: transform 0.2s, background-color 0.3s;
         }
 
-        button:hover {
+        .primary-btn:hover {
             background-color: var(--primary-hover);
             transform: translateY(-1px);
         }
 
-        button:active {
+        .primary-btn:active {
             transform: translateY(1px);
+        }
+
+        /* Styles for the Week Buttons */
+        .week-buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            min-height: 0;
+        }
+
+        .week-btn {
+            padding: 8px 16px;
+            background-color: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .week-btn:hover {
+            background-color: rgba(15, 158, 153, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .week-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(15, 158, 153, 0.3);
         }
 
         #message {
@@ -128,26 +163,24 @@
             min-height: 20px;
             opacity: 0;
             transition: opacity 0.3s;
-            white-space: pre-wrap; /* Crucial for displaying list format */
-            text-align: left;      /* Align text to left for readability */
+            white-space: pre-wrap;
+            text-align: left;
             line-height: 1.5;
-            max-height: 300px;     /* Scroll if the report is very long */
+            max-height: 300px;
             overflow-y: auto;
             border-radius: 8px;
-            padding: 5px;
+            padding: 10px;
         }
         
         .success { 
             color: #1a4d1a; 
             background-color: #e8f5e9;
-            padding: 15px !important;
             border: 1px solid var(--accent-green);
         }
         .error { 
             color: var(--error-red); 
         }
 
-        /* Scrollbar styling for the message area */
         #message::-webkit-scrollbar {
             width: 6px;
         }
@@ -163,16 +196,19 @@
     <canvas id="bgCanvas"></canvas>
 
     <div class="container">
-        <h2>HW Week 1 Marks</h2>
-        <p>Enter your student Number to get the marks.</p>
+        <h2>Marks Portal</h2>
+        <p>Enter Student Number</p>
         
         <form id="studentForm">
             <div class="input-group">
-                <label for="studentId">Student Number</label>
-                <input type="number" id="studentId" placeholder="e.g. 20241005" required>
+                <input type="number" id="studentId" placeholder="e.g. 201064362698" required>
             </div>
-            <button type="submit" id="submitBtn">Check In</button>
+            <button type="submit" id="submitBtn" class="primary-btn">Check In</button>
         </form>
+
+        <!-- Container for dynamically generated week buttons -->
+        <div id="weekButtons" class="week-buttons-container"></div>
+
         <div id="message"></div>
     </div>
 
@@ -183,11 +219,13 @@
             const input = document.getElementById('studentId');
             const btn = document.getElementById('submitBtn');
             const msg = document.getElementById('message');
+            const weekContainer = document.getElementById('weekButtons');
             
             if(input.value.length < 3) {
                 msg.textContent = "Please enter a valid student number.";
                 msg.className = "error";
                 msg.style.opacity = "1";
+                weekContainer.innerHTML = "";
                 return;
             }
 
@@ -196,7 +234,8 @@
             btn.disabled = true;
             btn.style.opacity = "0.8";
             msg.style.opacity = "0";
-            msg.className = ""; // Reset class
+            msg.className = "";
+            weekContainer.innerHTML = ""; // Clear previous buttons
 
             const webhookUrl = "https://api.mark-attendance.com/webhook/Grades";
 
@@ -212,41 +251,123 @@
                 })
             })
             .then(async response => {
-                // Get the text body regardless of JSON or Plain Text
                 const text = await response.text();
                 
-                // Reset button
-                btn.innerHTML = "Check in";
+                // Reset main button
+                btn.innerHTML = "Check In";
                 btn.disabled = false;
                 btn.style.opacity = "1";
 
                 if (response.ok) {
-                    // Try to parse JSON if the API returns a structured object
-                    let displayText = text;
                     try {
-                        const json = JSON.parse(text);
-                        // If it's a JSON object with a specific message field, use that
-                        if (json.message) displayText = json.message;
-                        else if (json.output) displayText = json.output;
-                        // Otherwise (if it is an array or raw string), assume the parser handled it or stick to text
-                        else if (typeof json === 'string') displayText = json;
+                        let json = JSON.parse(text);
+
+                        // --- Robustness Update Start ---
+                        // Sometimes webhooks return stringified JSON inside a string
+                        if (typeof json === 'string') {
+                            try {
+                                json = JSON.parse(json);
+                            } catch (e) {
+                                // It was just a regular string, keep as is
+                            }
+                        }
+                        
+                        // Detect where the array is hiding
+                        let dataArray = null;
+                        if (Array.isArray(json)) {
+                            dataArray = json;
+                        } else if (json && Array.isArray(json.data)) {
+                            dataArray = json.data;
+                        } else if (json && Array.isArray(json.output)) {
+                            dataArray = json.output;
+                        }
+                        // --- Robustness Update End ---
+
+                        if (dataArray && dataArray.length > 0) {
+                            
+                            // Sort weeks numerically
+                            // Helper to handle "Week" or "week"
+                            const getWeek = (item) => item.Week || item.week;
+                            
+                            dataArray.sort((a, b) => {
+                                const wA = parseInt(getWeek(a)) || 0;
+                                const wB = parseInt(getWeek(b)) || 0;
+                                return wA - wB;
+                            });
+
+                            let buttonsCreated = false;
+
+                            // Generate Buttons
+                            dataArray.forEach(item => {
+                                const weekNum = getWeek(item);
+                                if (weekNum) {
+                                    buttonsCreated = true;
+                                    const weekBtn = document.createElement('button');
+                                    weekBtn.type = "button";
+                                    weekBtn.className = "week-btn";
+                                    weekBtn.textContent = `Week ${weekNum}`;
+                                    
+                                    weekBtn.onclick = function() {
+                                        // Handle styling active state
+                                        document.querySelectorAll('.week-btn').forEach(b => b.classList.remove('active'));
+                                        this.classList.add('active');
+                                        
+                                        // Display the message
+                                        let displayText = item.message || item.Message || "No data for this week.";
+                                        
+                                        // Clean up text format
+                                        if (displayText.startsWith('"') && displayText.endsWith('"')) {
+                                            displayText = displayText.slice(1, -1);
+                                        }
+                                        displayText = displayText.replace(/\\n/g, '\n');
+
+                                        msg.innerText = displayText;
+                                        msg.className = "success";
+                                        msg.style.opacity = "1";
+                                    };
+
+                                    weekContainer.appendChild(weekBtn);
+                                }
+                            });
+
+                            if (buttonsCreated) {
+                                // Prompt user to select
+                                msg.textContent = "Please select a week above.";
+                                msg.style.opacity = "1";
+                                msg.style.color = "#666";
+                                msg.className = "";
+                            } else {
+                                // Fallback if array exists but no 'Week' keys
+                                msg.innerText = JSON.stringify(json, null, 2);
+                                msg.className = "success";
+                                msg.style.opacity = "1";
+                            }
+
+                        } else {
+                            // Handle Single Object / Text Response
+                            let displayText = "";
+                            if (json.message) displayText = json.message;
+                            else if (json.output) displayText = json.output;
+                            else if (typeof json === 'object') displayText = JSON.stringify(json, null, 2);
+                            else displayText = String(json);
+
+                            displayText = displayText.replace(/\\n/g, '\n');
+                            if (displayText.startsWith('"') && displayText.endsWith('"')) {
+                                displayText = displayText.slice(1, -1);
+                            }
+
+                            msg.innerText = displayText;
+                            msg.className = "success";
+                            msg.style.opacity = "1";
+                        }
+
                     } catch (e) {
-                        // Not JSON, just use the raw text
-                        displayText = text;
+                        // Not JSON, just display raw text
+                        console.error("Parse error", e);
+                        msg.innerText = text.replace(/\\n/g, '\n');
+                        msg.className = "success";
+                        msg.style.opacity = "1";
                     }
-
-                    // Remove wrapping quotes if they exist in the raw text response
-                    if (displayText.startsWith('"') && displayText.endsWith('"')) {
-                        displayText = displayText.slice(1, -1);
-                    }
-                    
-                    // Replace escaped newlines if they appear as literals (e.g. "\\n")
-                    displayText = displayText.replace(/\\n/g, '\n');
-
-                    msg.innerText = displayText;
-                    msg.className = "success";
-                    msg.style.opacity = "1";
-                    input.value = ""; // Clear input
                 } else {
                     msg.textContent = "Server Error: " + response.status;
                     msg.className = "error";
@@ -271,7 +392,6 @@
         
         let width, height;
         let particles = [];
-        
         const colors = ['#0F9E99', '#0b7a76', '#25D366'];
 
         function resize() {
@@ -289,14 +409,12 @@
                 this.color = colors[Math.floor(Math.random() * colors.length)];
                 this.alpha = Math.random() * 0.5 + 0.1;
             }
-
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
                 if (this.x < 0 || this.x > width) this.vx *= -1;
                 if (this.y < 0 || this.y > height) this.vy *= -1;
             }
-
             draw() {
                 ctx.globalAlpha = this.alpha;
                 ctx.fillStyle = this.color;
