@@ -91,7 +91,7 @@
 
                 <!-- Countdown -->
                 <div id="countdown-wrapper" class="mt-8 p-6 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border border-gray-200 text-center transition-all duration-500">
-                    <p id="timer-label" class="text-sm font-bold text-gray-500 mb-3">⏳ العد التنازلي لبداية الكورس (09/02)</p>
+                    <p id="timer-label" class="text-sm font-bold text-gray-500 mb-3">⏳ العد التنازلي لبداية الكورس (08/02)</p>
                     <div id="timer-container" class="flex justify-center gap-4 text-center" dir="ltr">
                         <div class="bg-white p-3 rounded-lg shadow w-20">
                             <span id="days" class="block text-2xl font-bold text-primary">00</span>
@@ -131,21 +131,42 @@
             <!-- 3. Schedule & Sessions -->
             <div class="grid md:grid-cols-2 gap-8 mb-8 fade-in">
                 <div class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-primary">
-                    <h3 class="text-xl font-bold text-primary mb-4 border-b pb-2">🗓️ مواعيد الحصص (24 حصة)</h3>
+                    <h3 class="text-xl font-bold text-primary mb-4 border-b pb-2">🗓️ مواعيد الحصص اللايف</h3>
                     <ul class="space-y-4 text-gray-700">
-                        <li><span>تاريخ البداية:</span> <span class="font-bold text-gray-900">9 فبراير 2026</span></li>
-                        <li class="bg-gray-50 p-4 rounded-lg border border-gray-100">
-                            <strong class="text-primary block mb-2 text-lg">⏰ الجدول الأسبوعي:</strong>
-                            <ul class="space-y-2 mr-2">
-                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-primary rounded-full"></span><span class="font-bold">السبت:</span> 4:00 مساءً</li>
-                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-primary rounded-full"></span><span class="font-bold">الاثنين:</span> 4:00 مساءً</li>
-                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-primary rounded-full"></span><span class="font-bold">الأربعاء:</span> 6:00 مساءً</li>
-                            </ul>
+                        <li class="flex justify-between items-center border-b border-gray-100 pb-2">
+                            <span class="font-semibold text-gray-600">تاريخ البداية:</span>
+                            <span class="font-bold text-gray-900 bg-teal-50 px-2 py-1 rounded">8 فبراير 2026</span>
                         </li>
+                        <li class="flex justify-between items-center border-b border-gray-100 pb-2">
+                            <span class="font-semibold text-gray-600">إجمالي الحصص:</span>
+                            <span class="font-bold text-gray-900">24 حصة مكثفة</span>
+                        </li>
+                        
+                        <li class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                            <strong class="text-primary block mb-3 text-lg flex items-center gap-2">
+                                ⏰ الجدول الأسبوعي (بتوقيت القاهرة):
+                            </strong>
+                            <div class="grid grid-cols-1 gap-3">
+                                <div class="flex justify-between items-center bg-white p-3 rounded border border-gray-100 shadow-sm">
+                                    <span class="font-bold text-gray-800">الأحد</span>
+                                    <span class="text-primary font-bold">6:00 مساءً</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-white p-3 rounded border border-gray-100 shadow-sm">
+                                    <span class="font-bold text-gray-800">الثلاثاء</span>
+                                    <span class="text-primary font-bold">10:00 مساءً</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-white p-3 rounded border border-gray-100 shadow-sm">
+                                    <span class="font-bold text-gray-800">الخميس</span>
+                                    <span class="text-primary font-bold">10:00 مساءً</span>
+                                </div>
+                            </div>
+                        </li>
+
                         <li class="pt-2">
-                            <strong class="text-primary block mb-2">📊 الحصص المنفذة:</strong>
+                            <strong class="text-primary block mb-2">📊 موقف الكورس الحالي:</strong>
                             <div class="flex items-center gap-2">
-                                <span id="session-counter" class="font-bold text-xl text-white bg-primary px-4 py-1 rounded-full">...</span>
+                                <span id="session-counter" class="font-bold text-xl text-white bg-primary px-4 py-1 rounded-full shadow-md">...</span>
+                                <span class="text-xs text-gray-400">تحديث تلقائي</span>
                             </div>
                         </li>
                     </ul>
@@ -153,14 +174,28 @@
 
                 <div class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-primary">
                     <h3 class="text-xl font-bold text-primary mb-4 border-b pb-2">👨‍👩‍👧 المتابعة والتقارير</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start gap-2 bg-gray-50 p-3 rounded-lg border border-gray-100">
-                            <span class="text-red-500 font-bold">🔔</span>
-                            <span>إخطار ولي الأمر فوراً في حالة غياب الطالب.</span>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 bg-gray-50 p-4 rounded-lg border border-gray-100">
+                            <div class="bg-red-100 p-2 rounded-full text-red-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-800">إشعار الغياب</p>
+                                <p class="text-sm text-gray-600">يتم إخطار ولي الأمر فوراً في حالة عدم حضور الطالب للحصة اللايف.</p>
+                            </div>
                         </li>
-                        <li class="flex items-start gap-2 bg-gray-50 p-3 rounded-lg border border-gray-100">
-                            <span class="text-primary font-bold">📊</span>
-                            <span>تقرير أسبوعي بدرجات الواجبات والاختبارات.</span>
+                        <li class="flex items-start gap-3 bg-gray-50 p-4 rounded-lg border border-gray-100">
+                            <div class="bg-teal-100 p-2 rounded-full text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-800">التقارير الدورية</p>
+                                <p class="text-sm text-gray-600">تقرير أسبوعي مفصل بمستوى الطالب ودرجات الواجبات والاختبارات.</p>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -234,9 +269,9 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Session Counter
-            const startDate = new Date(2026, 1, 9);
-            const sessionDays = [1, 3, 6]; 
+            // Session Counter Logic
+            const startDate = new Date(2026, 1, 8); // February 8, 2026
+            const sessionDays = [0, 2, 4]; // 0=Sunday, 2=Tuesday, 4=Thursday
             const maxSessions = 24;
             const today = new Date();
             today.setHours(0,0,0,0);
@@ -249,19 +284,21 @@
                     current.setDate(current.getDate() + 1);
                 }
             }
-            document.getElementById('session-counter').textContent = `${count} / ${maxSessions}`;
+            const counterEl = document.getElementById('session-counter');
+            if (counterEl) counterEl.textContent = `${count} / ${maxSessions}`;
 
-            // Countdown
-            const targetDate = new Date("February 9, 2026 16:00:00").getTime();
+            // Countdown Logic
+            const targetDate = new Date("February 8, 2026 18:00:00").getTime(); // Starting at 6pm on Feb 8
             const timer = setInterval(() => {
                 const now = new Date().getTime();
                 const diff = targetDate - now;
 
+                const container = document.getElementById("timer-container");
+                const label = document.getElementById("timer-label");
+                const msg = document.getElementById("started-message");
+
                 if (diff < 0) {
                     clearInterval(timer);
-                    const container = document.getElementById("timer-container");
-                    const label = document.getElementById("timer-label");
-                    const msg = document.getElementById("started-message");
                     if(container) container.classList.add("hidden");
                     if(label) label.classList.add("hidden");
                     if(msg) msg.classList.remove("hidden");
