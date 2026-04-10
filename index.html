@@ -1,365 +1,78 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تفاصيل كورس Math EST - Trial March</title>
-    
-    <!-- تحميل Tailwind CSS -->
+    <title>Video Resources</title>
+    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- إعداد الخطوط والألوان -->
+    <!-- Google Fonts for typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+Arabic:wght@100..900&display=swap');
-        :root {
-            --primary-color: #0F9E99;
-            --background-color: #EFE9E0;
-        }
         body {
-            font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
-            background-color: var(--background-color);
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Very light slate background */
         }
-        .text-primary { color: var(--primary-color); }
-        .bg-primary { background-color: var(--primary-color); }
-        .border-primary { border-color: var(--primary-color); }
-        
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #0F9E99; border-radius: 4px; }
-
-        @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(15, 158, 153, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(15, 158, 153, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(15, 158, 153, 0); }
-        }
-        .whatsapp-pulse { animation: pulse-green 2s infinite; }
-        
-        .fade-in {
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Ensure the iframe containers fill the card properly */
+        .video-container {
+            width: 100%;
+            background-color: #000;
         }
     </style>
 </head>
-<body class="bg-[#EFE9E0] text-gray-800 relative">
+<body class="min-h-screen text-slate-800 py-12 px-4 sm:px-6 lg:px-8">
+    
+    <main class="max-w-4xl mx-auto space-y-12">
+        
+        <!-- Page Header -->
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-4">
+                Video Resources
+            </h1>
+            <p class="text-lg text-slate-500 max-w-2xl mx-auto">
+                Watch the introductory material and sample exam reviews below.
+            </p>
+        </header>
 
-    <!-- 0. Navbar -->
-    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-md border-b border-primary/20">
-        <div class="max-w-5xl mx-auto px-4">
-            <div class="flex items-center justify-between h-16">
-                <span class="font-bold text-xl text-primary flex items-center gap-2">
-                    <span>Exams Trial 27 March</span>
-                    <span class="text-xs bg-red-50 text-red-700 border border-red-200 px-2 py-0.5 rounded-full">دفعة مارس 2026</span>
-                </span>
-                <div class="hidden md:flex space-x-6 space-x-reverse text-sm font-medium">
-                    <a href="#home" class="hover:text-primary transition">الرئيسية</a>
-                    <a href="#features" class="hover:text-primary transition">المميزات</a>
-                    <a href="#package" class="hover:text-primary transition">المحتوى</a>
-                    <a href="#payment" class="hover:text-primary transition">الدفع</a>
-                    <a href="#contact" class="hover:text-primary transition">تواصل معنا</a>
-                </div>
-                <a href="https://wa.me/201064208147?text=Hi+Mohamed" class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold shadow hover:bg-teal-700 transition transform hover:scale-105">احجز الآن</a>
+        <!-- Video 1: Introduction -->
+        <article class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden transition-shadow hover:shadow-md">
+            <div class="p-6 border-b border-slate-100 bg-slate-50">
+                <h2 class="text-2xl font-semibold text-slate-800 text-center">Introduction</h2>
             </div>
-        </div>
-    </nav>
-
-    <div class="p-4 sm:p-6 lg:p-8">
-        <div class="mx-auto max-w-5xl">
-
-            <!-- 1. Header -->
-            <header id="home" class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8 border-r-4 border-primary overflow-hidden relative fade-in">
-                <div class="flex items-center mb-4 space-x-4 space-x-reverse">
-                    <div class="flex-shrink-0 pt-1">
-                        <img src="https://ermathexpert.online/wp-content/uploads/2023/11/logo-red2-1.png" alt="Logo" class="w-20 h-20 sm:w-24 sm:h-24 object-contain">
-                    </div>
-                    <div>
-                        <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">كورس مكثف لمحاولة شهر مارس</p>
-                        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
-                            أقوى كورس (Math EST) <span class="text-primary">Trial March</span> 📈
-                        </h1>
-                    </div>
-                </div>
-
-                <div class="bg-white border-r-4 border-red-500 p-4 rounded-lg shadow-md mt-6">
-                    <p class="text-lg md:text-xl font-bold text-red-700 leading-relaxed">
-                        📢 متاح الآن الحجز لمحاولة 27 مارس: أقوى كورس ماث لضمان الـ 800 بنظام متابعة كامل!
-                    </p>
-                </div>
-
-                <!-- Countdown -->
-                <div id="countdown-wrapper" class="mt-8 p-6 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border border-gray-200 text-center transition-all duration-500">
-                    <p id="timer-label" class="text-sm font-bold text-gray-500 mb-3">⏳ العد التنازلي لبداية الكورس (08/02)</p>
-                    <div id="timer-container" class="flex justify-center gap-4 text-center" dir="ltr">
-                        <div class="bg-white p-3 rounded-lg shadow w-20">
-                            <span id="days" class="block text-2xl font-bold text-primary">00</span>
-                            <span class="text-xs text-gray-500">يوم</span>
-                        </div>
-                        <div class="bg-white p-3 rounded-lg shadow w-20">
-                            <span id="hours" class="block text-2xl font-bold text-primary">00</span>
-                            <span class="text-xs text-gray-500">ساعة</span>
-                        </div>
-                        <div class="bg-white p-3 rounded-lg shadow w-20">
-                            <span id="minutes" class="block text-2xl font-bold text-primary">00</span>
-                            <span class="text-xs text-gray-500">دقيقة</span>
-                        </div>
-                        <div class="bg-white p-3 rounded-lg shadow w-20">
-                            <span id="seconds" class="block text-2xl font-bold text-primary">00</span>
-                            <span class="text-xs text-gray-500">ثانية</span>
-                        </div>
-                    </div>
-                    <div id="started-message" class="hidden">
-                        <p class="text-2xl font-bold text-primary animate-bounce">🚀 الكورس بدأ بالفعل!</p>
-                        <p class="text-gray-600 mt-2">تواصل معنا الآن للحاق بقطار التفوق 🔒</p>
-                    </div>
-                </div>
-            </header>
-
-            <!-- 2. Features -->
-            <section id="features" class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in">
-                <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-primary">🚀 نظام الكورس</h2>
-                <p class="text-base md:text-lg leading-relaxed text-gray-700 mb-6">
-                    نبدأ بشرح مواضيع الأدفانس مع حل أوراق عمل (Worksheets) مجمعة من أهم الكتب لضمان تغطية كافة أفكار الامتحان، مع متابعة دورية لدرجات الطالب.
-                </p>
-                <div class="relative w-full max-w-2xl mx-auto shadow-lg rounded-lg overflow-hidden bg-black" style="padding-bottom: 56.25%;">
-                    <iframe class="absolute top-0 left-0 w-full h-full border-0" src="https://drive.google.com/file/d/1tmjT_e15HGWWrwzB24PlAfUCb0Mql-qL/preview" allowfullscreen></iframe>
-                </div>
-            </section>
-
-            <!-- 3. Schedule & Sessions -->
-            <div class="grid md:grid-cols-2 gap-8 mb-8 fade-in">
-                <div class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-primary">
-                    <h3 class="text-xl font-bold text-primary mb-4 border-b pb-2">🗓️ مواعيد الحصص اللايف</h3>
-                    <ul class="space-y-4 text-gray-700">
-                        <li class="flex justify-between items-center border-b border-gray-100 pb-2">
-                            <span class="font-semibold text-gray-600">تاريخ البداية:</span>
-                            <span class="font-bold text-gray-900 bg-teal-50 px-2 py-1 rounded">8 فبراير 2026</span>
-                        </li>
-                        <li class="flex justify-between items-center border-b border-gray-100 pb-2">
-                            <span class="font-semibold text-gray-600">إجمالي الحصص:</span>
-                            <span class="font-bold text-gray-900">24 حصة مكثفة</span>
-                        </li>
-                        
-                        <li class="bg-gray-50 p-4 rounded-lg border border-gray-100">
-                            <strong class="text-primary block mb-3 text-lg flex items-center gap-2">
-                                ⏰ الجدول الأسبوعي (بتوقيت القاهرة):
-                            </strong>
-                            <div class="grid grid-cols-1 gap-3">
-                                <div class="flex justify-between items-center bg-white p-3 rounded border border-gray-100 shadow-sm">
-                                    <span class="font-bold text-gray-800">الأحد</span>
-                                    <span class="text-primary font-bold">7:30 مساءً</span>
-                                </div>
-                                <div class="flex justify-between items-center bg-white p-3 rounded border border-gray-100 shadow-sm">
-                                    <span class="font-bold text-gray-800">الثلاثاء</span>
-                                    <span class="text-primary font-bold">11:00 مساءً</span>
-                                </div>
-                                <div class="flex justify-between items-center bg-white p-3 rounded border border-gray-100 shadow-sm">
-                                    <span class="font-bold text-gray-800">الخميس</span>
-                                    <span class="text-primary font-bold">11:00 مساءً</span>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="pt-2">
-                            <strong class="text-primary block mb-2">📊 موقف الكورس الحالي:</strong>
-                            <div class="flex items-center gap-2">
-                                <span id="session-counter" class="font-bold text-xl text-white bg-primary px-4 py-1 rounded-full shadow-md">...</span>
-                                <span class="text-xs text-gray-400">تحديث تلقائي</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-primary">
-                    <h3 class="text-xl font-bold text-primary mb-4 border-b pb-2">👨‍👩‍👧 المتابعة والتقارير</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3 bg-gray-50 p-4 rounded-lg border border-gray-100">
-                            <div class="bg-red-100 p-2 rounded-full text-red-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-bold text-gray-800">إشعار الغياب</p>
-                                <p class="text-sm text-gray-600">يتم إخطار ولي الأمر فوراً في حالة عدم حضور الطالب للحصة اللايف.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3 bg-gray-50 p-4 rounded-lg border border-gray-100">
-                            <div class="bg-teal-100 p-2 rounded-full text-primary">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-bold text-gray-800">التقارير الدورية</p>
-                                <p class="text-sm text-gray-600">تقرير أسبوعي مفصل بمستوى الطالب ودرجات الواجبات والاختبارات.</p>
-                            </div>
-                        </li>
-                    </ul>
+            <div class="video-container">
+                <div style="padding:52.5% 0 0 0;position:relative;">
+                    <iframe src="https://player.vimeo.com/video/1181905469?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="introduction est may advanced.mp4"></iframe>
                 </div>
             </div>
+        </article>
 
-            <!-- 4. Package Content -->
-            <section id="package" class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in">
-                <h2 class="text-2xl font-bold text-gray-900 mb-5 text-center border-b pb-2">🌐 محتويات الاشتراك</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">🎯 <strong>25 امتحان Real EST:</strong> شاملة فيديوهات الشرح.</div>
-                    <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">📚 <strong>45 حصة Basics:</strong> مسجلة لشرح المنهج من الصفر.</div>
-                    <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">📹 <strong>ريكورد الحصص اللايف:</strong> الـ 24 حصة تظل متاحة لك.</div>
-                    <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">⏱️ <strong>Short Videos:</strong> للمراجعة السريعة والتركات.</div>
+        <!-- Video 2: Sample EST March -->
+        <article class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden transition-shadow hover:shadow-md">
+            <div class="p-6 border-b border-slate-100 bg-slate-50">
+                <h2 class="text-2xl font-semibold text-slate-800 text-center">Sample EST March</h2>
+            </div>
+            <div class="video-container">
+                <div style="padding:75% 0 0 0;position:relative;">
+                    <iframe src="https://player.vimeo.com/video/1181905435?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="sample of march est exam.mp4"></iframe>
                 </div>
-                <div class="text-center font-bold text-primary mt-8 p-4 bg-primary/10 rounded-lg border border-primary/20">
-                    🔒 المحتوى متاح معك حتى انتهاء محاولة شهر مارس.
+            </div>
+        </article>
+
+        <!-- Video 3: Sample Questions -->
+        <article class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden transition-shadow hover:shadow-md">
+            <div class="p-6 border-b border-slate-100 bg-slate-50">
+                <h2 class="text-2xl font-semibold text-slate-800 text-center">Sample Questions</h2>
+            </div>
+            <div class="video-container">
+                <div style="padding: 52.5% 0 0 0; position: relative;">
+                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" title="sample of Qs mn 3mo ramez.mp4" src="https://player.vimeo.com/video/1181905450?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
                 </div>
-            </section>
+            </div>
+        </article>
 
-            <!-- 5. Price & Payment -->
-            <section id="price" class="bg-primary text-white rounded-xl shadow-lg p-8 my-8 text-center relative overflow-hidden group">
-                <h2 class="text-2xl font-bold mb-2 opacity-90 relative z-10">💸 سعر الكورس الكامل</h2>
-                <div class="relative z-10">
-                    <p class="text-6xl font-extrabold mb-1">5000 <span class="text-xl font-medium">ج.م</span></p>
-                    <p class="text-lg line-through opacity-60">بدلاً من 6720 ج.م</p>
-                </div>
-                <p class="mt-4 text-sm font-medium opacity-90 relative z-10">💯 خصم خاص بمناسبة محاولة مارس</p>
-            </section>
+    </main>
 
-            <!-- 6. Payment Methods -->
-            <section id="payment" class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in">
-                <h2 class="text-2xl font-bold text-primary mb-6 border-b pb-2">💳 خيارات الدفع (Payment Options)</h2>
-                
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="bg-gray-50 p-6 rounded-2xl border-2 border-dashed border-primary/30 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-xs font-bold rounded-bl-lg">Fast Pay</div>
-                        <h4 class="text-xl font-black mb-4 flex items-center gap-2">
-                            <span class="bg-primary/10 p-2 rounded-lg text-primary">⚡</span>
-                            Instapay
-                        </h4>
-                        <div class="space-y-3">
-                            <div class="flex justify-between items-center bg-white p-3 rounded-lg shadow-sm">
-                                <span class="text-gray-500 text-sm">الرقم:</span>
-                                <span class="font-mono font-bold text-lg select-all">01029453108</span>
-                            </div>
-                            <div class="flex justify-between items-center bg-white p-3 rounded-lg shadow-sm">
-                                <span class="text-gray-500 text-sm">الاسم:</span>
-                                <span class="font-bold">Ramez Essam</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-red-50 p-6 rounded-2xl border-2 border-red-100 flex flex-col justify-center">
-                        <h4 class="text-xl font-black text-red-600 mb-3 flex items-center gap-2">
-                            <span>⚠️</span>
-                            سياسة الاسترداد
-                        </h4>
-                        <div class="space-y-2">
-                            <p class="font-bold text-red-700">🛑 الفلوس غير مستردة</p>
-                            <p class="text-sm text-red-500 italic">🚫 Money isn't refundable</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 7. Trial Video & Contact -->
-            <section id="contact" class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in text-center">
-                <h2 class="text-2xl font-bold mb-6 text-primary border-b pb-2">🎁 حصة تجريبية مجانية</h2>
-                <p class="text-gray-700 mb-6 font-medium">شاهد شرح المستر ونظام الحصة قبل الحجز:</p>
-                
-                <!-- فيديو فيميو الجديد -->
-                <div class="relative w-full max-w-2xl mx-auto mb-8 shadow-2xl rounded-2xl overflow-hidden bg-black border-4 border-primary/10" style="padding-top: 56.25%;">
-                    <iframe 
-                        src="https://player.vimeo.com/video/1163068986?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-                        frameborder="0" 
-                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-                        referrerpolicy="strict-origin-when-cross-origin" 
-                        style="position:absolute;top:0;left:0;width:100%;height:100%;" 
-                        title="session 1.mp4">
-                    </iframe>
-                </div>
-                <script src="https://player.vimeo.com/api/player.js"></script>
-                
-                <hr class="my-8 border-primary/20">
-                
-                <h2 class="text-2xl font-bold mb-6 text-primary">💬 للاستفسار وتأكيد الحجز</h2>
-                <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-                    <a href="https://wa.me/201064208147?text=Hi+Mohamed" 
-                       target="_blank"
-                       class="w-full md:w-auto bg-primary text-white font-bold text-lg py-4 px-10 rounded-full shadow-xl transform hover:scale-105 transition whatsapp-pulse">
-                      تواصل مع مستر محمد
-                    </a>
-                    <a href="https://wa.me/201151921542?text=Hi+Mohamed" 
-                       target="_blank"
-                       class="w-full md:w-auto bg-primary text-white font-bold text-lg py-4 px-10 rounded-full shadow-xl transform hover:scale-105 transition whatsapp-pulse">
-                      تواصل مع مستر يوسف
-                    </a>
-                </div>
-            </section>
-
-        </div>
-
-        <footer class="text-center text-gray-500 text-sm py-4 border-t border-gray-200">
-            <p>© 2026 Math EST Course | March Attempt</p>
-        </footer>
-
-        <!-- Floating Buttons -->
-        <div class="fixed left-4 bottom-4 z-50 flex flex-col gap-3">
-            <a href="https://wa.me/201064208147?text=Hi+Mohamed" target="_blank" class="flex flex-col items-center justify-center bg-primary text-white w-14 h-14 rounded-full shadow-lg whatsapp-pulse text-[10px] font-bold">
-                <span>محمد</span>
-            </a>
-            <a href="https://wa.me/201151921542?text=Hi+Mohamed" target="_blank" class="flex flex-col items-center justify-center bg-primary text-white w-14 h-14 rounded-full shadow-lg whatsapp-pulse text-[10px] font-bold">
-                <span>يوسف</span>
-            </a>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Session Counter Logic
-            const startDate = new Date(2026, 1, 8); // February 8, 2026
-            const sessionDays = [0, 2, 4]; // 0=Sunday, 2=Tuesday, 4=Thursday
-            const maxSessions = 24;
-            const today = new Date();
-            today.setHours(0,0,0,0);
-            
-            let count = 0;
-            if (today >= startDate) {
-                let current = new Date(startDate);
-                while (current <= today && count < maxSessions) {
-                    if (sessionDays.includes(current.getDay())) count++;
-                    current.setDate(current.getDate() + 1);
-                }
-            }
-            const counterEl = document.getElementById('session-counter');
-            if (counterEl) counterEl.textContent = `${count} / ${maxSessions}`;
-
-            // Countdown Logic
-            const targetDate = new Date("February 8, 2026 18:00:00").getTime(); // Starting at 6pm on Feb 8
-            const timer = setInterval(() => {
-                const now = new Date().getTime();
-                const diff = targetDate - now;
-
-                const container = document.getElementById("timer-container");
-                const label = document.getElementById("timer-label");
-                const msg = document.getElementById("started-message");
-
-                if (diff < 0) {
-                    clearInterval(timer);
-                    if(container) container.classList.add("hidden");
-                    if(label) label.classList.add("hidden");
-                    if(msg) msg.classList.remove("hidden");
-                } else {
-                    const d = document.getElementById("days");
-                    const h = document.getElementById("hours");
-                    const m = document.getElementById("minutes");
-                    const s = document.getElementById("seconds");
-                    if(d) d.innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    if(h) h.innerHTML = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    if(m) m.innerHTML = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    if(s) s.innerHTML = Math.floor((diff % (1000 * 60)) / 1000);
-                }
-            }, 1000);
-        });
-    </script>
+    <!-- Vimeo Player API Script (Included only once at the bottom) -->
+    <script src="https://player.vimeo.com/api/player.js"></script>
 </body>
 </html>
