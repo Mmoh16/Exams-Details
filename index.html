@@ -1,78 +1,347 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Resources</title>
-    <!-- Tailwind CSS for styling -->
+    
+    <!-- ANTI-CACHE TAGS (Forces GitHub Pages to load the newest version) -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <title>تفاصيل كورس Math EST - Trial May</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts for typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Fonts and Colors -->
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Very light slate background */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+Arabic:wght@100..900&display=swap');
+        :root {
+            /* Changed to a vibrant blue */
+            --primary-color: #2563EB; 
+            --background-color: #F8FAFC; /* Clean white/slate-50 background */
         }
-        /* Ensure the iframe containers fill the card properly */
-        .video-container {
-            width: 100%;
-            background-color: #000;
+        body {
+            font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: #333;
+        }
+        .text-primary { color: var(--primary-color); }
+        .bg-primary { background-color: var(--primary-color); }
+        .border-primary { border-color: var(--primary-color); }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #2563EB; border-radius: 4px; } /* Updated scrollbar */
+
+        @keyframes pulse-blue {
+            0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
+        .pulse-btn { animation: pulse-blue 2s infinite; }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="min-h-screen text-slate-800 py-12 px-4 sm:px-6 lg:px-8">
-    
-    <main class="max-w-4xl mx-auto space-y-12">
-        
-        <!-- Page Header -->
-        <header class="text-center mb-16">
-            <h1 class="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-4">
-                Video Resources
-            </h1>
-            <p class="text-lg text-slate-500 max-w-2xl mx-auto">
-                Watch the introductory material and sample exam reviews below.
-            </p>
-        </header>
+<body class="bg-slate-50 text-gray-800 relative">
 
-        <!-- Video 1: Introduction -->
-        <article class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden transition-shadow hover:shadow-md">
-            <div class="p-6 border-b border-slate-100 bg-slate-50">
-                <h2 class="text-2xl font-semibold text-slate-800 text-center">Introduction</h2>
+    <!-- 0. Navbar -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-blue-100">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <span class="font-bold text-lg sm:text-xl text-primary flex items-center gap-2">
+                    <span class="truncate">Exams Trial 15 May</span>
+                </span>
+                <div class="hidden md:flex space-x-6 space-x-reverse text-sm font-medium">
+                    <a href="#home" class="hover:text-blue-600 transition">الرئيسية</a>
+                    <a href="#videos" class="hover:text-blue-600 transition">الفيديوهات</a>
+                    <a href="#schedule" class="hover:text-blue-600 transition">المواعيد</a>
+                    <a href="#package" class="hover:text-blue-600 transition">المحتوى</a>
+                    <a href="#payment" class="hover:text-blue-600 transition">الدفع</a>
+                    <a href="#contact" class="hover:text-blue-600 transition">تواصل معنا</a>
+                </div>
+                <a href="#payment" class="bg-primary text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg text-sm font-bold shadow hover:bg-blue-700 transition transform hover:scale-105">احجز الآن</a>
             </div>
-            <div class="video-container">
-                <div style="padding:52.5% 0 0 0;position:relative;">
-                    <iframe src="https://player.vimeo.com/video/1181905469?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="introduction est may advanced.mp4"></iframe>
+        </div>
+    </nav>
+
+    <div class="p-3 sm:p-6 lg:p-8">
+        <div class="mx-auto max-w-5xl">
+
+            <!-- 1. Header -->
+            <header id="home" class="bg-white rounded-2xl shadow-md p-5 sm:p-8 mb-8 border-r-4 border-primary overflow-hidden relative fade-in">
+                <div class="flex flex-col sm:flex-row items-center sm:items-start mb-4 space-y-4 sm:space-y-0 sm:space-x-4 sm:space-x-reverse text-center sm:text-right">
+                    <div class="flex-shrink-0 pt-1">
+                        <img src="https://ermathexpert.online/wp-content/uploads/2023/11/logo-red2-1.png" alt="Logo" class="w-20 h-20 sm:w-24 sm:h-24 object-contain">
+                    </div>
+                    <div>
+                        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2 sm:mb-1">كورس مكثف</p>
+                        <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+                            أقوى كورس (Math EST) <span class="text-primary block sm:inline mt-1 sm:mt-0">Trial 15 May</span> 📈
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 border-r-4 border-blue-500 p-4 rounded-lg shadow-sm mt-6">
+                    <p class="text-base sm:text-lg md:text-xl font-bold text-blue-800 leading-relaxed text-center sm:text-right">
+                        📢 متاح الآن الحجز لمحاولة 15 مايو: أقوى كورس ماث لضمان الـ 800 بنظام متابعة كامل!
+                    </p>
+                </div>
+            </header>
+
+            <!-- 2. Videos Showcase Section -->
+            <section id="videos" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in">
+                <h2 class="text-xl sm:text-2xl font-bold mb-6 border-b pb-2 text-primary">🎥 الفيديوهات التعريفية ونماذج الشرح</h2>
+                
+                <div class="space-y-10 sm:space-y-12">
+                    <!-- Video 1 -->
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-bold text-center mb-3 sm:mb-4 text-gray-800">مقدمة الكورس (Introduction)</h3>
+                        <div class="relative w-full max-w-3xl mx-auto shadow-lg rounded-xl overflow-hidden bg-black" style="padding-top: 52.5%;">
+                            <iframe src="https://player.vimeo.com/video/1181905469?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="introduction"></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-bold text-center mb-3 sm:mb-4 text-gray-800">نموذج لشرح محاولة مايو (Sample EST May)</h3>
+                        <div class="relative w-full max-w-3xl mx-auto shadow-lg rounded-xl overflow-hidden bg-black" style="padding-top: 75%;">
+                            <iframe src="https://player.vimeo.com/video/1181905435?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="sample may"></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Video 3 -->
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-bold text-center mb-3 sm:mb-4 text-gray-800">حل أسئلة وتدريبات (Sample Questions)</h3>
+                        <div class="relative w-full max-w-3xl mx-auto shadow-lg rounded-xl overflow-hidden bg-black" style="padding-top: 52.5%;">
+                            <iframe src="https://player.vimeo.com/video/1181905450?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="sample questions"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Schedule Section -->
+            <div id="schedule" class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 fade-in">
+                <div class="bg-white rounded-xl shadow-md p-5 sm:p-6 border-t-4 border-primary">
+                    <h3 class="text-lg sm:text-xl font-bold text-primary mb-4 border-b pb-2">🗓️ مواعيد الحصص اللايف</h3>
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                            <strong class="text-primary block mb-3 text-base sm:text-lg flex items-center gap-2">
+                                ⏰ الجدول الأسبوعي (بتوقيت القاهرة):
+                            </strong>
+                            <div class="grid grid-cols-1 gap-3">
+                                <!-- Updated Session Times -->
+                                <div class="flex justify-between items-center bg-white p-3 rounded border border-slate-100 shadow-sm">
+                                    <span class="font-bold text-gray-800">الأحد</span>
+                                    <span class="text-primary font-bold">6:00 مساءً</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-white p-3 rounded border border-slate-100 shadow-sm">
+                                    <span class="font-bold text-gray-800">الثلاثاء</span>
+                                    <span class="text-primary font-bold">10:00 مساءً</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-white p-3 rounded border border-slate-100 shadow-sm">
+                                    <span class="font-bold text-gray-800">الخميس</span>
+                                    <span class="text-primary font-bold">10:00 مساءً</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-5 sm:p-6 border-t-4 border-primary">
+                    <h3 class="text-lg sm:text-xl font-bold text-primary mb-4 border-b pb-2">👨‍👩‍👧 المتابعة والتقارير</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 bg-slate-50 p-4 rounded-lg border border-slate-100">
+                            <div class="bg-red-100 p-2 rounded-full text-red-600 shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-800 text-sm sm:text-base">إشعار الغياب</p>
+                                <p class="text-xs sm:text-sm text-gray-600 mt-1">يتم إخطار ولي الأمر فوراً في حالة عدم حضور الطالب للحصة.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 bg-slate-50 p-4 rounded-lg border border-slate-100">
+                            <div class="bg-blue-100 p-2 rounded-full text-primary shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-800 text-sm sm:text-base">التقارير الدورية</p>
+                                <p class="text-xs sm:text-sm text-gray-600 mt-1">تقرير أسبوعي مفصل بمستوى الطالب ودرجات الواجبات.</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </article>
 
-        <!-- Video 2: Sample EST March -->
-        <article class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden transition-shadow hover:shadow-md">
-            <div class="p-6 border-b border-slate-100 bg-slate-50">
-                <h2 class="text-2xl font-semibold text-slate-800 text-center">Sample EST March</h2>
-            </div>
-            <div class="video-container">
-                <div style="padding:75% 0 0 0;position:relative;">
-                    <iframe src="https://player.vimeo.com/video/1181905435?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="sample of march est exam.mp4"></iframe>
+            <!-- 4. Package Content -->
+            <section id="package" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in">
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-5 text-center border-b pb-2">🌐 محتويات الاشتراك</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">🎯 <strong>25 امتحان Real EST:</strong> شاملة فيديوهات الشرح.</div>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">📚 <strong>45 حصة Basics:</strong> مسجلة لشرح المنهج من الصفر.</div>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">📹 <strong>ريكورد الحصص اللايف:</strong> الـ 19 حصة تظل متاحة لك.</div>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">⏱️ <strong>Short Videos:</strong> للمراجعة السريعة والتركات.</div>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 sm:col-span-2 text-center text-primary font-bold">🗓️ إجمالي الحصص اللايف: 19 حصة مكثفة</div>
                 </div>
-            </div>
-        </article>
-
-        <!-- Video 3: Sample Questions -->
-        <article class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden transition-shadow hover:shadow-md">
-            <div class="p-6 border-b border-slate-100 bg-slate-50">
-                <h2 class="text-2xl font-semibold text-slate-800 text-center">Sample Questions</h2>
-            </div>
-            <div class="video-container">
-                <div style="padding: 52.5% 0 0 0; position: relative;">
-                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" title="sample of Qs mn 3mo ramez.mp4" src="https://player.vimeo.com/video/1181905450?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+                <div class="text-center font-bold text-primary mt-8 p-4 bg-blue-50 rounded-lg border border-blue-100">
+                    🔒 المحتوى متاح معك حتى انتهاء محاولة 15 مايو.
                 </div>
-            </div>
-        </article>
+            </section>
 
-    </main>
+            <!-- 5. Price & Payment Details -->
+            <section id="payment" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in">
+                
+                <!-- Updated Price Banner -->
+                <div class="bg-primary text-white rounded-xl shadow-lg p-6 sm:p-8 text-center relative overflow-hidden group mb-8">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-2 relative z-10">💸 تكلفة الكورس</h2>
+                    <div class="relative z-10">
+                        <p class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-1">4200 <span class="text-lg sm:text-xl font-medium">ج.م</span></p>
+                    </div>
+                    <p class="mt-3 text-xs sm:text-sm font-medium opacity-90 relative z-10">💯 خصم خاص بمناسبة محاولة مايو</p>
+                </div>
 
-    <!-- Vimeo Player API Script (Included only once at the bottom) -->
+                <h2 class="text-xl sm:text-2xl font-bold text-primary mb-6 border-b pb-2">💳 خيارات الدفع (Payment Options)</h2>
+
+                <!-- Important Note -->
+                <div class="bg-yellow-50 border-r-4 border-yellow-500 p-4 rounded-lg mb-6 shadow-sm">
+                    <p class="font-bold text-yellow-800 text-sm sm:text-base flex items-center gap-2">
+                        <span class="shrink-0">🚨</span>
+                        يجب ان تحتوي الصوره علي الرقم المرجعي وتاريخ التحويل
+                    </p>
+                </div>
+
+                <!-- Refund Policy & No Installments -->
+                <div class="bg-red-50 p-5 sm:p-6 rounded-xl border-2 border-red-100 mb-8 text-center flex flex-col justify-center items-center gap-3">
+                    <div class="w-full">
+                        <p class="font-bold text-red-700 text-base sm:text-lg md:text-xl">🛑 الفلوس غير مستردة</p>
+                        <p class="font-medium text-red-500 text-sm sm:text-base mt-1" dir="ltr">🚫 Money isn't refundable</p>
+                    </div>
+                    <div class="w-full sm:w-3/4 h-px bg-red-200 my-1"></div>
+                    <div class="w-full">
+                        <p class="font-bold text-red-700 text-base sm:text-lg md:text-xl">💳 لا يوجد نظام تقسيط</p>
+                        <p class="font-medium text-red-500 text-sm sm:text-base mt-1" dir="ltr">🚫 No installments available</p>
+                    </div>
+                </div>
+
+                <!-- Wallets Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                    
+                    <!-- Instapay -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border-2 border-dashed border-purple-300 relative transition-transform hover:-translate-y-1">
+                        <div class="absolute top-0 right-0 bg-purple-600 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">Instapay</div>
+                        <h4 class="text-base sm:text-lg font-black mb-4 mt-2 text-purple-700">إنستاباي</h4>
+                        <div class="bg-white p-3 rounded-lg shadow-sm text-center">
+                            <span class="font-mono font-bold text-base sm:text-lg select-all block" dir="ltr">01029453108</span>
+                        </div>
+                    </div>
+
+                    <!-- Vodafone Cash -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border-2 border-dashed border-red-300 relative transition-transform hover:-translate-y-1">
+                        <div class="absolute top-0 right-0 bg-red-600 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">Vodafone</div>
+                        <h4 class="text-base sm:text-lg font-black mb-4 mt-2 text-red-700">فودافون كاش</h4>
+                        <div class="space-y-2">
+                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
+                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01029453108</span>
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
+                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01012178525</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Etisalat Cash -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border-2 border-dashed border-green-400 relative transition-transform hover:-translate-y-1">
+                        <div class="absolute top-0 right-0 bg-green-600 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">Etisalat</div>
+                        <h4 class="text-base sm:text-lg font-black mb-4 mt-2 text-green-700">اتصالات كاش</h4>
+                        <div class="space-y-2">
+                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
+                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01154111644</span>
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
+                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01148505699</span>
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
+                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01147408483</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orange Cash -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border-2 border-dashed border-orange-400 relative transition-transform hover:-translate-y-1">
+                        <div class="absolute top-0 right-0 bg-orange-500 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">Orange</div>
+                        <h4 class="text-base sm:text-lg font-black mb-4 mt-2 text-orange-600">أورانج كاش</h4>
+                        <div class="space-y-2">
+                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
+                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01276190154</span>
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
+                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01274863906</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Registration Step (After Payment) -->
+                <div class="bg-blue-50 border-2 border-primary p-5 sm:p-8 rounded-2xl mt-10 text-center shadow-inner">
+                    <div class="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-primary text-white mb-4 sm:mb-5 shadow-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-primary mb-3">خطوة ما بعد الدفع</h3>
+                    <p class="text-gray-800 font-medium mb-6 text-sm sm:text-lg max-w-2xl mx-auto leading-relaxed">
+                        صوره التحويل بتتبعت في الفورم ده مع بيانات الطالب ،وبيتم مراجعه التحويل وبندخلك الجروب في خلال ٤ ساعات 🥰
+                    </p>
+                    <a href="https://student-manger.vercel.app/#/register/423f0a09-7741-4f76-ac99-4c7b3fe349c4" target="_blank" class="block sm:inline-block w-full sm:w-auto bg-primary text-white px-6 py-4 sm:px-8 sm:py-4 rounded-xl sm:rounded-full font-bold shadow-lg hover:bg-blue-700 transition transform hover:-translate-y-1 hover:shadow-xl text-sm sm:text-lg pulse-btn">
+                        📝 رفع الإيصال وتسجيل البيانات (اضغط هنا)
+                    </a>
+                </div>
+
+            </section>
+
+            <!-- 6. Contact Section -->
+            <section id="contact" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in text-center">
+                <h2 class="text-xl sm:text-2xl font-bold mb-6 text-primary border-b pb-2">💬 للاستفسار وتأكيد الحجز</h2>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="https://wa.me/201064208147?text=Hi+Mohamed" target="_blank" class="w-full sm:w-auto bg-primary text-white font-bold text-base sm:text-lg py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition pulse-btn">
+                        تواصل مع مستر محمد
+                    </a>
+                    <a href="https://wa.me/201151921542?text=Hi+Mohamed" target="_blank" class="w-full sm:w-auto bg-primary text-white font-bold text-base sm:text-lg py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition pulse-btn">
+                        تواصل مع مستر يوسف
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <footer class="text-center text-gray-500 text-xs sm:text-sm py-6 border-t border-gray-200 mt-4 sm:mt-8">
+            <p>© 2026 Math EST Course | May Attempt | All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <!-- Floating Buttons -->
+    <div class="fixed left-4 bottom-4 z-50 flex flex-col gap-3">
+        <a href="https://wa.me/201064208147?text=Hi+Mohamed" target="_blank" class="flex flex-col items-center justify-center bg-primary text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg pulse-btn text-[10px] sm:text-xs font-bold transition-transform hover:scale-110">
+            <span>محمد</span>
+        </a>
+        <a href="https://wa.me/201151921542?text=Hi+Mohamed" target="_blank" class="flex flex-col items-center justify-center bg-primary text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg pulse-btn text-[10px] sm:text-xs font-bold transition-transform hover:scale-110">
+            <span>يوسف</span>
+        </a>
+    </div>
+
+    <!-- Vimeo API Script -->
     <script src="https://player.vimeo.com/api/player.js"></script>
 </body>
 </html>
