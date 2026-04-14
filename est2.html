@@ -1,474 +1,332 @@
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Est2-Marks</title>
+    
+    <!-- ANTI-CACHE TAGS (Forces GitHub Pages to load the newest version) -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <title>تفاصيل كورس EST2 - Trial 16 May</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts and Colors -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+Arabic:wght@100..900&display=swap');
         :root {
-            --primary-color: #0F9E99;
-            --primary-hover: #0b7a76;
-            --bg-color: #EFE9E0;
-            --card-bg: #FFFFFF;
-            --text-color: #333333;
-            --accent-green: #25D366;
-            --error-red: #d32f2f;
+            /* Vibrant blue */
+            --primary-color: #2563EB; 
+            --background-color: #F8FAFC; /* Clean white/slate-50 background */
         }
-
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
+            font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: #333;
         }
-
-        #bgCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .container {
-            background-color: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(15, 158, 153, 0.15);
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        h2 {
-            color: var(--primary-color);
-            margin-top: 0;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        p {
-            color: #666;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .input-group {
-            position: relative;
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-color);
-        }
-
-        input {
-            width: 100%;
-            padding: 14px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 16px;
-            box-sizing: border-box;
-            outline: none;
-            transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
-        }
-
-        input:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(15, 158, 153, 0.1);
-        }
-
-        .primary-btn {
-            width: 100%;
-            padding: 14px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s, background-color 0.3s;
-        }
-
-        .primary-btn:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-1px);
-        }
-
-        .primary-btn:active {
-            transform: translateY(1px);
-        }
-
-        /* Styles for the Week Buttons */
-        .week-buttons-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            min-height: 0;
-        }
-
-        .week-btn {
-            padding: 8px 16px;
-            background-color: white;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .week-btn:hover {
-            background-color: rgba(15, 158, 153, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .week-btn.active {
-            background-color: var(--primary-color);
-            color: white;
-            box-shadow: 0 4px 10px rgba(15, 158, 153, 0.3);
-        }
-
-        #message {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            min-height: 20px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            white-space: pre-wrap;
-            text-align: left;
-            line-height: 1.5;
-            max-height: 300px;
-            overflow-y: auto;
-            border-radius: 8px;
-            padding: 10px;
-        }
+        .text-primary { color: var(--primary-color); }
+        .bg-primary { background-color: var(--primary-color); }
+        .border-primary { border-color: var(--primary-color); }
         
-        .success { 
-            color: #1a4d1a; 
-            background-color: #e8f5e9;
-            border: 1px solid var(--accent-green);
-        }
-        .error { 
-            color: var(--error-red); 
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #2563EB; border-radius: 4px; }
 
-        #message::-webkit-scrollbar {
-            width: 6px;
+        @keyframes pulse-blue {
+            0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
         }
-        #message::-webkit-scrollbar-thumb {
-            background-color: #ccc;
-            border-radius: 3px;
+        .pulse-btn { animation: pulse-blue 2s infinite; }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
         }
-
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-gray-800 relative">
 
-    <canvas id="bgCanvas"></canvas>
-
-    <div class="container">
-        <h2>EST2 Marks</h2>
-        <p>Enter Student Phone Number</p>
-        
-        <form id="studentForm">
-            <div class="input-group">
-                <input type="number" id="studentId" placeholder="e.g. 201064362698" required>
+    <!-- 0. Navbar -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-blue-100">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <span class="font-bold text-lg sm:text-xl text-primary flex items-center gap-2">
+                    <span class="truncate">Exams Trial 16 May</span>
+                </span>
+                <div class="hidden md:flex space-x-6 space-x-reverse text-sm font-medium">
+                    <a href="#home" class="hover:text-blue-600 transition">الرئيسية</a>
+                    <a href="#videos" class="hover:text-blue-600 transition">الحصص التجريبية</a>
+                    <a href="#schedule" class="hover:text-blue-600 transition">المواعيد</a>
+                    <a href="#payment" class="hover:text-blue-600 transition">الدفع والتسجيل</a>
+                    <a href="#contact" class="hover:text-blue-600 transition">تواصل معنا</a>
+                </div>
+                <a href="#payment" class="bg-primary text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg text-sm font-bold shadow hover:bg-blue-700 transition transform hover:scale-105">احجز الآن</a>
             </div>
-            <button type="submit" id="submitBtn" class="primary-btn">Check In</button>
-        </form>
+        </div>
+    </nav>
 
-        <!-- Container for dynamically generated week buttons -->
-        <div id="weekButtons" class="week-buttons-container"></div>
+    <div class="p-3 sm:p-6 lg:p-8">
+        <div class="mx-auto max-w-5xl">
 
-        <div id="message"></div>
+            <!-- 1. Header -->
+            <header id="home" class="bg-white rounded-2xl shadow-md p-5 sm:p-8 mb-8 border-r-4 border-primary overflow-hidden relative fade-in">
+                <div class="flex flex-col sm:flex-row items-center sm:items-start mb-4 space-y-4 sm:space-y-0 sm:space-x-4 sm:space-x-reverse text-center sm:text-right">
+                    <div class="flex-shrink-0 pt-1">
+                        <img src="https://ermathexpert.online/wp-content/uploads/2023/11/logo-red2-1.png" alt="Logo" class="w-20 h-20 sm:w-24 sm:h-24 object-contain">
+                    </div>
+                    <div>
+                        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2 sm:mb-1">كورس مكثف لمحاولة مايو</p>
+                        <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+                            أقوى كورس (EST2) <span class="text-primary block sm:inline mt-1 sm:mt-0">Trial 16 May</span> 📈
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 border-r-4 border-blue-500 p-4 rounded-lg shadow-sm mt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <p class="text-base sm:text-lg md:text-xl font-bold text-blue-800 leading-relaxed text-center sm:text-right">
+                        📢 متاح الآن الحجز لمحاولة 16 مايو: أقوى كورس EST2 لضمان الـ 800 بنظام متابعة كامل!
+                    </p>
+                    <div class="bg-primary text-white px-6 py-2 rounded-lg font-bold shadow-md shrink-0 whitespace-nowrap text-lg animate-bounce">
+                        🚀 البداية: 2 أبريل
+                    </div>
+                </div>
+            </header>
+
+            <!-- 2. Videos Showcase Section (Free Sessions from Google Drive) -->
+            <section id="videos" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in">
+                <h2 class="text-xl sm:text-2xl font-bold mb-6 border-b pb-2 text-primary">🎁 الحصص التجريبية المجانية (Free Sessions)</h2>
+                <p class="text-gray-700 mb-6 font-medium text-center sm:text-right">شاهد الحصص التجريبية لتتعرف على نظام الشرح قبل الحجز:</p>
+                
+                <div class="space-y-10 sm:space-y-12">
+                    <!-- Google Drive Video 1 -->
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-bold text-center mb-3 sm:mb-4 text-gray-800">الحصة التجريبية الأولى</h3>
+                        <div class="relative w-full max-w-4xl mx-auto shadow-lg rounded-xl overflow-hidden bg-black" style="padding-top: 56.25%;">
+                            <iframe src="https://drive.google.com/file/d/11xyhSI990igIVeYpeeD1Ymn4BfkwdVEx/preview" allow="autoplay; fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%; border:none;"></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Google Drive Video 2 -->
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-bold text-center mb-3 sm:mb-4 text-gray-800">الحصة التجريبية الثانية</h3>
+                        <div class="relative w-full max-w-4xl mx-auto shadow-lg rounded-xl overflow-hidden bg-black" style="padding-top: 56.25%;">
+                            <iframe src="https://drive.google.com/file/d/1RTljmlFgvROU5J9RIj5_R8HK_97PtEQ8/preview" allow="autoplay; fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%; border:none;"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Schedule Section -->
+            <div id="schedule" class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 fade-in">
+                <div class="bg-white rounded-xl shadow-md p-5 sm:p-6 border-t-4 border-primary">
+                    <h3 class="text-lg sm:text-xl font-bold text-primary mb-4 border-b pb-2">🗓️ مواعيد الحصص</h3>
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="flex items-center justify-between bg-blue-50 p-3 rounded-lg border border-blue-100 mb-2">
+                            <span class="font-bold text-blue-800">تاريخ البداية:</span>
+                            <span class="bg-white text-primary font-black px-3 py-1 rounded shadow-sm">2 أبريل (April 2)</span>
+                        </li>
+                        <li class="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                            <strong class="text-primary block mb-3 text-base sm:text-lg flex items-center gap-2">
+                                ⏰ الجدول الأسبوعي (بتوقيت القاهرة):
+                            </strong>
+                            <div class="grid grid-cols-1 gap-3">
+                                <div class="flex justify-between items-center bg-white p-3 rounded border border-slate-100 shadow-sm">
+                                    <span class="font-bold text-gray-800">السبت</span>
+                                    <span class="text-primary font-bold">4:00 عصراً</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-white p-3 rounded border border-slate-100 shadow-sm">
+                                    <span class="font-bold text-gray-800">الإثنين</span>
+                                    <span class="text-primary font-bold">4:00 عصراً</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-white p-3 rounded border border-slate-100 shadow-sm">
+                                    <span class="font-bold text-gray-800">الخميس</span>
+                                    <span class="text-primary font-bold">4:00 عصراً</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-5 sm:p-6 border-t-4 border-primary">
+                    <h3 class="text-lg sm:text-xl font-bold text-primary mb-4 border-b pb-2">👨‍👩‍👧 المتابعة والتقارير</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 bg-slate-50 p-4 rounded-lg border border-slate-100">
+                            <div class="bg-red-100 p-2 rounded-full text-red-600 shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-800 text-sm sm:text-base">إشعار الغياب</p>
+                                <p class="text-xs sm:text-sm text-gray-600 mt-1">يتم إخطار ولي الأمر فوراً في حالة عدم حضور الطالب للحصة.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 bg-slate-50 p-4 rounded-lg border border-slate-100">
+                            <div class="bg-blue-100 p-2 rounded-full text-primary shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-800 text-sm sm:text-base">التقارير الدورية</p>
+                                <p class="text-xs sm:text-sm text-gray-600 mt-1">تقرير أسبوعي مفصل بمستوى الطالب ودرجات الواجبات.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 4. Price & Payment Details -->
+            <section id="payment" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in">
+                
+                <!-- Updated Price Banner -->
+                <div class="bg-primary text-white rounded-xl shadow-lg p-6 sm:p-8 text-center relative overflow-hidden group mb-8">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-2 relative z-10">💸 تكلفة الكورس</h2>
+                    <div class="relative z-10">
+                        <p class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-1">6000 <span class="text-lg sm:text-xl font-medium">ج.م</span></p>
+                    </div>
+                    <p class="mt-3 text-xs sm:text-sm font-medium opacity-90 relative z-10">💯 خصم خاص بمناسبة محاولة مايو</p>
+                </div>
+
+                <h2 class="text-xl sm:text-2xl font-bold text-primary mb-6 border-b pb-2">💳 خيارات الدفع (Payment Options)</h2>
+
+                <!-- Important Note -->
+                <div class="bg-yellow-50 border-r-4 border-yellow-500 p-4 rounded-lg mb-6 shadow-sm">
+                    <p class="font-bold text-yellow-800 text-sm sm:text-base flex items-center gap-2">
+                        <span class="shrink-0">🚨</span>
+                        يجب ان تحتوي الصوره علي الرقم المرجعي وتاريخ التحويل
+                    </p>
+                </div>
+
+                <!-- Refund Policy -->
+                <div class="bg-red-50 p-5 sm:p-6 rounded-xl border-2 border-red-100 mb-8 text-center flex flex-col justify-center items-center gap-3">
+                    <div class="w-full">
+                        <p class="font-bold text-red-700 text-base sm:text-lg md:text-xl">🛑 الفلوس غير مستردة</p>
+                        <p class="font-medium text-red-500 text-sm sm:text-base mt-1" dir="ltr">🚫 Money isn't refundable</p>
+                    </div>
+                </div>
+
+                <!-- Wallets Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                    
+                    <!-- Instapay -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border-2 border-dashed border-purple-300 relative transition-transform hover:-translate-y-1">
+                        <div class="absolute top-0 right-0 bg-purple-600 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">Instapay</div>
+                        <h4 class="text-base sm:text-lg font-black mb-4 mt-2 text-purple-700">إنستاباي</h4>
+                        <div class="bg-white p-3 rounded-lg shadow-sm text-center">
+                            <span class="font-mono font-bold text-base sm:text-lg select-all block" dir="ltr">01029453108</span>
+                        </div>
+                    </div>
+
+                    <!-- Vodafone Cash -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border-2 border-dashed border-red-300 relative transition-transform hover:-translate-y-1">
+                        <div class="absolute top-0 right-0 bg-red-600 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">Vodafone</div>
+                        <h4 class="text-base sm:text-lg font-black mb-4 mt-2 text-red-700">فودافون كاش</h4>
+                        <div class="space-y-2">
+                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
+                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01029453108</span>
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
+                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01012178525</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Etisalat Cash -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border-2 border-dashed border-green-400 relative transition-transform hover:-translate-y-1">
+                        <div class="absolute top-0 right-0 bg-green-600 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">Etisalat</div>
+                        <h4 class="text-base sm:text-lg font-black mb-4 mt-2 text-green-700">اتصالات كاش</h4>
+                        <div class="space-y-2">
+                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
+                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01154111644</span>
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
+                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01148505699</span>
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
+                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01147408483</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orange Cash -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border-2 border-dashed border-orange-400 relative transition-transform hover:-translate-y-1">
+                        <div class="absolute top-0 right-0 bg-orange-500 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">Orange</div>
+                        <h4 class="text-base sm:text-lg font-black mb-4 mt-2 text-orange-600">أورانج كاش</h4>
+                        <div class="space-y-2">
+                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
+                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01276190154</span>
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
+                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01274863906</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Registration Step (After Payment) -->
+                <div class="bg-blue-50 border-2 border-primary p-2 sm:p-6 rounded-2xl mt-10 text-center shadow-inner">
+                    <div class="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-primary text-white mb-4 sm:mb-5 shadow-md mt-4 sm:mt-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-primary mb-3">خطوة ما بعد الدفع</h3>
+                    <p class="text-gray-800 font-medium mb-6 text-sm sm:text-lg max-w-2xl mx-auto leading-relaxed px-2">
+                        صوره التحويل بتتبعت في الفورم ده مع بيانات الطالب ،وبيتم مراجعه التحويل وبندخلك الجروب في خلال ٤ ساعات 🥰
+                    </p>
+                    
+                    <!-- Embedded Registration Form -->
+                    <div class="w-full bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 h-[600px] sm:h-[800px]">
+                        <iframe src="https://student-manger.vercel.app/#/register/86251e6a-e5bf-4613-b062-aa696f79673d" class="w-full h-full" frameborder="0" style="border:none;"></iframe>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- 5. Contact Section -->
+            <section id="contact" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in text-center">
+                <h2 class="text-xl sm:text-2xl font-bold mb-6 text-primary border-b pb-2">💬 للاستفسار وتأكيد الحجز</h2>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="https://wa.me/201014336213?text=Hi+Malak" target="_blank" class="w-full sm:w-auto bg-primary text-white font-bold text-base sm:text-lg py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition pulse-btn flex items-center justify-center gap-2">
+                        تواصل مع مساعدة ملك
+                        <span dir="ltr" class="text-sm opacity-80">(01014336213)</span>
+                    </a>
+                    <a href="https://wa.me/201508348458?text=Hi+Marwa" target="_blank" class="w-full sm:w-auto bg-primary text-white font-bold text-base sm:text-lg py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition pulse-btn flex items-center justify-center gap-2">
+                        تواصل مع مساعدة مروة
+                        <span dir="ltr" class="text-sm opacity-80">(01508348458)</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <footer class="text-center text-gray-500 text-xs sm:text-sm py-6 border-t border-gray-200 mt-4 sm:mt-8">
+            <p>© 2026 EST2 Course | May Attempt | All Rights Reserved</p>
+        </footer>
     </div>
 
-    <script>
-        /* --- Form Handling --- */
-        document.getElementById('studentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const input = document.getElementById('studentId');
-            const btn = document.getElementById('submitBtn');
-            const msg = document.getElementById('message');
-            const weekContainer = document.getElementById('weekButtons');
-            
-            if(input.value.length < 3) {
-                msg.textContent = "Please enter a valid student number.";
-                msg.className = "error";
-                msg.style.opacity = "1";
-                weekContainer.innerHTML = "";
-                return;
-            }
-
-            // Loading state
-            btn.innerHTML = "Processing...";
-            btn.disabled = true;
-            btn.style.opacity = "0.8";
-            msg.style.opacity = "0";
-            msg.className = "";
-            weekContainer.innerHTML = ""; // Clear previous buttons
-
-            const webhookUrl = "https://api.mark-attendance.com/webhook/est2-grades";
-
-            // Send data to Webhook
-            fetch(webhookUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ 
-                    student_number: input.value,
-                    timestamp: new Date().toISOString()
-                })
-            })
-            .then(async response => {
-                const text = await response.text();
-                
-                // Reset main button
-                btn.innerHTML = "Check In";
-                btn.disabled = false;
-                btn.style.opacity = "1";
-
-                if (response.ok) {
-                    try {
-                        let json = JSON.parse(text);
-
-                        // --- Robustness Update Start ---
-                        // Sometimes webhooks return stringified JSON inside a string
-                        if (typeof json === 'string') {
-                            try {
-                                json = JSON.parse(json);
-                            } catch (e) {
-                                // It was just a regular string, keep as is
-                            }
-                        }
-                        
-                        // Detect where the array is hiding
-                        let dataArray = null;
-                        if (Array.isArray(json)) {
-                            dataArray = json;
-                        } else if (json && Array.isArray(json.data)) {
-                            dataArray = json.data;
-                        } else if (json && Array.isArray(json.output)) {
-                            dataArray = json.output;
-                        }
-                        // --- Robustness Update End ---
-
-                        if (dataArray && dataArray.length > 0) {
-                            
-                            // Sort weeks numerically
-                            // Helper to handle "Week" or "week"
-                            const getWeek = (item) => item.Week || item.week;
-                            
-                            dataArray.sort((a, b) => {
-                                const wA = parseInt(getWeek(a)) || 0;
-                                const wB = parseInt(getWeek(b)) || 0;
-                                return wA - wB;
-                            });
-
-                            let buttonsCreated = false;
-
-                            // Generate Buttons
-                            dataArray.forEach(item => {
-                                const weekNum = getWeek(item);
-                                if (weekNum) {
-                                    buttonsCreated = true;
-                                    const weekBtn = document.createElement('button');
-                                    weekBtn.type = "button";
-                                    weekBtn.className = "week-btn";
-                                    weekBtn.textContent = `Week ${weekNum}`;
-                                    
-                                    weekBtn.onclick = function() {
-                                        // Handle styling active state
-                                        document.querySelectorAll('.week-btn').forEach(b => b.classList.remove('active'));
-                                        this.classList.add('active');
-                                        
-                                        // Display the message
-                                        let displayText = item.message || item.Message || "No data for this week.";
-                                        
-                                        // Clean up text format
-                                        if (displayText.startsWith('"') && displayText.endsWith('"')) {
-                                            displayText = displayText.slice(1, -1);
-                                        }
-                                        displayText = displayText.replace(/\\n/g, '\n');
-
-                                        msg.innerText = displayText;
-                                        msg.className = "success";
-                                        msg.style.opacity = "1";
-                                    };
-
-                                    weekContainer.appendChild(weekBtn);
-                                }
-                            });
-
-                            if (buttonsCreated) {
-                                // Prompt user to select
-                                msg.textContent = "Please select a week above.";
-                                msg.style.opacity = "1";
-                                msg.style.color = "#666";
-                                msg.className = "";
-                            } else {
-                                // Fallback if array exists but no 'Week' keys
-                                msg.innerText = JSON.stringify(json, null, 2);
-                                msg.className = "success";
-                                msg.style.opacity = "1";
-                            }
-
-                        } else {
-                            // Handle Single Object / Text Response
-                            let displayText = "";
-                            if (json.message) displayText = json.message;
-                            else if (json.output) displayText = json.output;
-                            else if (typeof json === 'object') displayText = JSON.stringify(json, null, 2);
-                            else displayText = String(json);
-
-                            displayText = displayText.replace(/\\n/g, '\n');
-                            if (displayText.startsWith('"') && displayText.endsWith('"')) {
-                                displayText = displayText.slice(1, -1);
-                            }
-
-                            msg.innerText = displayText;
-                            msg.className = "success";
-                            msg.style.opacity = "1";
-                        }
-
-                    } catch (e) {
-                        // Not JSON, just display raw text
-                        console.error("Parse error", e);
-                        msg.innerText = text.replace(/\\n/g, '\n');
-                        msg.className = "success";
-                        msg.style.opacity = "1";
-                    }
-                } else {
-                    msg.textContent = "Server Error: " + response.status;
-                    msg.className = "error";
-                    msg.style.opacity = "1";
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                btn.innerHTML = "Check In";
-                btn.disabled = false;
-                btn.style.opacity = "1";
-                
-                msg.textContent = "Connection error. Please check internet.";
-                msg.className = "error";
-                msg.style.opacity = "1";
-            });
-        });
-
-        /* --- Canvas Background Animation --- */
-        const canvas = document.getElementById('bgCanvas');
-        const ctx = canvas.getContext('2d');
-        
-        let width, height;
-        let particles = [];
-        const colors = ['#0F9E99', '#0b7a76', '#25D366'];
-
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        }
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 1;
-                this.vy = (Math.random() - 0.5) * 1;
-                this.size = Math.random() * 3 + 1;
-                this.color = colors[Math.floor(Math.random() * colors.length)];
-                this.alpha = Math.random() * 0.5 + 0.1;
-            }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
-            }
-            draw() {
-                ctx.globalAlpha = this.alpha;
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            const particleCount = Math.min(window.innerWidth / 10, 100);
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            ctx.strokeStyle = '#0F9E99';
-            ctx.lineWidth = 0.5;
-
-            for (let i = 0; i < particles.length; i++) {
-                let p = particles[i];
-                p.update();
-                p.draw();
-
-                for (let j = i + 1; j < particles.length; j++) {
-                    let p2 = particles[j];
-                    let dx = p.x - p2.x;
-                    let dy = p.y - p2.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 100) {
-                        ctx.globalAlpha = 0.1 * (1 - distance / 100);
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animate);
-        }
-
-        window.addEventListener('resize', () => {
-            resize();
-            initParticles();
-        });
-
-        resize();
-        initParticles();
-        animate();
-    </script>
+    <!-- Floating Buttons -->
+    <div class="fixed left-4 bottom-4 z-50 flex flex-col gap-3">
+        <a href="https://wa.me/201014336213?text=Hi+Malak" target="_blank" class="flex flex-col items-center justify-center bg-primary text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg pulse-btn text-[10px] sm:text-xs font-bold transition-transform hover:scale-110">
+            <span>ملك</span>
+        </a>
+        <a href="https://wa.me/201508348458?text=Hi+Marwa" target="_blank" class="flex flex-col items-center justify-center bg-primary text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg pulse-btn text-[10px] sm:text-xs font-bold transition-transform hover:scale-110">
+            <span>مروة</span>
+        </a>
+    </div>
 
 </body>
 </html>
+
+
+
+```
