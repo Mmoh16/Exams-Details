@@ -4,28 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- ANTI-CACHE TAGS (Forces GitHub Pages to load the newest version) -->
+    <!-- ANTI-CACHE TAGS -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 
-    <title>تفاصيل كورس Math EST - Trial May</title>
+    <title>تفاصيل كورس Math EST - Trial July</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Fonts and Colors -->
+    <!-- Fonts -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+Arabic:wght@100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&family=Inter:wght@100..900&display=swap');
         :root {
-            /* Changed to a vibrant blue */
             --primary-color: #2563EB; 
-            --background-color: #F8FAFC; /* Clean white/slate-50 background */
+            --background-color: #F8FAFC;
         }
         body {
             font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
             background-color: var(--background-color);
-            color: #333;
+            color: #1E293B;
         }
         .text-primary { color: var(--primary-color); }
         .bg-primary { background-color: var(--primary-color); }
@@ -33,7 +32,7 @@
         
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #2563EB; border-radius: 4px; } /* Updated scrollbar */
+        ::-webkit-scrollbar-thumb { background: #2563EB; border-radius: 4px; }
 
         @keyframes pulse-blue {
             0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
@@ -53,12 +52,17 @@
 </head>
 <body class="bg-slate-50 text-gray-800 relative">
 
+    <!-- Notification Toast (for copying feedback) -->
+    <div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white px-4 py-2 rounded-lg shadow-lg text-sm font-semibold opacity-0 transition-opacity duration-300 pointer-events-none">
+        تم نسخ الرقم بنجاح!
+    </div>
+
     <!-- 0. Navbar -->
     <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-blue-100">
         <div class="max-w-5xl mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <span class="font-bold text-lg sm:text-xl text-primary flex items-center gap-2">
-                    <span class="truncate">Exams Trial 15 May</span>
+                    <span class="truncate">Exams Trial 3 July</span>
                 </span>
                 <div class="hidden md:flex space-x-6 space-x-reverse text-sm font-medium">
                     <a href="#home" class="hover:text-blue-600 transition">الرئيسية</a>
@@ -86,39 +90,39 @@
                     <div>
                         <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2 sm:mb-1">كورس مكثف</p>
                         <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
-                            أقوى كورس (Math EST) <span class="text-primary block sm:inline mt-1 sm:mt-0">Trial 15 May</span> 📈
+                            أقوى كورس EST1 <span class="text-primary block sm:inline mt-1 sm:mt-0">Trial 3 July</span> 📈
                         </h1>
                     </div>
                 </div>
 
                 <div class="bg-blue-50 border-r-4 border-blue-500 p-4 rounded-lg shadow-sm mt-6">
                     <p class="text-base sm:text-lg md:text-xl font-bold text-blue-800 leading-relaxed text-center sm:text-right">
-                        📢 متاح الآن الحجز لمحاولة 15 مايو: أقوى كورس ماث لضمان الـ 800 بنظام متابعة كامل!
+                        📢 متاح الآن الحجز لمراجعات محاولة 3 يوليو: أقوى كورس ماث لضمان الـ 800 بنظام متابعة كامل!
                     </p>
                 </div>
             </header>
 
-            <!-- 2. Schedule Section (Reordered) -->
+            <!-- 2. Schedule Section -->
             <section id="schedule" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in border-t-4 border-primary">
                 <h2 class="text-xl sm:text-2xl font-bold text-primary mb-6 border-b pb-2">🗓️ مواعيد الحصص اللايف</h2>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 flex justify-between items-center shadow-sm">
                         <span class="font-bold text-blue-800">تاريخ البداية:</span>
-                        <span class="bg-white text-primary font-black px-4 py-1 rounded shadow-sm text-lg">9 أبريل</span>
+                        <span class="bg-white text-primary font-black px-4 py-1 rounded shadow-sm text-lg">31 مايو</span>
                     </div>
                     <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 flex justify-between items-center shadow-sm">
                         <span class="font-bold text-gray-800">موقف الكورس الحالي:</span>
                         <div class="flex items-center gap-2">
-                            <span id="dynamic-session-count" class="bg-primary text-white font-black px-4 py-1 rounded-full shadow-md text-lg inline-block text-center" style="min-width: 2.5rem;" dir="ltr">-1</span>
-                            <span class="text-sm text-gray-500 font-bold">/ 19 حصة</span>
+                            <span id="dynamic-session-count" class="bg-primary text-white font-black px-4 py-1 rounded-full shadow-md text-lg inline-block text-center" style="min-width: 2.5rem;" dir="ltr">0</span>
+                            <span class="text-sm text-gray-500 font-bold">/ 18 حصة</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="bg-slate-50 p-5 rounded-lg border border-slate-100">
                     <strong class="text-primary block mb-4 text-lg flex items-center gap-2">
-                        ⏰ الجدول الأسبوعي (بتوقيت القاهرة):
+                        ⏰ الجدول الأسبوعي الأساسي (بتوقيت القاهرة):
                     </strong>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-slate-100 shadow-sm">
@@ -137,25 +141,30 @@
                 </div>
             </section>
 
-            <!-- 3. Price & Payment Details (Reordered) -->
+            <!-- 3. Price & Payment Details -->
             <section id="payment" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in">
                 
-                <!-- Updated Price Banner -->
+                <!-- Price Banner -->
                 <div class="bg-primary text-white rounded-xl shadow-lg p-6 sm:p-8 text-center relative overflow-hidden group mb-8">
                     <h2 class="text-xl sm:text-2xl font-bold mb-2 relative z-10">💸 تكلفة الكورس</h2>
-                    <div class="relative z-10">
-                        <p class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-1">4200 <span class="text-lg sm:text-xl font-medium">ج.م</span></p>
+                    <div class="relative z-10 flex flex-col items-center justify-center">
+                        <p class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-1">
+                            4000 <span class="text-lg sm:text-xl font-medium">ج.م</span>
+                        </p>
+                        <p class="text-lg sm:text-xl font-bold line-through text-blue-200 opacity-80 mt-1">
+                            5000 ج.م
+                        </p>
                     </div>
-                    <p class="mt-3 text-xs sm:text-sm font-medium opacity-90 relative z-10">💯 خصم خاص بمناسبة محاولة مايو</p>
+                    <p class="mt-3 text-xs sm:text-sm font-medium opacity-90 relative z-10">💯 خصم خاص بمناسبة محاولة 3 يوليو</p>
                 </div>
 
-                <h2 class="text-xl sm:text-2xl font-bold text-primary mb-6 border-b pb-2">💳 خيارات الدفع (Payment Options)</h2>
+                <h2 class="text-xl sm:text-2xl font-bold text-primary mb-6 border-b pb-2">💳 خيارات الدفع (اضغط على الرقم للنسخ المباشر)</h2>
 
                 <!-- Important Note -->
                 <div class="bg-yellow-50 border-r-4 border-yellow-500 p-4 rounded-lg mb-6 shadow-sm">
                     <p class="font-bold text-yellow-800 text-sm sm:text-base flex items-center gap-2">
                         <span class="shrink-0">🚨</span>
-                        يجب ان تحتوي الصوره علي الرقم المرجعي وتاريخ التحويل
+                        يجب أن تحتوي الصورة المرسلة على الرقم المرجعي وتاريخ التحويل بالكامل.
                     </p>
                 </div>
 
@@ -172,15 +181,20 @@
                     </div>
                 </div>
 
-                <!-- Wallets Grid -->
+                <!-- Wallets Grid with Copy Feature -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                     
                     <!-- Instapay -->
                     <div class="bg-slate-50 p-5 rounded-2xl border-2 border-dashed border-purple-300 relative transition-transform hover:-translate-y-1">
                         <div class="absolute top-0 right-0 bg-purple-600 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">Instapay</div>
                         <h4 class="text-base sm:text-lg font-black mb-4 mt-2 text-purple-700">إنستاباي</h4>
-                        <div class="bg-white p-3 rounded-lg shadow-sm text-center">
-                            <span class="font-mono font-bold text-base sm:text-lg select-all block" dir="ltr">01029453108</span>
+                        <div class="bg-white p-3 rounded-lg shadow-sm text-center flex items-center justify-between gap-2 border border-purple-100">
+                            <span id="num-instapay" class="font-mono font-bold text-base sm:text-lg select-all text-slate-700" dir="ltr">01029453108</span>
+                            <button onclick="copyToClipboard('01029453108')" class="bg-purple-100 hover:bg-purple-200 text-purple-700 p-1.5 rounded-md transition" title="نسخ الرقم">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                </svg>
+                            </button>
                         </div>
                     </div>
 
@@ -189,17 +203,29 @@
                         <div class="absolute top-0 right-0 bg-red-600 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">Vodafone</div>
                         <h4 class="text-base sm:text-lg font-black mb-4 mt-2 text-red-700">فودافون كاش</h4>
                         <div class="space-y-2">
-                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
-                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01029453108</span>
+                            <div class="bg-white p-2 rounded-lg shadow-sm flex items-center justify-between border border-red-100">
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-700" dir="ltr">01029453108</span>
+                                <button onclick="copyToClipboard('01029453108')" class="bg-red-50 hover:bg-red-100 text-red-600 p-1.5 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                </button>
                             </div>
-                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
-                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01012178525</span>
+                            <div class="bg-white p-2 rounded-lg shadow-sm flex items-center justify-between border border-red-100">
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-700" dir="ltr">01012178525</span>
+                                <button onclick="copyToClipboard('01012178525')" class="bg-red-50 hover:bg-red-100 text-red-600 p-1.5 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                </button>
                             </div>
-                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
-                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01012758968</span>
+                            <div class="bg-white p-2 rounded-lg shadow-sm flex items-center justify-between border border-red-100">
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-700" dir="ltr">01012758968</span>
+                                <button onclick="copyToClipboard('01012758968')" class="bg-red-50 hover:bg-red-100 text-red-600 p-1.5 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                </button>
                             </div>
-                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
-                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01012754172</span>
+                            <div class="bg-white p-2 rounded-lg shadow-sm flex items-center justify-between border border-red-100">
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-700" dir="ltr">01012754172</span>
+                                <button onclick="copyToClipboard('01012754172')" class="bg-red-50 hover:bg-red-100 text-red-600 p-1.5 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -209,14 +235,23 @@
                         <div class="absolute top-0 right-0 bg-green-600 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">Etisalat</div>
                         <h4 class="text-base sm:text-lg font-black mb-4 mt-2 text-green-700">اتصالات كاش</h4>
                         <div class="space-y-2">
-                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
-                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01154111644</span>
+                            <div class="bg-white p-2 rounded-lg shadow-sm flex items-center justify-between border border-green-100">
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-700" dir="ltr">01154111644</span>
+                                <button onclick="copyToClipboard('01154111644')" class="bg-green-50 hover:bg-green-100 text-green-600 p-1.5 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                </button>
                             </div>
-                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
-                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01148505699</span>
+                            <div class="bg-white p-2 rounded-lg shadow-sm flex items-center justify-between border border-green-100">
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-700" dir="ltr">01148505699</span>
+                                <button onclick="copyToClipboard('01148505699')" class="bg-green-50 hover:bg-green-100 text-green-600 p-1.5 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                </button>
                             </div>
-                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
-                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01147408483</span>
+                            <div class="bg-white p-2 rounded-lg shadow-sm flex items-center justify-between border border-green-100">
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-700" dir="ltr">01147408483</span>
+                                <button onclick="copyToClipboard('01147408483')" class="bg-green-50 hover:bg-green-100 text-green-600 p-1.5 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -226,18 +261,24 @@
                         <div class="absolute top-0 right-0 bg-orange-500 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">Orange</div>
                         <h4 class="text-base sm:text-lg font-black mb-4 mt-2 text-orange-600">أورانج كاش</h4>
                         <div class="space-y-2">
-                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
-                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01276190154</span>
+                            <div class="bg-white p-2 rounded-lg shadow-sm flex items-center justify-between border border-orange-100">
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-700" dir="ltr">01276190154</span>
+                                <button onclick="copyToClipboard('01276190154')" class="bg-orange-50 hover:bg-orange-100 text-orange-600 p-1.5 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                </button>
                             </div>
-                            <div class="bg-white p-2 rounded-lg shadow-sm text-center">
-                                <span class="font-mono font-bold text-sm sm:text-base select-all block" dir="ltr">01274863906</span>
+                            <div class="bg-white p-2 rounded-lg shadow-sm flex items-center justify-between border border-orange-100">
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-700" dir="ltr">01274863906</span>
+                                <button onclick="copyToClipboard('01274863906')" class="bg-orange-50 hover:bg-orange-100 text-orange-600 p-1.5 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                </button>
                             </div>
                         </div>
                     </div>
 
                 </div>
 
-                <!-- Registration Step (After Payment) -->
+                <!-- Registration Step -->
                 <div class="bg-blue-50 border-2 border-primary p-5 sm:p-8 rounded-2xl mt-10 text-center shadow-inner">
                     <div class="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-primary text-white mb-4 sm:mb-5 shadow-md">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -246,33 +287,33 @@
                     </div>
                     <h3 class="text-xl sm:text-2xl font-bold text-primary mb-3">خطوة ما بعد الدفع</h3>
                     <p class="text-gray-800 font-medium mb-6 text-sm sm:text-lg max-w-2xl mx-auto leading-relaxed">
-                        صوره التحويل بتتبعت في الفورم ده مع بيانات الطالب ،وبيتم مراجعه التحويل وبندخلك الجروب في خلال ٤ ساعات 🥰
+                        صورة التحويل تُرسل في الاستمارة أدناه مع بيانات الطالب، وسيتم مراجعة التحويل وإضافتك للجروب المخصص في خلال ٤ ساعات 🥰
                     </p>
-                    <a href="https://student-manger.vercel.app/#/register/423f0a09-7741-4f76-ac99-4c7b3fe349c4" target="_blank" class="block sm:inline-block w-full sm:w-auto bg-primary text-white px-6 py-4 sm:px-8 sm:py-4 rounded-xl sm:rounded-full font-bold shadow-lg hover:bg-blue-700 transition transform hover:-translate-y-1 hover:shadow-xl text-sm sm:text-lg pulse-btn">
+                    <a href="https://student-manger.vercel.app/#/register/f71debbf-1ab6-4245-819b-6db3f637fcdd" target="_blank" class="block sm:inline-block w-full sm:w-auto bg-primary text-white px-6 py-4 sm:px-8 sm:py-4 rounded-xl sm:rounded-full font-bold shadow-lg hover:bg-blue-700 transition transform hover:-translate-y-1 hover:shadow-xl text-sm sm:text-lg pulse-btn">
                         📝 رفع الإيصال وتسجيل البيانات (اضغط هنا)
                     </a>
                 </div>
 
             </section>
 
-            <!-- 4. Package Content (Reordered) -->
+            <!-- 4. Package Content -->
             <section id="package" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in">
                 <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-5 text-center border-b pb-2">🌐 محتويات الاشتراك</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">🎯 <strong>25 امتحان Real EST:</strong> شاملة فيديوهات الشرح.</div>
-                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">📚 <strong>45 حصة Basics:</strong> مسجلة لشرح المنهج من الصفر.</div>
-                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">📹 <strong>ريكورد الحصص اللايف:</strong> الـ 19 حصة تظل متاحة لك.</div>
-                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">⏱️ <strong>Short Videos:</strong> للمراجعة السريعة والتركات.</div>
-                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 sm:col-span-2 text-center text-primary font-bold">🗓️ إجمالي الحصص اللايف: 19 حصة مكثفة</div>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">🎯 <strong>25 امتحان Real EST:</strong> شاملة فيديوهات الشرح بالتفصيل.</div>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">📚 <strong>45 حصة Basics:</strong> مسجلة لشرح المنهج كاملاً من الصفر.</div>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">📹 <strong>تسجيلات الحصص اللايف:</strong> تظل الـ 18 حصة متاحة بالكامل للمراجعة.</div>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">⏱️ <strong>فيديوهات مراجعة سريعة (Short Videos):</strong> لأهم الأفكار والتركات.</div>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 sm:col-span-2 text-center text-primary font-bold">🗓️ إجمالي الحصص اللايف: 18 حصة مكثفة</div>
                 </div>
                 <div class="text-center font-bold text-primary mt-8 p-4 bg-blue-50 rounded-lg border border-blue-100">
-                    🔒 المحتوى متاح معك حتى انتهاء محاولة 15 مايو.
+                    🔒 المحتوى بالكامل يظل متاحاً معك حتى انتهاء محاولة 3 يوليو.
                 </div>
             </section>
 
-            <!-- 5. Follow Up (Extracted and Reordered) -->
+            <!-- 5. Follow Up -->
             <section id="followup" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in">
-                <h2 class="text-xl sm:text-2xl font-bold text-primary mb-6 border-b pb-2">👨‍👩‍👧 المتابعة والتقارير</h2>
+                <h2 class="text-xl sm:text-2xl font-bold text-primary mb-6 border-b pb-2">👨‍👩‍👧 المتابعة والتقارير للأهالي</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div class="flex items-start gap-4 bg-slate-50 p-5 rounded-lg border border-slate-100">
                         <div class="bg-red-100 p-3 rounded-full text-red-600 shrink-0 mt-1">
@@ -281,8 +322,8 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="font-bold text-gray-800 text-lg mb-1">إشعار الغياب</p>
-                            <p class="text-sm text-gray-600 leading-relaxed">يتم إخطار ولي الأمر فوراً في حالة عدم حضور الطالب للحصة.</p>
+                            <p class="font-bold text-gray-800 text-lg mb-1">إخطار الغياب</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">يتم إرسال رسالة فورية لولي الأمر فوراً في حال عدم حضور الطالب للحصة.</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-4 bg-slate-50 p-5 rounded-lg border border-slate-100">
@@ -292,19 +333,18 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="font-bold text-gray-800 text-lg mb-1">التقارير الدورية</p>
-                            <p class="text-sm text-gray-600 leading-relaxed">تقرير أسبوعي مفصل بمستوى الطالب ودرجات الواجبات.</p>
+                            <p class="font-bold text-gray-800 text-lg mb-1">تقارير أسبوعية</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">تقرير أداء تفصيلي يوضح درجات الامتحانات والواجبات والمشاركة المستمرة.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- 6. Videos Showcase Section (Reordered) -->
-            <section id="videos" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in">
+            <!-- 6. Videos Showcase Section -->
+            <!-- <section id="videos" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in">
                 <h2 class="text-xl sm:text-2xl font-bold mb-6 border-b pb-2 text-primary">🎥 الفيديوهات التعريفية ونماذج الشرح</h2>
                 
                 <div class="space-y-10 sm:space-y-12">
-                    <!-- Video 1 -->
                     <div>
                         <h3 class="text-lg sm:text-xl font-bold text-center mb-3 sm:mb-4 text-gray-800">مقدمة الكورس (Introduction)</h3>
                         <div class="relative w-full max-w-3xl mx-auto shadow-lg rounded-xl overflow-hidden bg-black" style="padding-top: 52.5%;">
@@ -312,7 +352,6 @@
                         </div>
                     </div>
 
-                    <!-- Video 2 -->
                     <div>
                         <h3 class="text-lg sm:text-xl font-bold text-center mb-3 sm:mb-4 text-gray-800">نموذج لشرح محاولة مايو (Sample EST May)</h3>
                         <div class="relative w-full max-w-3xl mx-auto shadow-lg rounded-xl overflow-hidden bg-black" style="padding-top: 75%;">
@@ -320,7 +359,6 @@
                         </div>
                     </div>
 
-                    <!-- Video 3 -->
                     <div>
                         <h3 class="text-lg sm:text-xl font-bold text-center mb-3 sm:mb-4 text-gray-800">حل أسئلة وتدريبات (Sample Questions)</h3>
                         <div class="relative w-full max-w-3xl mx-auto shadow-lg rounded-xl overflow-hidden bg-black" style="padding-top: 52.5%;">
@@ -328,11 +366,11 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
 
             <!-- 7. Contact Section -->
             <section id="contact" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in text-center">
-                <h2 class="text-xl sm:text-2xl font-bold mb-6 text-primary border-b pb-2">💬 للاستفسار وتأكيد الحجز</h2>
+                <h2 class="text-xl sm:text-2xl font-bold mb-6 text-primary border-b pb-2">💬 للاستفسار وتأكيد الحجز المباشر</h2>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <a href="https://wa.me/201064208147?text=Hi+Mohamed" target="_blank" class="w-full sm:w-auto bg-primary text-white font-bold text-base sm:text-lg py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition pulse-btn">
                         تواصل مع مستر محمد
@@ -345,34 +383,56 @@
         </div>
 
         <footer class="text-center text-gray-500 text-xs sm:text-sm py-6 border-t border-gray-200 mt-4 sm:mt-8">
-            <p>© 2026 Math EST Course | May Attempt | All Rights Reserved</p>
+            <p>© 2026 Math EST Course | July Attempt | All Rights Reserved</p>
         </footer>
     </div>
 
-    <!-- Floating Buttons -->
+    <!-- Floating Buttons (Optimized touch targets) -->
     <div class="fixed left-4 bottom-4 z-50 flex flex-col gap-3">
-        <a href="https://wa.me/201064208147?text=Hi+Mohamed" target="_blank" class="flex flex-col items-center justify-center bg-primary text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg pulse-btn text-[10px] sm:text-xs font-bold transition-transform hover:scale-110">
+        <a href="https://wa.me/201064208147?text=Hi+Mohamed" target="_blank" class="flex flex-col items-center justify-center bg-primary text-white w-14 h-14 rounded-full shadow-lg pulse-btn text-xs font-bold transition-transform hover:scale-110" title="مستر محمد">
             <span>محمد</span>
         </a>
-        <a href="https://wa.me/201151921542?text=Hi+Mohamed" target="_blank" class="flex flex-col items-center justify-center bg-primary text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg pulse-btn text-[10px] sm:text-xs font-bold transition-transform hover:scale-110">
+        <a href="https://wa.me/201151921542?text=Hi+Mohamed" target="_blank" class="flex flex-col items-center justify-center bg-primary text-white w-14 h-14 rounded-full shadow-lg pulse-btn text-xs font-bold transition-transform hover:scale-110" title="مستر يوسف">
             <span>يوسف</span>
         </a>
     </div>
 
-    <!-- Session Counter Logic -->
+    <!-- Script for interactive elements (Copy & Session counter) -->
     <script>
+        // Copy to clipboard fallback logic
+        function copyToClipboard(text) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                showToast();
+            } catch (err) {
+                console.error('خطأ في عملية النسخ', err);
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        // Show feedback toast
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.style.opacity = '1';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+            }, 2000);
+        }
+
+        // Update passed sessions logic
         document.addEventListener('DOMContentLoaded', () => {
-            const startDate = new Date(2026, 3, 9); // April 9, 2026 (Months are 0-indexed in JS, so 3 = April)
-            const sessionDays = [0, 2, 4]; // Sunday=0, Tuesday=2, Thursday=4
-            const maxSessions = 19;
-            
-            // Start the count at -1 as requested
-            let count = -1; 
+            const startDate = new Date(2026, 4, 31); // May 31, 2026 (Month is 0-indexed, so 4 is May)
+            const sessionDays = [0, 2, 4]; // Sunday, Tuesday, Thursday
+            const maxSessions = 18;
+            let count = 0; // Started counting from 0 directly as requested
             
             const today = new Date();
             today.setHours(23, 59, 59, 999);
             
-            // If we are past the start date, calculate passed sessions
             if (today >= startDate) {
                 let current = new Date(startDate);
                 current.setHours(0, 0, 0, 0);
@@ -381,21 +441,18 @@
                     if (sessionDays.includes(current.getDay())) {
                         count++;
                     }
-                    // Move to next day
                     current.setDate(current.getDate() + 1);
                 }
             }
             
-            // Update the DOM element
             const countEl = document.getElementById('dynamic-session-count');
             if (countEl) {
-                // Ensure it doesn't exceed maxSessions visually
                 countEl.textContent = count > maxSessions ? maxSessions : count;
             }
         });
     </script>
 
-    <!-- Vimeo API Script -->
+    <!-- Vimeo API -->
     <script src="https://player.vimeo.com/api/player.js"></script>
 </body>
 </html>
