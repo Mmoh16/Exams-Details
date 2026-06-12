@@ -1,251 +1,491 @@
 ```html
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>كورس SAT المكثف 2026</title>
+    
+    <!-- ANTI-CACHE TAGS -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <title>كورس SAT المكثف - محاولة أكتوبر 2026</title>
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Cairo Arabic Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Fonts -->
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&family=Inter:wght@100..900&display=swap');
+        :root {
+            --primary-color: #1E3A8A; /* Royal Dark Blue */
+            --accent-color: #2563EB; /* Premium Electric Blue */
+            --background-color: #F8FAFC;
+        }
         body {
-            font-family: 'Cairo', sans-serif;
-            scroll-behavior: smooth;
+            font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: #1E293B;
+        }
+        .text-primary { color: var(--primary-color); }
+        .text-accent { color: var(--accent-color); }
+        .bg-primary { background-color: var(--primary-color); }
+        .bg-accent { background-color: var(--accent-color); }
+        .border-primary { border-color: var(--primary-color); }
+        .border-accent { border-color: var(--accent-color); }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 4px; }
+
+        @keyframes pulse-blue {
+            0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
+        .pulse-btn { animation: pulse-blue 2s infinite; }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="bg-white text-slate-800 selection:bg-blue-600 selection:text-white">
+<body class="bg-slate-50 text-gray-800 relative">
 
-    <!-- Sticky Navigation -->
-    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-blue-50 py-3 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <span class="p-1.5 bg-blue-600 rounded text-white font-black text-lg tracking-wider">SAT</span>
-                <span class="font-bold text-blue-900 text-sm sm:text-base">كورس SAT المكثف 2026</span>
+    <!-- Notification Toast (for copying feedback) -->
+    <div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white px-4 py-2 rounded-lg shadow-lg text-sm font-semibold opacity-0 transition-opacity duration-300 pointer-events-none">
+        تم نسخ الرقم بنجاح!
+    </div>
+
+    <!-- 0. Navbar -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-blue-50">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <span class="font-bold text-lg sm:text-xl text-primary flex items-center gap-2">
+                    <span class="bg-primary text-white px-2.5 py-1 rounded text-sm font-black tracking-wider">SAT</span>
+                    <span class="truncate">كورس SAT المكثف 2026</span>
+                </span>
+                <div class="hidden md:flex space-x-6 space-x-reverse text-sm font-medium">
+                    <a href="#home" class="hover:text-blue-600 transition">الرئيسية</a>
+                    <a href="#schedule" class="hover:text-blue-600 transition">المواعيد</a>
+                    <a href="#payment" class="hover:text-blue-600 transition">الاشتراك والدفع</a>
+                    <a href="#package" class="hover:text-blue-600 transition">محتوى الكورس</a>
+                    <a href="#followup" class="hover:text-blue-600 transition">نظام المتابعة</a>
+                    <a href="#contact" class="hover:text-blue-600 transition">تواصل معنا</a>
+                </div>
+                <a href="#contact" class="bg-primary text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-bold shadow hover:bg-blue-800 transition transform hover:scale-105">احجز الآن</a>
             </div>
-            <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm px-4 py-2 rounded-lg transition duration-300">احجز الآن عبر واتساب</a>
         </div>
     </nav>
 
-    <!-- Hero Section (Blue & White Only) -->
-    <section class="bg-blue-900 text-white py-16 px-4">
-        <div class="max-w-4xl mx-auto text-center space-y-5">
-            <span class="inline-block bg-blue-800 text-blue-100 text-xs font-bold px-3 py-1 rounded-full border border-blue-700">
-                محاولة أكتوبر 2026
-            </span>
-            
-            <h1 class="text-3xl md:text-5xl font-black leading-tight">
-                كورس SAT المكثف <br> <span class="text-blue-200">Basic + Advanced</span>
-            </h1>
-            
-            <p class="text-blue-100 max-w-2xl mx-auto text-xs sm:text-sm leading-relaxed">
-                شرح المنهج بالكامل من البداية بالإضافة إلى حل مكثف للامتحانات والتدريبات حتى يوم الاختبار.
-            </p>
+    <div class="p-3 sm:p-6 lg:p-8">
+        <div class="mx-auto max-w-5xl">
 
-            <!-- Countdown Timer -->
-            <div class="pt-4">
-                <div class="bg-blue-950/50 rounded-xl p-4 max-w-md mx-auto border border-blue-800">
-                    <span class="text-[11px] text-blue-200 block mb-2 font-medium">الوقت المتبقي على البداية (16 يونيو 2026 - 2:00 PM)</span>
-                    <div id="countdown" class="grid grid-cols-4 gap-2 text-center">
-                        <div class="bg-blue-900 p-2 rounded-lg border border-blue-800">
-                            <span id="days" class="block text-lg font-bold text-white">00</span>
-                            <span class="text-[10px] text-blue-300">يوم</span>
+            <!-- 1. Header & Hero Section -->
+            <header id="home" class="bg-white rounded-2xl shadow-md p-5 sm:p-8 mb-8 border-r-4 border-primary overflow-hidden relative fade-in">
+                <div class="flex flex-col sm:flex-row items-center sm:items-start mb-4 space-y-4 sm:space-y-0 sm:space-x-4 sm:space-x-reverse text-center sm:text-right">
+                    <div class="flex-shrink-0 pt-1">
+                        <!-- Icon representation of premium mathematics/education -->
+                        <div class="w-20 h-20 sm:w-24 sm:h-24 bg-blue-50 rounded-2xl flex items-center justify-center text-primary text-4xl font-black border border-blue-100 shadow-inner">
+                            ∑
                         </div>
-                        <div class="bg-blue-900 p-2 rounded-lg border border-blue-800">
-                            <span id="hours" class="block text-lg font-bold text-white">00</span>
-                            <span class="text-[10px] text-blue-300">ساعة</span>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-xs sm:text-sm font-bold text-blue-600 uppercase tracking-wider mb-2 sm:mb-1">كورس شامل مكثف (Basic + Advanced)</p>
+                        <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+                            كورس SAT الاستعدادي <span class="text-primary block sm:inline mt-1 sm:mt-0">لمحاولة أكتوبر 2026</span> 📈
+                        </h1>
+                        <p class="text-slate-500 text-xs sm:text-sm mt-2 font-medium">مناسب لجميع الطلاب المبتدئين والراغبين في التأسيس القوي وحل الامتحانات.</p>
+                    </div>
+                </div>
+
+                <!-- Live Countdown Banner -->
+                <div class="bg-blue-900 text-white p-4 rounded-xl shadow-sm mt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="text-right">
+                        <p class="text-sm font-bold text-blue-200">العد التنازلي لبدء الكورس اللايف:</p>
+                        <p class="text-xs text-blue-100 mt-0.5">تاريخ البداية: الثلاثاء 16/6/2026 الساعة 2:00 PM</p>
+                    </div>
+                    
+                    <div id="countdown" class="grid grid-cols-4 gap-2 text-center text-xs w-full md:w-auto max-w-xs">
+                        <div class="bg-blue-950 p-2 rounded border border-blue-800">
+                            <span id="days" class="block text-sm font-bold">00</span>
+                            <span class="text-[9px] text-blue-300">يوم</span>
                         </div>
-                        <div class="bg-blue-900 p-2 rounded-lg border border-blue-800">
-                            <span id="minutes" class="block text-lg font-bold text-white">00</span>
-                            <span class="text-[10px] text-blue-300">دقيقة</span>
+                        <div class="bg-blue-950 p-2 rounded border border-blue-800">
+                            <span id="hours" class="block text-sm font-bold">00</span>
+                            <span class="text-[9px] text-blue-300">ساعة</span>
                         </div>
-                        <div class="bg-blue-900 p-2 rounded-lg border border-blue-800">
-                            <span id="seconds" class="block text-lg font-bold text-white">00</span>
-                            <span class="text-[10px] text-blue-300">ثانية</span>
+                        <div class="bg-blue-950 p-2 rounded border border-blue-800">
+                            <span id="minutes" class="block text-sm font-bold">00</span>
+                            <span class="text-[9px] text-blue-300">دقيقة</span>
+                        </div>
+                        <div class="bg-blue-950 p-2 rounded border border-blue-800">
+                            <span id="seconds" class="block text-sm font-bold">00</span>
+                            <span class="text-[9px] text-blue-300">ثانية</span>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </header>
 
-    <!-- Main Content -->
-    <main class="max-w-4xl mx-auto px-4 py-12 space-y-12">
-
-        <!-- Core Information Grid -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Details -->
-            <div class="bg-white p-6 rounded-xl border border-blue-100 shadow-sm space-y-4">
-                <h2 class="text-lg font-bold text-blue-900 border-b border-blue-50 pb-2">تفاصيل الدراسة</h2>
+            <!-- 2. Schedule Section -->
+            <section id="schedule" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in border-t-4 border-primary">
+                <h2 class="text-xl sm:text-2xl font-bold text-primary mb-6 border-b pb-2">🗓️ مواعيد الحصص والامتحان</h2>
                 
-                <div class="space-y-1">
-                    <span class="text-xs text-slate-400 block font-semibold">المستهدفين:</span>
-                    <p class="text-sm text-slate-700 font-bold">جميع الطلاب والراغبين في البدء من الصفر.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-blue-50/50 p-4 rounded-lg border border-blue-100 flex justify-between items-center shadow-sm">
+                        <span class="font-bold text-blue-900">تاريخ البداية:</span>
+                        <span class="bg-white text-primary font-black px-4 py-1 rounded border border-blue-100 shadow-sm text-sm sm:text-base">16 يونيو 2026</span>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 flex justify-between items-center shadow-sm">
+                        <span class="font-bold text-gray-800">موقف الكورس الحالي:</span>
+                        <div class="flex items-center gap-2">
+                            <span id="dynamic-session-count" class="bg-primary text-white font-black px-3 py-1 rounded-full shadow-md text-sm sm:text-base inline-block text-center" style="min-width: 2.2rem;" dir="ltr">0</span>
+                            <span class="text-xs text-gray-500 font-bold">/ 48 حصة</span>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 flex justify-between items-center">
+                        <span class="font-bold text-gray-700">تاريخ المحاولة الرئيسي (Trial):</span>
+                        <span class="bg-red-50 text-red-700 border border-red-100 font-black px-3 py-1 rounded text-sm">3 / 10 / 2026</span>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 flex justify-between items-center">
+                        <span class="font-bold text-gray-700">عدد المحاضرات:</span>
+                        <span class="bg-blue-50 text-primary border border-blue-100 font-bold px-3 py-1 rounded text-sm">40 حصة أساسية + 8 مراجعة</span>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-5 rounded-lg border border-slate-100">
+                    <strong class="text-primary block mb-4 text-base sm:text-lg flex items-center gap-2">
+                        ⏰ الجدول الأسبوعي الأساسي (بتوقيت القاهرة):
+                    </strong>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-slate-100 shadow-sm">
+                            <span class="font-bold text-gray-800">السبت</span>
+                            <span class="text-accent font-bold">2:00 مساءً</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-slate-100 shadow-sm">
+                            <span class="font-bold text-gray-800">الثلاثاء</span>
+                            <span class="text-accent font-bold">2:00 مساءً</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-slate-100 shadow-sm">
+                            <span class="font-bold text-gray-800">الخميس</span>
+                            <span class="text-accent font-bold">2:00 مساءً</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Price & Payment Details -->
+            <section id="payment" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in">
                 
-                <div class="grid grid-cols-2 gap-4 pt-2">
-                    <div>
-                        <span class="text-xs text-slate-400 block font-semibold">تاريخ البدء:</span>
-                        <p class="text-sm text-blue-600 font-bold">الثلاثاء 16/6/2026</p>
+                <!-- Price Banner (Custom Blue Theme) -->
+                <div class="bg-gradient-to-r from-blue-900 to-indigo-950 text-white rounded-xl shadow-lg p-6 sm:p-8 text-center relative overflow-hidden group mb-8">
+                    <h2 class="text-lg sm:text-xl font-bold mb-2 relative z-10">💸 تكلفة الاشتراك بالكامل</h2>
+                    <div class="relative z-10 flex flex-col items-center justify-center">
+                        <p class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-1 text-white">
+                            12,000 <span class="text-lg sm:text-xl font-medium">ج.م</span>
+                        </p>
+                        <p class="text-sm sm:text-base font-bold line-through text-blue-300 opacity-80 mt-1">
+                            13,500 ج.م
+                        </p>
                     </div>
-                    <div>
-                        <span class="text-xs text-slate-400 block font-semibold">موعد المحاولة:</span>
-                        <p class="text-sm text-blue-900 font-bold">السبت 3/10/2026</p>
-                    </div>
+                    <p class="mt-3 text-xs sm:text-sm font-medium text-blue-200 relative z-10">💯 تم تطبيق خصم بقيمة 1,500 ج.م بمناسبة التسجيل المبكر</p>
                 </div>
-            </div>
 
-            <!-- Sessions -->
-            <div class="bg-white p-6 rounded-xl border border-blue-100 shadow-sm flex flex-col justify-between">
-                <div>
-                    <h2 class="text-lg font-bold text-blue-900 border-b border-blue-50 pb-2 mb-3">عدد المحاضرات والمواعيد</h2>
-                    <div class="bg-blue-50 text-blue-900 text-center py-2 rounded-lg font-bold text-sm">
-                        40 حصة أساسية + 8 حصص مراجعة
-                    </div>
-                </div>
-                <div class="mt-4">
-                    <span class="text-xs text-slate-400 block mb-2 font-semibold">المواعيد الأسبوعية (الساعة 2:00 PM):</span>
-                    <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold text-blue-900">
-                        <div class="bg-blue-50/50 py-2 rounded-lg border border-blue-100">السبت</div>
-                        <div class="bg-blue-50/50 py-2 rounded-lg border border-blue-100">الثلاثاء</div>
-                        <div class="bg-blue-50/50 py-2 rounded-lg border border-blue-100">الخميس</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                <h2 class="text-xl sm:text-2xl font-bold text-primary mb-6 border-b pb-2">💳 نظام الأقساط وجدول الدفع</h2>
 
-        <!-- Pricing (Simplified to Blue/White/Gray) -->
-        <section class="bg-blue-50/30 rounded-xl p-6 border border-blue-100 space-y-6">
-            <h2 class="text-xl font-bold text-blue-900 text-center">الاشتراك ونظام الدفع</h2>
-            
-            <div class="grid grid-cols-3 gap-3 text-center max-w-2xl mx-auto">
-                <div class="bg-white p-3 rounded-lg border border-blue-100">
-                    <span class="text-[10px] text-slate-400 block">السعر الأصلي</span>
-                    <span class="text-sm text-slate-400 line-through">13,500 ج.م</span>
-                </div>
-                <div class="bg-blue-600 p-3 rounded-lg text-white">
-                    <span class="text-[10px] text-blue-200 block">بعد الخصم</span>
-                    <span class="text-base font-bold">12,000 ج.م</span>
-                </div>
-                <div class="bg-white p-3 rounded-lg border border-blue-100">
-                    <span class="text-[10px] text-blue-600 block">قيمة الخصم</span>
-                    <span class="text-sm font-bold text-blue-600">1,500 ج.م</span>
-                </div>
-            </div>
-
-            <!-- Installments -->
-            <div class="border-t border-blue-100 pt-6 space-y-4">
-                <h3 class="text-sm font-bold text-blue-900 text-center">جدول الأقساط الميسر</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                    <div class="bg-white p-4 rounded-lg border border-blue-100 text-center space-y-1">
+                <!-- Installments Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center space-y-1">
                         <span class="text-xs text-blue-600 font-bold block">الدفعة الأولى</span>
-                        <span class="text-lg font-bold text-blue-950 block">4,000 ج.م</span>
-                        <span class="text-[10px] text-slate-400">مع بداية الكورس</span>
+                        <span class="text-xl font-black text-slate-800 block">4,000 ج.م</span>
+                        <span class="text-[11px] bg-blue-50 text-blue-900 px-2.5 py-0.5 rounded-full inline-block font-medium">مع بداية الكورس</span>
                     </div>
-                    <div class="bg-white p-4 rounded-lg border border-blue-100 text-center space-y-1">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center space-y-1">
                         <span class="text-xs text-blue-600 font-bold block">الدفعة الثانية</span>
-                        <span class="text-lg font-bold text-blue-950 block">4,000 ج.م</span>
-                        <span class="text-[10px] text-slate-400">تدفع قبل 1 / 8 / 2026</span>
+                        <span class="text-xl font-black text-slate-800 block">4,000 ج.م</span>
+                        <span class="text-[11px] bg-slate-200 text-slate-700 px-2.5 py-0.5 rounded-full inline-block font-medium">تستحق في 1 / 8 / 2026</span>
                     </div>
-                    <div class="bg-white p-4 rounded-lg border border-blue-100 text-center space-y-1">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center space-y-1">
                         <span class="text-xs text-blue-600 font-bold block">الدفعة الثالثة</span>
-                        <span class="text-lg font-bold text-blue-950 block">4,000 ج.م</span>
-                        <span class="text-[10px] text-slate-400">تدفع قبل 1 / 9 / 2026</span>
+                        <span class="text-xl font-black text-slate-800 block">4,000 ج.م</span>
+                        <span class="text-[11px] bg-slate-200 text-slate-700 px-2.5 py-0.5 rounded-full inline-block font-medium">تستحق في 1 / 9 / 2026</span>
                     </div>
                 </div>
-                <p class="text-center text-[11px] text-blue-900 font-semibold mt-2">
-                     * جميع الرسوم المدفوعة غير مستردة.
-                </p>
-            </div>
-        </section>
 
-        <!-- Trial Policy Banner (Blue Theme) -->
-        <section class="bg-blue-50 border border-blue-200 rounded-xl p-5 md:p-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="space-y-1 text-center md:text-right">
-                <span class="bg-blue-600 text-white text-[10px] px-2.5 py-0.5 rounded-full font-bold">ضمان الطمأنينة</span>
-                <h3 class="text-base font-bold text-blue-950">حضور المحاضرة الأولى مجاناً بالكامل</h3>
-                <p class="text-xs text-blue-900 leading-relaxed max-w-md">
-                    يمكنك حضور الحصة التمهيدية لتقييم جودة ومنظومة الشرح. في حال رغبتك بالاستكمال يتم الدفع والاستمرار، وغير ذلك لا تترتب عليك أي التزامات مالية.
-                </p>
-            </div>
-            <div class="bg-white p-3 rounded-lg border border-blue-100 text-center w-full md:w-auto min-w-[200px]">
-                <span class="text-[10px] text-slate-400 block mb-0.5">موعد الدفع</span>
-                <span class="text-xs font-bold text-blue-900 block">بعد التأكد من مناسبة الكورس</span>
-            </div>
-        </section>
-
-        <!-- Features Matrix -->
-        <section class="space-y-4">
-            <h2 class="text-lg font-bold text-blue-900 text-center">المنظومة التعليمية</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
-                <div class="bg-white p-4 rounded-lg border border-blue-50 shadow-sm space-y-1">
-                    <span class="text-xl block">💻</span>
-                    <h4 class="font-bold text-xs text-blue-950">تسجيلات الحصص</h4>
-                    <p class="text-[10px] text-slate-400">متاحة دوماً على الموقع الخاص</p>
+                <!-- Refund Policy & Notes -->
+                <div class="bg-red-50 p-4 sm:p-5 rounded-xl border-2 border-red-100 mb-8 text-center flex flex-col justify-center items-center gap-2">
+                    <p class="font-bold text-red-700 text-base sm:text-lg">🛑 الرسوم والاشتراكات غير مستردة</p>
+                    <p class="font-medium text-red-500 text-xs sm:text-sm" dir="ltr">🚫 Fees are completely non-refundable</p>
                 </div>
-                <div class="bg-white p-4 rounded-lg border border-blue-50 shadow-sm space-y-1">
-                    <span class="text-xl block">📱</span>
-                    <h4 class="font-bold text-xs text-blue-950">تطبيق تفاعلي</h4>
-                    <p class="text-[10px] text-slate-400">لمتابعة الأداء وحل الواجبات</p>
+
+                <!-- Important Note -->
+                <div class="bg-yellow-50 border-r-4 border-yellow-500 p-4 rounded-lg mb-6 shadow-sm">
+                    <p class="font-bold text-yellow-800 text-sm sm:text-base flex items-center gap-2">
+                        <span class="shrink-0">🚨</span>
+                        يجب أن تحتوي الصورة المرسلة على الرقم المرجعي وتاريخ التحويل بالكامل.
+                    </p>
                 </div>
-                <div class="bg-white p-4 rounded-lg border border-blue-50 shadow-sm space-y-1">
-                    <span class="text-xl block">✍️</span>
-                    <h4 class="font-bold text-xs text-blue-950">درجات الواجبات</h4>
-                    <p class="text-[10px] text-slate-400">تصل لولي الأمر بانتظام</p>
+
+                <!-- Refund Policy & No Installments -->
+                <div class="bg-red-50 p-5 sm:p-6 rounded-xl border-2 border-red-100 mb-8 text-center flex flex-col justify-center items-center gap-3">
+                    <div class="w-full">
+                        <p class="font-bold text-red-700 text-base sm:text-lg md:text-xl">🛑 الفلوس غير مستردة</p>
+                        <p class="font-medium text-red-500 text-sm sm:text-base mt-1" dir="ltr">🚫 Money isn't refundable</p>
+                    </div>
+                    <div class="w-full sm:w-3/4 h-px bg-red-200 my-1"></div>
+                    <div class="w-full">
+                        <p class="font-bold text-red-700 text-base sm:text-lg md:text-xl">💳 لا يوجد نظام تقسيط</p>
+                        <p class="font-medium text-red-500 text-sm sm:text-base mt-1" dir="ltr">🚫 No installments available</p>
+                    </div>
                 </div>
-                <div class="bg-white p-4 rounded-lg border border-blue-50 shadow-sm space-y-1">
-                    <span class="text-xl block">👨‍👩‍👦</span>
-                    <h4 class="font-bold text-xs text-blue-950">تقارير الغياب</h4>
-                    <p class="text-[10px] text-slate-400">متابعة دقيقة لنسب الحضور</p>
+
+                <!-- Wallets Grid with Copy Feature -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                    
+                    <!-- Instapay -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border-2 border-dashed border-purple-300 relative transition-transform hover:-translate-y-1">
+                        <div class="absolute top-0 right-0 bg-purple-600 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">Instapay</div>
+                        <h4 class="text-base sm:text-lg font-black mb-4 mt-2 text-purple-700">إنستاباي</h4>
+                        <div class="bg-white p-3 rounded-lg shadow-sm text-center flex items-center justify-between gap-2 border border-purple-100">
+                            <span id="num-instapay" class="font-mono font-bold text-base sm:text-lg select-all text-slate-700" dir="ltr">01029453108</span>
+                            <button onclick="copyToClipboard('01029453108')" class="bg-purple-100 hover:bg-purple-200 text-purple-700 p-1.5 rounded-md transition" title="نسخ الرقم">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Vodafone Cash -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border-2 border-dashed border-red-300 relative transition-transform hover:-translate-y-1">
+                        <div class="absolute top-0 right-0 bg-red-600 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">Vodafone</div>
+                        <h4 class="text-base sm:text-lg font-black mb-4 mt-2 text-red-700">فودافون كاش</h4>
+                        <div class="space-y-2">
+                            <div class="bg-white p-2 rounded-lg shadow-sm flex items-center justify-between border border-red-100">
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-700" dir="ltr">01029453108</span>
+                                <button onclick="copyToClipboard('01029453108')" class="bg-red-50 hover:bg-red-100 text-red-600 p-1.5 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                </button>
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-sm flex items-center justify-between border border-red-100">
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-700" dir="ltr">01012178525</span>
+                                <button onclick="copyToClipboard('01012178525')" class="bg-red-50 hover:bg-red-100 text-red-600 p-1.5 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                </button>
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-sm flex items-center justify-between border border-red-100">
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-700" dir="ltr">01012758968</span>
+                                <button onclick="copyToClipboard('01012758968')" class="bg-red-50 hover:bg-red-100 text-red-600 p-1.5 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                </button>
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-sm flex items-center justify-between border border-red-100">
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-700" dir="ltr">01012754172</span>
+                                <button onclick="copyToClipboard('01012754172')" class="bg-red-50 hover:bg-red-100 text-red-600 p-1.5 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Etisalat Cash -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border-2 border-dashed border-green-400 relative transition-transform hover:-translate-y-1">
+                        <div class="absolute top-0 right-0 bg-green-600 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">Etisalat</div>
+                        <h4 class="text-base sm:text-lg font-black mb-4 mt-2 text-green-700">اتصالات كاش</h4>
+                        <div class="space-y-2">
+                            <div class="bg-white p-2 rounded-lg shadow-sm flex items-center justify-between border border-green-100">
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-700" dir="ltr">01154111644</span>
+                                <button onclick="copyToClipboard('01154111644')" class="bg-green-50 hover:bg-green-100 text-green-600 p-1.5 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                </button>
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-sm flex items-center justify-between border border-green-100">
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-700" dir="ltr">01148505699</span>
+                                <button onclick="copyToClipboard('01148505699')" class="bg-green-50 hover:bg-green-100 text-green-600 p-1.5 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                </button>
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-sm flex items-center justify-between border border-green-100">
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-700" dir="ltr">01147408483</span>
+                                <button onclick="copyToClipboard('01147408483')" class="bg-green-50 hover:bg-green-100 text-green-600 p-1.5 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orange Cash -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border-2 border-dashed border-orange-400 relative transition-transform hover:-translate-y-1">
+                        <div class="absolute top-0 right-0 bg-orange-500 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">Orange</div>
+                        <h4 class="text-base sm:text-lg font-black mb-4 mt-2 text-orange-600">أورانج كاش</h4>
+                        <div class="space-y-2">
+                            <div class="bg-white p-2 rounded-lg shadow-sm flex items-center justify-between border border-orange-100">
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-700" dir="ltr">01276190154</span>
+                                <button onclick="copyToClipboard('01276190154')" class="bg-orange-50 hover:bg-orange-100 text-orange-600 p-1.5 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                </button>
+                            </div>
+                            <div class="bg-white p-2 rounded-lg shadow-sm flex items-center justify-between border border-orange-100">
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-700" dir="ltr">01274863906</span>
+                                <button onclick="copyToClipboard('01274863906')" class="bg-orange-50 hover:bg-orange-100 text-orange-600 p-1.5 rounded-md transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-        </section>
 
-        <!-- WhatsApp Direct Assistants Buttons -->
-        <section id="contact" class="bg-white rounded-xl p-6 border border-blue-100 shadow-sm max-w-md mx-auto text-center space-y-6">
-            <div class="space-y-1">
-                <h2 class="text-lg font-extrabold text-blue-950">للحجز والاستفسار الفوري</h2>
-                <p class="text-slate-400 text-xs">اضغط على زر المساعد لفتح محادثة واتساب مباشرة:</p>
-            </div>
+            <!-- 4. Package Content -->
+            <section id="package" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in">
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-5 text-center border-b pb-2">🌐 محتويات الاشتراك الشامل</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-slate-50 p-3.5 rounded-lg border border-slate-100 text-sm">🎯 <strong>محتوى Basic + Advanced:</strong> شرح متكامل لجميع أجزاء المنهج.</div>
+                    <div class="bg-slate-50 p-3.5 rounded-lg border border-slate-100 text-sm">📚 <strong>بنك أسئلة وتدريبات:</strong> حل مكثف لمجموعة كبيرة من الامتحانات التجريبية.</div>
+                    <div class="bg-slate-50 p-3.5 rounded-lg border border-slate-100 text-sm">📹 <strong>تسجيلات كاملة للحصص:</strong> تُرفع الحصص فوراً بعد انتهاء اللايف وتظل متاحة للمراجعة.</div>
+                    <div class="bg-slate-50 p-3.5 rounded-lg border border-slate-100 text-sm">⏱️ <strong>فيديوهات مراجعة مكثفة:</strong> تسليط الضوء على الأفكار والتركات المهمة للسرعة والذكاء في الحل.</div>
+                </div>
+                <div class="text-center font-bold text-primary mt-6 p-4 bg-blue-50 rounded-lg border border-blue-100 text-xs sm:text-sm">
+                    🔒 جميع التسجيلات والمحتوى تظل متاحة على الموقع الخاص حتى نهاية محاولة أكتوبر 2026.
+                </div>
+            </section>
 
-            <div class="grid grid-cols-1 gap-3.5">
-                <!-- Selvya Button -->
-                <a href="https://wa.me/201272116304" target="_blank" class="w-full py-4 px-6 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition duration-200 flex items-center justify-center gap-3 shadow-md shadow-blue-600/10 text-sm">
-                    <span>💬</span>
-                    <span>تواصل مع سيلفيا (Selvya)</span>
-                </a>
+            <!-- 5. Follow Up -->
+            <section id="followup" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in">
+                <h2 class="text-xl sm:text-2xl font-bold text-primary mb-6 border-b pb-2">👨‍👩‍👧 نظام المتابعة وتقارير أولياء الأمور</h2>
+                
+                <!-- Trial banner style policy embedded inside follow-up -->
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="space-y-1 text-center md:text-right">
+                        <span class="bg-blue-600 text-white text-[10px] px-2.5 py-0.5 rounded-full font-bold">ضمان الطمأنينة</span>
+                        <h3 class="text-base font-bold text-blue-950">حضور المحاضرة الأولى مجاناً بالكامل</h3>
+                        <p class="text-xs text-blue-900 leading-relaxed max-w-md">
+                            يمكن للطالب حضور الحصة التمهيدية لتقييم جودة ومنظومة الشرح وتحديد الاستمرار من عدمه بدون أي التزامات مالية مسبقة.
+                        </p>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg border border-blue-100 text-center w-full md:w-auto min-w-[200px]">
+                        <span class="text-[10px] text-slate-400 block mb-0.5">موعد دفع أول قسط</span>
+                        <span class="text-xs font-bold text-blue-900 block">بعد التأكد من مناسبة الكورس</span>
+                    </div>
+                </div>
 
-                <!-- Caroline Button -->
-                <a href="https://wa.me/201214421233" target="_blank" class="w-full py-4 px-6 bg-white hover:bg-blue-50 text-blue-600 border-2 border-blue-600 font-bold rounded-xl transition duration-200 flex items-center justify-center gap-3 shadow-sm text-sm">
-                    <span>💬</span>
-                    <span>تواصل مع كارولين (Caroline)</span>
-                </a>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="flex items-start gap-4 bg-slate-50 p-5 rounded-lg border border-slate-100">
+                        <div class="bg-red-100 p-3 rounded-full text-red-600 shrink-0 mt-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-800 text-base mb-1">إرسال تقارير الغياب والالتزام</p>
+                            <p class="text-xs text-gray-600 leading-relaxed">يتم تسجيل ومراقبة حضور الطالب بدقة عبر التطبيق وإرسال إشعارات فورية في حال الغياب.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 bg-slate-50 p-5 rounded-lg border border-slate-100">
+                        <div class="bg-blue-100 p-3 rounded-full text-primary shrink-0 mt-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-800 text-base mb-1">تطبيق المتابعة وتقارير الدرجات</p>
+                            <p class="text-xs text-gray-600 leading-relaxed">تقارير دورية توضح درجات الواجبات، الاختبارات القصيرة، وعدد دقائق تفاعل الطالب وحضوره في المنصة.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                <!-- Mohamed Button -->
-                <a href="https://wa.me/201064208147" target="_blank" class="w-full py-4 px-6 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition duration-200 flex items-center justify-center gap-3 shadow-md shadow-blue-600/10 text-sm">
-                    <span>💬</span>
-                    <span>تواصل مع محمد (Mohamed)</span>
-                </a>
-            </div>
-        </section>
+            <!-- 6. Vimeo Video Showcase Section -->
+            <!--<section id="videos" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in">
+                <h2 class="text-xl sm:text-2xl font-bold mb-6 border-b pb-2 text-primary text-center">🎥 مقدمة تعريفية ونماذج الشرح</h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-sm sm:text-base font-bold text-center mb-3 text-gray-800">فيديو تعريفي للتعرف على نظام الكورس</h3>
+                        <div class="relative w-full max-w-2xl mx-auto shadow-md rounded-xl overflow-hidden bg-black" style="padding-top: 56.25%;">
+                             Embedded Vimeo Video 
+                            <iframe src="https://player.vimeo.com/video/1197350118?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="introduction"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
 
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-blue-900 text-blue-100 py-8 px-4 text-center border-t border-blue-800 text-xs space-y-3">
-        <p class="max-w-xl mx-auto opacity-90 leading-relaxed">
-            يتم توفير تسجيل كل محاضرة لتظل متاحة للطالب حتى نهاية المدة. <br>
-            <span class="text-blue-200 font-bold mt-1 block">تنبيه: بعد انتهاء محاولة أكتوبر سيتم إغلاق الموقع والكورس نهائياً.</span>
-        </p>
-        <div class="text-[10px] text-blue-300">
-            &copy; كورس SAT المكثف 2026. جميع الحقوق محفوظة.
+            <!-- 7. Contact Section -->
+            <section id="contact" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in text-center">
+                <h2 class="text-xl sm:text-2xl font-bold mb-6 text-primary border-b pb-2">💬 للحجز والاستفسار المباشر عبر واتساب</h2>
+                <p class="text-slate-400 text-xs sm:text-sm mb-6 max-w-md mx-auto">تواصل مباشرة مع أحد المساعدين لتأكيد حجزك وتفعيل حسابك فوراً:</p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <!-- Selvya Button -->
+                    <a href="https://wa.me/201272116304" target="_blank" class="w-full sm:w-auto bg-primary text-white font-bold text-sm sm:text-base py-3 px-6 rounded-full shadow-lg transform hover:scale-105 transition pulse-btn flex items-center justify-center gap-2">
+                        <span>💬</span> تواصل مع مس سيلفيا
+                    </a>
+                    <!-- Caroline Button -->
+                    <a href="https://wa.me/201214421233" target="_blank" class="w-full sm:w-auto bg-primary text-white font-bold text-sm sm:text-base py-3 px-6 rounded-full shadow-lg transform hover:scale-105 transition pulse-btn flex items-center justify-center gap-2">
+                        <span>💬</span> تواصل مع مس كارولين
+                    </a>
+                    <!-- Mohamed Button -->
+                    <a href="https://wa.me/201064208147" target="_blank" class="w-full sm:w-auto bg-primary text-white font-bold text-sm sm:text-base py-3 px-6 rounded-full shadow-lg transform hover:scale-105 transition pulse-btn flex items-center justify-center gap-2">
+                        <span>💬</span> تواصل مع مستر محمد
+                    </a>
+                </div>
+            </section>
         </div>
-    </footer>
 
-    <!-- JS Logic (Only Countdown) -->
+        <!-- Footer -->
+        <footer class="text-center text-gray-500 text-xs sm:text-sm py-6 border-t border-gray-200 mt-4 sm:mt-8">
+            <p>© 2026 Math SAT Course | October Attempt | All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <!-- Floating Buttons (Optimized touch targets for smartphones like S24 Ultra) -->
+    <div class="fixed left-4 bottom-4 z-50 flex flex-col gap-3">
+        <a href="https://wa.me/201272116304" target="_blank" class="flex flex-col items-center justify-center bg-primary text-white w-14 h-14 rounded-full shadow-lg pulse-btn text-[10px] font-bold transition-transform hover:scale-110" title="سيلفيا">
+            <span>سيلفيا</span>
+        </a>
+        <a href="https://wa.me/201214421233" target="_blank" class="flex flex-col items-center justify-center bg-primary text-white w-14 h-14 rounded-full shadow-lg pulse-btn text-[10px] font-bold transition-transform hover:scale-110" title="كارولين">
+            <span>كارولين</span>
+        </a>        
+        <a href="https://wa.me/201064208147" target="_blank" class="flex flex-col items-center justify-center bg-primary text-white w-14 h-14 rounded-full shadow-lg pulse-btn text-[10px] font-bold transition-transform hover:scale-110" title="محمد">
+            <span>محمد</span>
+        </a>
+    </div>
+
+    <!-- Script for interactive elements (Copy & Session counter) -->
     <script>
+        // Copy to clipboard fallback logic
+        function copyToClipboard(text) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                showToast();
+            } catch (err) {
+                console.error('خطأ في عملية النسخ', err);
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        // Show feedback toast
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.style.opacity = '1';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+            }, 2000);
+        }
+
+        // Countdown timer to start date (16 June 2026 2:00 PM)
         const targetDate = new Date("June 16, 2026 14:00:00").getTime();
 
         function updateCountdown() {
@@ -270,8 +510,37 @@
 
         updateCountdown();
         setInterval(updateCountdown, 1000);
+
+        // Update passed sessions logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const startDate = new Date(2026, 5, 16); // June 16, 2026 (Month is 0-indexed, so 5 is June)
+            const sessionDays = [2, 4, 6]; // Tuesday (2), Thursday (4), Saturday (6) in JS getDay()
+            const maxSessions = 48;
+            let count = 0; 
+            
+            const today = new Date();
+            today.setHours(23, 59, 59, 999);
+            
+            if (today >= startDate) {
+                let current = new Date(startDate);
+                current.setHours(0, 0, 0, 0);
+                
+                while (current <= today && count < maxSessions) {
+                    if (sessionDays.includes(current.getDay())) {
+                        count++;
+                    }
+                    current.setDate(current.getDate() + 1);
+                }
+            }
+            
+            const countEl = document.getElementById('dynamic-session-count');
+            if (countEl) {
+                countEl.textContent = count > maxSessions ? maxSessions : count;
+            }
+        });
     </script>
+
+    <!-- Vimeo API -->
+    <script src="https://player.vimeo.com/api/player.js"></script>
 </body>
 </html>
-
-```
