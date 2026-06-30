@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
@@ -187,7 +186,7 @@
             <section id="payment" class="bg-white rounded-xl shadow-md p-5 sm:p-8 mb-8 fade-in">
                 
                 <!-- Price Banner (Custom Blue Theme) -->
-                <div class="bg-gradient-to-r from-blue-900 to-indigo-950 text-white rounded-xl shadow-lg p-6 sm:p-8 text-center relative overflow-hidden group mb-8">
+                <div class="bg-gradient-to-r from-blue-900 to-indigo-950 text-white rounded-xl shadow-lg p-6 sm:p-8 text-center relative overflow-hidden group mb-6">
                     <h2 class="text-lg sm:text-xl font-bold mb-2 relative z-10">💸 تكلفة الاشتراك بالكامل</h2>
                     <div class="relative z-10 flex flex-col items-center justify-center">
                         <p class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-1 text-white">
@@ -200,6 +199,51 @@
                     <p class="mt-3 text-xs sm:text-sm font-medium text-blue-200 relative z-10">💯 تم تطبيق خصم بقيمة 1,500 ج.م بمناسبة التسجيل المبكر</p>
                 </div>
 
+                <!-- Installment Plans (3 Payments of 4000 LE) -->
+                <div class="bg-blue-50/70 border border-blue-100 rounded-2xl p-5 sm:p-6 mb-8">
+                    <h3 class="text-base sm:text-lg font-bold text-blue-900 mb-3 flex items-center gap-2">
+                        <span>🗓️</span> يتاح نظام التقسيط المريح (3 دفعات):
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-600 mb-5 leading-relaxed">
+                        تسهيلاً على أولياء الأمور والطلاب، يتاح سداد قيمة الاشتراك بالكامل على <span class="font-bold text-blue-900">ثلاث دفعات متساوية بقيمة 4,000 ج.م</span> لكل دفعة كالتالي:
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <!-- Installment 1 -->
+                        <div class="bg-white p-4 rounded-xl border border-blue-200 shadow-sm relative overflow-hidden transition-all hover:border-blue-300">
+                            <div class="absolute top-0 right-0 left-0 h-1.5 bg-blue-600"></div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">الدفعة الأولى</span>
+                                <span class="font-black text-blue-950 text-lg">4,000 <span class="text-xs font-normal">ج.م</span></span>
+                            </div>
+                            <p class="text-xs font-bold text-slate-700 mt-1">عند البداية والتسجيل</p>
+                            <p class="text-[10px] text-slate-400 mt-1">تُدفع مع انطلاق المحاضرات الفعلية</p>
+                        </div>
+
+                        <!-- Installment 2 -->
+                        <div class="bg-white p-4 rounded-xl border border-amber-200 shadow-sm relative overflow-hidden transition-all hover:border-amber-300">
+                            <div class="absolute top-0 right-0 left-0 h-1.5 bg-amber-500"></div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded">الدفعة الثانية</span>
+                                <span class="font-black text-blue-950 text-lg">4,000 <span class="text-xs font-normal">ج.م</span></span>
+                            </div>
+                            <p class="text-xs font-bold text-slate-700 mt-1">بحلول 1 أغسطس 2026</p>
+                            <p class="text-[10px] text-slate-400 mt-1">Last Date: 1 August 2026</p>
+                        </div>
+
+                        <!-- Installment 3 -->
+                        <div class="bg-white p-4 rounded-xl border border-emerald-200 shadow-sm relative overflow-hidden transition-all hover:border-emerald-300">
+                            <div class="absolute top-0 right-0 left-0 h-1.5 bg-emerald-500"></div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">الدفعة الثالثة</span>
+                                <span class="font-black text-blue-950 text-lg">4,000 <span class="text-xs font-normal">ج.م</span></span>
+                            </div>
+                            <p class="text-xs font-bold text-slate-700 mt-1">بحلول 1 سبتمبر 2026</p>
+                            <p class="text-[10px] text-slate-400 mt-1">Last Date: 1 September 2026</p>
+                        </div>
+                    </div>
+                </div>
+
                 <h2 class="text-xl sm:text-2xl font-bold text-primary mb-6 border-b pb-2">💳 قنوات الدفع والتحويل المتاحة</h2>
 
                 <!-- Important Note -->
@@ -210,16 +254,11 @@
                     </p>
                 </div>
 
-                <!-- Refund Policy & No Installments -->
+                <!-- Refund Policy -->
                 <div class="bg-red-50 p-5 sm:p-6 rounded-xl border-2 border-red-100 mb-8 text-center flex flex-col justify-center items-center gap-3">
                     <div class="w-full">
                         <p class="font-bold text-red-700 text-base sm:text-lg md:text-xl">🛑 الرسوم والاشتراكات غير مستردة نهائياً</p>
                         <p class="font-medium text-red-500 text-sm sm:text-base mt-1" dir="ltr">🚫 Fees are completely non-refundable</p>
-                    </div>
-                    <div class="w-full sm:w-3/4 h-px bg-red-200 my-1"></div>
-                    <div class="w-full">
-                        <p class="font-bold text-red-700 text-base sm:text-lg md:text-xl">💳 لا يوجد نظام تقسيط</p>
-                        <p class="font-medium text-red-500 text-sm sm:text-base mt-1" dir="ltr">🚫 No installments available</p>
                     </div>
                 </div>
 
@@ -530,5 +569,3 @@
     </script>
 </body>
 </html>
-
-
